@@ -67,7 +67,9 @@ private final IAsynRomoteVoice.Stub mBinder = new IAsynRomoteVoice.Stub() {
 callBack.sendMessage(new VoiceFeedback());
 ```
 
-3 无侵入性指令控制 敬请期待 <br>
+3 无侵入性指令控制 7月底出方案 <br>
+
+4 第三方app控制 大耳朵中间层显示7月底出方案 <br>
 
 
 
