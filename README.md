@@ -7,6 +7,8 @@
 语句 : 打开影视库的详情界面 <br>
 https://github.com/BFTVVoice/VoiceLink/blob/master/intent.md <br>
 
+全局跳转接入平台7月底上线 <br>
+
 2指令控制<br>
 语句 : 播放 (用户在影视库详情界面 喊: 播放) <br>
 
@@ -65,6 +67,7 @@ private final IAsynRomoteVoice.Stub mBinder = new IAsynRomoteVoice.Stub() {
 callBack.sendMessage(new VoiceFeedback());
 ```
 
+3 无侵入性指令控制 敬请期待 <br>
 
 
 
