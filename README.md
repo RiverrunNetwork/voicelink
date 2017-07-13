@@ -72,7 +72,8 @@ callBack.sendMessage(new VoiceFeedback());
 4 第三方app控制 大耳朵中间层显示7月底出方案 <br>
 
 
-
+aar Download <br>
+https://github.com/RiverrunNetwork/voicelink/blob/master/ThirdPartyServer/app/libs/voicethirdparty-release.aar
 
 
 
