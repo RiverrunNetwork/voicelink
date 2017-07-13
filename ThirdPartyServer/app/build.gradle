@@ -34,4 +34,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile(name: 'voicethirdparty-release', ext: 'aar')
     compile(name: 'accessibilityhelp-release', ext: 'aar')
+    compile(name: 'voicecontentprovider-release', ext: 'aar')
 }

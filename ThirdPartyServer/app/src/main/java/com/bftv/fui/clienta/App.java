@@ -23,6 +23,6 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         sContext = this;
-        BindAidlManager.getInstance().init(this,null,true);
+        BindAidlManager.getInstance().init(this,getPackageName(),true);
     }
 }
