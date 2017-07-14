@@ -10,13 +10,13 @@
 
 ## 界面跳转 
 
-- 描述 
+- 描述 <br>
 用户通过暴风大耳朵 打开某个界面 这里 叫做 "界面跳转" 下面以 影视库详情界面举例
 
-- 语句
+- 语句 <br>
 用户 : 打开影视库的详情界面
 
-- 具体对接文档
+- 具体对接文档 <br>
 https://github.com/BFTVVoice/VoiceLink/blob/master/intent.md <br>
 
 
