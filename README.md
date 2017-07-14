@@ -28,7 +28,7 @@ https://github.com/BFTVVoice/VoiceLink/blob/master/intent.md <br>
 用户 : 播放 (当前用户已经处在 影视库 详情界面下)
 
 - 具体对接文档 <br>
-
+https://github.com/RiverrunNetwork/voicelink/blob/master/cmd_control.md <br>
 
 
 
