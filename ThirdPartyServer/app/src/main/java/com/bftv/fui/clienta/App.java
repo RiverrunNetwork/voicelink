@@ -4,7 +4,13 @@ import android.app.Application;
 import android.app.ApplicationErrorReport;
 import android.content.Context;
 
+import com.bftv.fui.cp.CommentsDataSource;
 import com.bftv.fui.thirdparty.BindAidlManager;
+import com.bftv.fui.thirdparty.SimpleLog;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * @author less
@@ -23,6 +29,5 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         sContext = this;
-        BindAidlManager.getInstance().init(this,getPackageName(),true);
     }
 }

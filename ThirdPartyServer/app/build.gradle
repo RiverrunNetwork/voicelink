@@ -35,4 +35,5 @@ dependencies {
     compile(name: 'voicethirdparty-release', ext: 'aar')
     compile(name: 'accessibilityhelp-release', ext: 'aar')
     compile(name: 'voicecontentprovider-release', ext: 'aar')
+    compile(name: 'appintent-release', ext: 'aar')
 }

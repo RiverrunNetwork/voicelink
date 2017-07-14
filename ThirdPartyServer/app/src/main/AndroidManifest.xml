@@ -17,15 +17,6 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".TestBrocast">
-
-            <intent-filter>
-                <action android:name="action.test.a" />
-
-            </intent-filter>
-
-        </receiver>
-
     </application>
 
 </manifest>
