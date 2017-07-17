@@ -17,7 +17,7 @@
 用户 : 打开影视库的详情界面
 
 - 具体对接文档 <br>
-https://github.com/BFTVVoice/VoiceLink/blob/master/intent.md <br>
+https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md <br>
 
 ## 指令控制
 
