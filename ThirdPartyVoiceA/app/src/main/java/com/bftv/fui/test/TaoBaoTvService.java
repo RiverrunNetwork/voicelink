@@ -23,16 +23,14 @@ public class TaoBaoTvService extends RomoteVoiceService {
 
 
     @Override
-    public VoiceFeedback send(String s, String s1, IRemoteVoice iRemoteVoice) {
-        VoiceFeedback voiceFeedback = new VoiceFeedback();
-        voiceFeedback.feedback = "ffff";
+    public VoiceFeedback send(String userTxt, String nlpJson, IRemoteVoice iRemoteVoice) {
+        VoiceFeedback voiceFeedback = DataChange.getInstance().notifyDataChange(nlpJson);
         try {
             iRemoteVoice.sendMessage(voiceFeedback);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
         SimpleLog.l("send");
-        DataChange.getInstance().notifyDataChange("12345");
         return voiceFeedback;
     }
 }

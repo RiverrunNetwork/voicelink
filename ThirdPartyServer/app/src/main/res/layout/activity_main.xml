@@ -22,4 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="全局跳转" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="发送自定义指令" />
 </LinearLayout>

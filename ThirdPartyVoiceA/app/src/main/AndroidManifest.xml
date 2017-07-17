@@ -34,12 +34,6 @@
             </intent-filter>
         </service>
 
-        <receiver android:name="com.bftv.fui.test.TaobaoBroadcastReceiver">
-            <intent-filter android:priority="2">
-                <action android:name="action_common_message" />
-            </intent-filter>
-        </receiver>
-
     </application>
 
 </manifest>

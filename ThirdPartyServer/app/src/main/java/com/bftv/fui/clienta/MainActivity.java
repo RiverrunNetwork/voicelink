@@ -85,6 +85,35 @@ public class MainActivity extends AppCompatActivity {
                 AppIntentManager.getInstance().setIntent(MainActivity.this,hashMap.toString(),false);
             }
         });
+
+        findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 HashMap<String,String> hashMap = new HashMap<String, String>();
+                 hashMap.put("test","test");
+                 hashMap.put("collect","收藏");
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(hashMap.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                BindAidlManager.getInstance().dealMessage(MainActivity.this,"com.bftv.fui.test","收藏",jsonObject.toString(), new BindAidlManager.OnBindAidlListener() {
+                    @Override
+                    public void onSuccess(final VoiceFeedback voiceFeedback) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(voiceFeedback != null){
+                                    Toast.makeText(MainActivity.this,voiceFeedback.feedback,Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        });
+                    }
+                });
+            }
+        });
     }
 
 
