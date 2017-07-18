@@ -36,7 +36,7 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/cmd_control.md <br>
 
 - 联系暴风的小伙伴 获取Debug apk 暴风的小伙伴通过如下方式发送用户的asr 
 
-``java
+```java
 
 Intent intent = new Intent("com.bftv.fui.test.speak");
 intent.putExtra("userTxt",txt);
