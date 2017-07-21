@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
             e.printStackTrace();
         }
 
-        DataChange.getInstance().addObserver(this);
+
 
         mBtnCollect = (Button)findViewById(R.id.btn1);
 
@@ -41,6 +41,18 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DataChange.getInstance().addObserver(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        DataChange.getInstance().deleteObserver(this);
     }
 
     @Override
