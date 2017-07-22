@@ -1,12 +1,12 @@
 # 暴风语音接入平台
 
-> 文档版本:V0.3
+> 文档版本:V0.4
 
 暴风语音接入平台支持以下几个功能 <br>
 
 - 界面跳转
 - 指令控制
-
+- 中间层展示
 
 ## 界面跳转 
 
@@ -30,7 +30,7 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md <br>
 - 具体对接文档 <br>
 https://github.com/RiverrunNetwork/voicelink/blob/master/cmd_control.md <br>
 
-## 大耳朵中间层数据控制
+## 中间层展示
 
 - 描述 <br>
 用户通过暴风大耳朵 喊 某一个场景类的词语  然后返回数据给 中间层 并且展示<br>
