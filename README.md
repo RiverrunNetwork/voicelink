@@ -30,6 +30,18 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md <br>
 - 具体对接文档 <br>
 https://github.com/RiverrunNetwork/voicelink/blob/master/cmd_control.md <br>
 
+## 大耳朵中间层数据控制
+
+- 描述 <br>
+用户通过暴风大耳朵 喊 某一个场景类的词语  然后返回数据给 中间层 并且展示<br>
+
+- 语句 <br>
+用户 : 我想看刘德华的电影 <br>
+
+- 具体对接文档 <br>
+
+和 指令控制类似 具体见demo <br>
+
 ## 测试ASR
 
 - 用过暴风大耳朵 获取用户的Asr <br>
