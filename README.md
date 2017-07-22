@@ -39,8 +39,7 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/cmd_control.md <br>
 用户 : 我想看刘德华的电影 <br>
 
 - 具体对接文档 <br>
-
-和 指令控制类似 具体见demo <br>
+ 和指令控制类似 具体见demo <br>
 
 ## 测试ASR
 
