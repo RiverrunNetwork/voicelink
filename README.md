@@ -26,6 +26,13 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md <br>
 
 - 语句 <br>
 用户 : 播放 (当前用户已经处在 影视库 详情界面下)
+- 场景数据格式 <br>
+```java
+{
+    "type": "cmd",
+    "content": "收藏"
+}
+```
 
 - 具体对接文档 <br>
 https://github.com/RiverrunNetwork/voicelink/blob/master/cmd_control.md <br>
@@ -43,7 +50,7 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/cmd_control.md <br>
 - 中间层指令控制 <br>
  ```java
 {
-    "type": "cmd",
+    "type": "middle_cmd",
     "content": "下一页"
 }
 ```
