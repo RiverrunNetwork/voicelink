@@ -28,4 +28,11 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="发送自定义指令" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中间层数据"
+        />
 </LinearLayout>

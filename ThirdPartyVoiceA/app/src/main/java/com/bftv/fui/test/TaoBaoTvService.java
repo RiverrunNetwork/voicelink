@@ -1,6 +1,7 @@
 package com.bftv.fui.test;
 
 import android.os.RemoteException;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -9,6 +10,8 @@ import com.bftv.fui.thirdparty.RomoteVoiceService;
 import com.bftv.fui.thirdparty.SimpleLog;
 import com.bftv.fui.thirdparty.VoiceFeedback;
 import com.bftv.fui.thirdparty.notify.DataChange;
+
+import java.util.ArrayList;
 
 /**
  * @author less
@@ -23,14 +26,46 @@ public class TaoBaoTvService extends RomoteVoiceService {
 
 
     @Override
-    public VoiceFeedback send(String userTxt, String nlpJson, IRemoteVoice iRemoteVoice) {
-        VoiceFeedback voiceFeedback = DataChange.getInstance().notifyDataChange(nlpJson);
-        try {
-            iRemoteVoice.sendMessage(voiceFeedback);
-        } catch (RemoteException e) {
-            e.printStackTrace();
+    public void send(String userTxt, String nlpJson, IRemoteVoice iRemoteVoice) {
+        if(!TextUtils.isEmpty(nlpJson)){
+            VoiceFeedback voiceFeedback = DataChange.getInstance().notifyDataChange(nlpJson);
+            if(voiceFeedback != null){
+                try {
+                    iRemoteVoice.sendMessage(voiceFeedback);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                SimpleLog.l("send");
+            }
         }
-        SimpleLog.l("send");
-        return voiceFeedback;
+        else{
+            //模拟第三方自己的nlp
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            VoiceFeedback voiceFb = new VoiceFeedback();
+            voiceFb.isHasResult = true;
+            voiceFb.listMiddleData = new ArrayList<>();
+            voiceFb.feedback = "哈哈哈中间层数据我能控制了";
+            voiceFb.type = VoiceFeedback.TYPE_MIDDLE;
+            for(int i = 0; i < 5; i++){
+                voiceFb.listMiddleData.add(makeData());
+            }
+            try {
+                iRemoteVoice.sendMessage(voiceFb);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            SimpleLog.l("send");
+        }
     }
+
+    private VoiceFeedback.MiddleData makeData(){
+        VoiceFeedback.MiddleData data = new VoiceFeedback.MiddleData();
+        data.middleName = "123";
+        return data;
+    }
+
 }

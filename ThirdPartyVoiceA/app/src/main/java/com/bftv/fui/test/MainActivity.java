@@ -12,6 +12,8 @@ import com.bftv.fui.thirdparty.VoiceFeedback;
 import com.bftv.fui.thirdparty.notify.DataChange;
 import com.bftv.fui.thirdparty.notify.IVoiceObserver;
 
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity implements IVoiceObserver{
 
     Button mBtnCollect;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DataChange.getInstance().addObserver(this);
 
         try{
             /**
@@ -46,27 +50,34 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
     @Override
     protected void onResume() {
         super.onResume();
-        DataChange.getInstance().addObserver(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        DataChange.getInstance().deleteObserver(this);
     }
 
     @Override
     public VoiceFeedback update(String s) {
-        VoiceFeedback voiceFeedback = new VoiceFeedback();
-        voiceFeedback.feedback = "我是Test1";
-        voiceFeedback.isHasResult = true;
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mBtnCollect.performClick();
+        try{
+            JSONObject jsonObject = new JSONObject(s);
+            String type = jsonObject.getString("collect");
+            if(type.equals("收藏")){
+                VoiceFeedback voiceFeedback = new VoiceFeedback();
+                voiceFeedback.feedback = "我是Test1";
+                voiceFeedback.isHasResult = true;
+                voiceFeedback.type = VoiceFeedback.TYPE_CMD;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mBtnCollect.performClick();
+                    }
+                });
+                return voiceFeedback;
             }
-        });
+        }catch (Throwable t){
 
-        return voiceFeedback;
+        }
+        return null;
     }
 }

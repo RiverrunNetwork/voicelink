@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MiddleActivity"/>
+
     </application>
 
 </manifest>

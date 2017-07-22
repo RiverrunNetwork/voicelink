@@ -86,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        /**
+         * 发送指令控制
+         */
         findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 if(voiceFeedback != null){
-                                    Toast.makeText(MainActivity.this,voiceFeedback.feedback,Toast.LENGTH_SHORT).show();
                                 }
 
                             }
@@ -114,6 +117,31 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+        /**
+         * 中间层显示数据
+         */
+        findViewById(R.id.btn4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BindAidlManager.getInstance().dealMessage(MainActivity.this,"com.bftv.fui.test","我想买牛仔裤",null, new BindAidlManager.OnBindAidlListener() {
+                    @Override
+                    public void onSuccess(final VoiceFeedback voiceFeedback) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                    if(voiceFeedback != null){
+                                        Intent intent = new Intent(MainActivity.this,MiddleActivity.class);
+                                        intent.putExtra("test",voiceFeedback);
+                                        startActivity(intent);
+                                    }
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
     }
 
 
