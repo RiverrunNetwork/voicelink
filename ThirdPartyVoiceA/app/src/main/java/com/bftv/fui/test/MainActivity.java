@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
     public VoiceFeedback update(String s) {
         try{
             JSONObject jsonObject = new JSONObject(s);
-            String type = jsonObject.getString("collect");
-            if(type.equals("收藏")){
+            String type = jsonObject.getString("type");
+            if(type.equals("cmd")){
                 VoiceFeedback voiceFeedback = new VoiceFeedback();
                 voiceFeedback.feedback = "我是Test1";
                 voiceFeedback.isHasResult = true;

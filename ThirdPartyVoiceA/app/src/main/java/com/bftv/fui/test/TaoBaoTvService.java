@@ -11,6 +11,9 @@ import com.bftv.fui.thirdparty.SimpleLog;
 import com.bftv.fui.thirdparty.VoiceFeedback;
 import com.bftv.fui.thirdparty.notify.DataChange;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -28,15 +31,42 @@ public class TaoBaoTvService extends RomoteVoiceService {
     @Override
     public void send(String userTxt, String nlpJson, IRemoteVoice iRemoteVoice) {
         if(!TextUtils.isEmpty(nlpJson)){
-            VoiceFeedback voiceFeedback = DataChange.getInstance().notifyDataChange(nlpJson);
-            if(voiceFeedback != null){
+
+            String tpye = "cmd";
+
+            try {
+                JSONObject jsonObject = new JSONObject(nlpJson);
+                tpye = jsonObject.getString("type");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if(tpye.equals("cmd")){
+                VoiceFeedback voiceFeedback = DataChange.getInstance().notifyDataChange(nlpJson);
+                if(voiceFeedback != null){
+                    try {
+                        iRemoteVoice.sendMessage(voiceFeedback);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                    SimpleLog.l("send");
+                }
+            }else if(tpye.equals("middle_cmd")){
+                VoiceFeedback voiceFb = new VoiceFeedback();
+                voiceFb.isHasResult = true;
+                voiceFb.listMiddleData = new ArrayList<>();
+                voiceFb.feedback = "中间层接受到指令哈哈哈";
+                voiceFb.type = VoiceFeedback.TYPE_MIDDLE;
+                for(int i = 0; i < 1; i++){
+                    voiceFb.listMiddleData.add(makeData());
+                }
                 try {
-                    iRemoteVoice.sendMessage(voiceFeedback);
+                    iRemoteVoice.sendMessage(voiceFb);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-                SimpleLog.l("send");
             }
+
         }
         else{
             //模拟第三方自己的nlp

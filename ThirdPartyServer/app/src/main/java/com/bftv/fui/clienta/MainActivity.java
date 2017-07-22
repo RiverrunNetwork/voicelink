@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                  HashMap<String,String> hashMap = new HashMap<String, String>();
-                 hashMap.put("test","test");
-                 hashMap.put("collect","收藏");
+                 hashMap.put("type","cmd");
+                 hashMap.put("content","收藏");
                 JSONObject jsonObject = null;
                 try {
                     jsonObject = new JSONObject(hashMap.toString());
@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                     if(voiceFeedback != null){
+                                        Toast.makeText(MainActivity.this,voiceFeedback.feedback,Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(MainActivity.this,MiddleActivity.class);
                                         intent.putExtra("test",voiceFeedback);
                                         startActivity(intent);

@@ -1,6 +1,7 @@
 package com.bftv.fui.clienta;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,10 +12,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bftv.fui.thirdparty.BindAidlManager;
 import com.bftv.fui.thirdparty.VoiceFeedback;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -25,6 +32,8 @@ public class MiddleActivity extends Activity{
 
     private ListView mListview;
 
+    private MiddleBaseAdapter middleBaseAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +41,44 @@ public class MiddleActivity extends Activity{
 
         mListview = (ListView)findViewById(R.id.listview);
 
-
-
         VoiceFeedback voiceFeedback = getIntent().getParcelableExtra("test");
 
-        mListview.setAdapter(new MiddleBaseAdapter(voiceFeedback.listMiddleData,LayoutInflater.from(this)));
+        middleBaseAdapter = new MiddleBaseAdapter(voiceFeedback.listMiddleData,LayoutInflater.from(this));
+        mListview.setAdapter(middleBaseAdapter);
+
+        Toast.makeText(this,"第一次进入长度:"+voiceFeedback.listMiddleData.size(),Toast.LENGTH_SHORT).show();
+
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                HashMap<String,String> hashMap = new HashMap<String, String>();
+                hashMap.put("type","middle_cmd");
+                hashMap.put("content","下一页");
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(hashMap.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                BindAidlManager.getInstance().dealMessage(MiddleActivity.this,"com.bftv.fui.test","下一页",jsonObject.toString(), new BindAidlManager.OnBindAidlListener() {
+                    @Override
+                    public void onSuccess(final VoiceFeedback voiceFeedback) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(voiceFeedback != null){
+                                    Toast.makeText(MiddleActivity.this,voiceFeedback.feedback+"长度:"+voiceFeedback.listMiddleData.size(),Toast.LENGTH_SHORT).show();
+                                    middleBaseAdapter.setList(voiceFeedback.listMiddleData);
+                                    middleBaseAdapter.notifyDataSetChanged();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
 
     }
 
@@ -49,6 +91,10 @@ public class MiddleActivity extends Activity{
         public MiddleBaseAdapter(List<VoiceFeedback.MiddleData> installedAppList, LayoutInflater Inflater) {
             mInflater = Inflater;
             AppList = installedAppList;
+        }
+
+        public void setList(List<VoiceFeedback.MiddleData> AppList){
+            this.AppList = AppList;
         }
 
         @Override
