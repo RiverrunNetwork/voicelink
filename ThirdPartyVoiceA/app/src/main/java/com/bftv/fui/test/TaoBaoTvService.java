@@ -95,6 +95,10 @@ public class TaoBaoTvService extends RomoteVoiceService {
     private VoiceFeedback.MiddleData makeData(){
         VoiceFeedback.MiddleData data = new VoiceFeedback.MiddleData();
         data.middleName = "123";
+        VoiceFeedback.MiddleData.AllIntent allIntent = new VoiceFeedback.MiddleData.AllIntent();
+        allIntent.type = "action";
+        allIntent.action_name = "android.test.a";
+        data.allIntent = allIntent;
         return data;
     }
 

@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bftv.fui.intent.AppIntentManager;
 import com.bftv.fui.thirdparty.BindAidlManager;
 import com.bftv.fui.thirdparty.VoiceFeedback;
 
@@ -41,7 +42,7 @@ public class MiddleActivity extends Activity{
 
         mListview = (ListView)findViewById(R.id.listview);
 
-        VoiceFeedback voiceFeedback = getIntent().getParcelableExtra("test");
+        final VoiceFeedback voiceFeedback = getIntent().getParcelableExtra("test");
 
         middleBaseAdapter = new MiddleBaseAdapter(voiceFeedback.listMiddleData,LayoutInflater.from(this));
         mListview.setAdapter(middleBaseAdapter);
@@ -77,6 +78,16 @@ public class MiddleActivity extends Activity{
                         });
                     }
                 });
+            }
+        });
+
+
+        findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VoiceFeedback.MiddleData.AllIntent allIntent = voiceFeedback.listMiddleData.get(0).allIntent;
+                AppIntentManager.getInstance().setIntent(MiddleActivity.this,true,allIntent.action_name,
+                        allIntent.package_name,allIntent.activity_name,allIntent.type,allIntent.parameter,allIntent.flag,null,null);
             }
         });
 
