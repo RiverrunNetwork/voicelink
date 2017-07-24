@@ -5,7 +5,7 @@
 | https://github.com/RiverrunNetwork/voicelink/blob/master/ThirdPartyServer/app/libs/appintent-release.aar<br> |
 
 
-目前大耳朵 只支持五种类型跳转 <br>
+目前大耳朵 只支持四种类型跳转 <br>
 第一种 显示启动  <br>
 ```java
 {
@@ -14,7 +14,8 @@
     "flag": "",
     "name": "修改当前位置",
     "activity_name": "com.baofengtv.settings.MainActivity",
-    "package_name": "com.baofengtv.settings"
+    "package_name": "com.baofengtv.settings",
+    "uri": "qijian://test.uri.activity?action=1"
 }
 ```
 
@@ -66,12 +67,4 @@ s bundle.putShort(key, Short.parseShort(value));
 ```java
 data:{"extra":"4","type":"key_code"}
 ```
-第五种 Uri跳转 <br>
-```java
-{
-    "type": "uri",
-    "name": "修改当前位置",
-    "uri":"qijian://test.uri.activity?action=1"
-    "action_name": "android.qijian.schemeurl.activity"
-}
-```
+
