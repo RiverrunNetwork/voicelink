@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
                  * https://github.com/BFTVVoice/VoiceLink/blob/master/intent.md
                  */
                 HashMap<String,String> hashMap = new HashMap<String, String>();
-                hashMap.put("type","action");
-                hashMap.put("action_name","android.test.a");
+                hashMap.put("type","uri");
+                hashMap.put("uri","tvtaobao://home?app=taobaosdk&module=detail&notshowloading=true&from=tvspeech&itemId=547757210519");
                 AppIntentManager.getInstance().setIntent(MainActivity.this,hashMap.toString(),false);
             }
         });
@@ -114,6 +114,16 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                     }
+
+                    @Override
+                    public void onTimeOut(VoiceFeedback voiceFeedback) {
+
+                    }
+
+                    @Override
+                    public void onTimeOut() {
+
+                    }
                 });
             }
         });
@@ -138,6 +148,16 @@ public class MainActivity extends AppCompatActivity {
                                     }
                             }
                         });
+                    }
+
+                    @Override
+                    public void onTimeOut(VoiceFeedback voiceFeedback) {
+
+                    }
+
+                    @Override
+                    public void onTimeOut() {
+
                     }
                 });
             }

@@ -9,12 +9,16 @@ import com.bftv.fui.thirdparty.IRemoteVoice;
 import com.bftv.fui.thirdparty.RomoteVoiceService;
 import com.bftv.fui.thirdparty.SimpleLog;
 import com.bftv.fui.thirdparty.VoiceFeedback;
+import com.bftv.fui.thirdparty.bean.AllIntent;
+import com.bftv.fui.thirdparty.bean.MiddleData;
 import com.bftv.fui.thirdparty.notify.DataChange;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author less
@@ -69,18 +73,12 @@ public class TaoBaoTvService extends RomoteVoiceService {
 
         }
         else{
-            //模拟第三方自己的nlp
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             VoiceFeedback voiceFb = new VoiceFeedback();
             voiceFb.isHasResult = true;
             voiceFb.listMiddleData = new ArrayList<>();
-            voiceFb.feedback = "哈哈哈中间层数据我能控制了";
+            voiceFb.feedback = "这里是淘宝的测试数据";
             voiceFb.type = VoiceFeedback.TYPE_MIDDLE;
-            for(int i = 0; i < 5; i++){
+            for(int i = 0; i < 50; i++){
                 voiceFb.listMiddleData.add(makeData());
             }
             try {
@@ -92,14 +90,18 @@ public class TaoBaoTvService extends RomoteVoiceService {
         }
     }
 
-    private VoiceFeedback.MiddleData makeData(){
-        VoiceFeedback.MiddleData data = new VoiceFeedback.MiddleData();
-        data.middleName = "123";
-        VoiceFeedback.MiddleData.AllIntent allIntent = new VoiceFeedback.MiddleData.AllIntent();
-        allIntent.type = "action";
-        allIntent.action_name = "android.test.a";
-        data.allIntent = allIntent;
-        return data;
+    private MiddleData makeData(){
+        MiddleData middleData = new MiddleData();
+        middleData.middlePic = "http://gw.alicdn.com/i1/TB1WXL2SXXXXXc4XFXXXXXXXXXX_!!0-item_pic.jpg";
+        middleData.title = "鸿星尔克男鞋跑步鞋红夏季新款运动鞋男士网面透气休闲官方旗舰店";
+        List<AllIntent> list = new ArrayList<>();
+        AllIntent allIntent = new AllIntent();
+        allIntent.type = "uri";
+        allIntent.uri = "淘宝的uri淘宝的uri数据严格保密 需要自己替换";
+        allIntent.entranceWords = "open";
+        list.add(allIntent);
+        middleData.listIntent = list;
+        return middleData;
     }
 
 }

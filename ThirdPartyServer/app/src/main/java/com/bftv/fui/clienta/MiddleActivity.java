@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.bftv.fui.intent.AppIntentManager;
 import com.bftv.fui.thirdparty.BindAidlManager;
 import com.bftv.fui.thirdparty.VoiceFeedback;
+import com.bftv.fui.thirdparty.bean.AllIntent;
+import com.bftv.fui.thirdparty.bean.MiddleData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,6 +79,16 @@ public class MiddleActivity extends Activity{
                             }
                         });
                     }
+
+                    @Override
+                    public void onTimeOut(VoiceFeedback voiceFeedback) {
+
+                    }
+
+                    @Override
+                    public void onTimeOut() {
+
+                    }
                 });
             }
         });
@@ -85,9 +97,13 @@ public class MiddleActivity extends Activity{
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VoiceFeedback.MiddleData.AllIntent allIntent = voiceFeedback.listMiddleData.get(0).allIntent;
+//                MiddleData.AllIntent allIntent = voiceFeedback.listMiddleData.get(0).allIntent;
+//                AppIntentManager.getInstance().setIntent(MiddleActivity.this,true,allIntent.action_name,
+//                        allIntent.package_name,allIntent.activity_name,allIntent.type,allIntent.parameter,allIntent.flag,null,null,null);
+                MiddleData middleData = voiceFeedback.listMiddleData.get(0);
+                AllIntent allIntent = middleData.listIntent.get(0);
                 AppIntentManager.getInstance().setIntent(MiddleActivity.this,true,allIntent.action_name,
-                        allIntent.package_name,allIntent.activity_name,allIntent.type,allIntent.parameter,allIntent.flag,null,null);
+                        allIntent.package_name,allIntent.activity_name,allIntent.type,allIntent.parameter,allIntent.flag,allIntent.category,null,allIntent.uri);
             }
         });
 
@@ -97,14 +113,14 @@ public class MiddleActivity extends Activity{
 
     static class MiddleBaseAdapter extends BaseAdapter {
         private LayoutInflater mInflater;
-        private List<VoiceFeedback.MiddleData> AppList;
+        private List<MiddleData> AppList;
 
-        public MiddleBaseAdapter(List<VoiceFeedback.MiddleData> installedAppList, LayoutInflater Inflater) {
+        public MiddleBaseAdapter(List<MiddleData> installedAppList, LayoutInflater Inflater) {
             mInflater = Inflater;
             AppList = installedAppList;
         }
 
-        public void setList(List<VoiceFeedback.MiddleData> AppList){
+        public void setList(List<MiddleData> AppList){
             this.AppList = AppList;
         }
 
@@ -129,7 +145,7 @@ public class MiddleActivity extends Activity{
                 convertView = mInflater.inflate(R.layout.item_middle, parent, false);
             ViewHolder viewholder = new ViewHolder();
             viewholder.btn = (Button) convertView.findViewById(R.id.btn);
-            VoiceFeedback.MiddleData item = (VoiceFeedback.MiddleData) getItem(position);
+            MiddleData item = (MiddleData) getItem(position);
             viewholder.btn.setText(item.middleName);
             convertView.setTag(viewholder);
 
