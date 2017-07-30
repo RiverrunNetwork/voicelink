@@ -5,7 +5,7 @@
 | https://github.com/RiverrunNetwork/voicelink/blob/master/ThirdPartyServer/app/libs/appintent-release.aar<br> |
 
 
-目前大耳朵 只支持四种类型跳转 <br>
+目前大耳朵 只支持五种类型跳转 <br>
 第一种 显示启动  <br>
 ```java
 {
@@ -66,5 +66,15 @@ s bundle.putShort(key, Short.parseShort(value));
 第四种 系统按键 <br>
 ```java
 data:{"extra":"4","type":"key_code"}
+```
+第五种 启动 service<br>
+```java
+{
+    "name": "启动service",
+    "type": "service",
+    "flag": "",
+    "activity_name": "",
+    "action_name": "com.bftv.fui.xxx.service"
+}
 ```
 
