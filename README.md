@@ -1,6 +1,6 @@
 # 暴风语音接入平台
 
-> 文档版本:V0.4
+> 文档版本:V0.5
 
 暴风语音接入平台支持以下几个功能 <br>
 
@@ -69,6 +69,11 @@ getApplication().sendBroadcast(intent);
 
 ```
 
+## 下载暴风大耳朵
+
+- http://pan.baidu.com/s/1eRZ3uhW <br>
+
+- 密码私信暴风的小伙伴 <br>
 
 
 
