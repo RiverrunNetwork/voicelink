@@ -80,7 +80,7 @@ getApplication().sendBroadcast(intent);
 - 广播action com.baofengtv.action.tts <br>
 - 目前大耳朵接受广播的代码如下 <br>
 ```java
-PMLog.log("第三方app调用语音播报-ACTION_ACTION_TTS");
+                PMLog.log("第三方app调用语音播报-ACTION_ACTION_TTS");
                 boolean isClose = intent.getBooleanExtra("vocie_close",false);
                 if(isClose){
                     if(!VoiceAccessibility.isTopActivity(sContext,"com.bftv.function.middle.MiddleActivity")){
