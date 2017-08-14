@@ -1,6 +1,6 @@
 # 暴风语音接入平台
 
-> 文档版本:V0.5
+> 文档版本:V0.6
 
 暴风语音接入平台支持以下几个功能 <br>
 
@@ -74,6 +74,27 @@ getApplication().sendBroadcast(intent);
 - http://pan.baidu.com/s/1jHTV9Mu <br>
 
 - 密码私信暴风的小伙伴 <br>
+
+## 第三方应用控制大耳朵
+
+- 广播action com.baofengtv.action.tts <br>
+- 目前大耳朵接受广播的代码如下 <br>
+```java
+PMLog.log("第三方app调用语音播报-ACTION_ACTION_TTS");
+                boolean isClose = intent.getBooleanExtra("vocie_close",false);
+                if(isClose){
+                    if(!VoiceAccessibility.isTopActivity(sContext,"com.bftv.function.middle.MiddleActivity")){
+                        FloatingChatManager.getInstance().destory();
+                    }
+                    return;
+                }
+                String tts = intent.getStringExtra("vocie_tts");
+                boolean isEnd = intent.getBooleanExtra("vocie_is_end",true);
+                if(!TextUtils.isEmpty(tts)){
+                    PMLog.log("第三方app调用语音播报:"+tts);
+                    TTManager.getInstance().speak(tts,isEnd);
+                }
+ ```
 
 
 
