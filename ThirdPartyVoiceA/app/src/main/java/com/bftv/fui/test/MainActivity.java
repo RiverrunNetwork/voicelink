@@ -2,6 +2,7 @@ package com.bftv.fui.test;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -59,25 +60,17 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
 
     @Override
     public VoiceFeedback update(String s) {
-        try{
-            JSONObject jsonObject = new JSONObject(s);
-            String type = jsonObject.getString("type");
-            if(type.equals("cmd")){
-                VoiceFeedback voiceFeedback = new VoiceFeedback();
-                voiceFeedback.feedback = "我是Test1";
-                voiceFeedback.isHasResult = true;
-                voiceFeedback.type = VoiceFeedback.TYPE_CMD;
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mBtnCollect.performClick();
-                    }
-                });
-                return voiceFeedback;
+        Log.e("Less","update:"+s);
+        VoiceFeedback voiceFeedback = new VoiceFeedback();
+        voiceFeedback.feedback = "我是Test1";
+        voiceFeedback.isHasResult = true;
+        voiceFeedback.type = VoiceFeedback.TYPE_CMD;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mBtnCollect.performClick();
             }
-        }catch (Throwable t){
-
-        }
-        return null;
+        });
+        return voiceFeedback;
     }
 }

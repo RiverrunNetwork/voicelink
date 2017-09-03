@@ -36,40 +36,51 @@ public class TaoBaoTvService extends RomoteVoiceService {
     public void send(String userTxt, String nlpJson, IRemoteVoice iRemoteVoice) {
         if(!TextUtils.isEmpty(nlpJson)){
 
-            String tpye = "cmd";
-
+            String type = "help_cmd";
+            JSONObject jsonObject = null;
             try {
-                JSONObject jsonObject = new JSONObject(nlpJson);
-                tpye = jsonObject.getString("type");
+                jsonObject = new JSONObject(nlpJson);
+                type = jsonObject.getString("help_cmd");
+                if(!TextUtils.isEmpty(type)){
+                    VoiceFeedback voiceFeedback = DataChange.getInstance().notifyDataChange(nlpJson);
+                    if(voiceFeedback != null){
+                        try {
+                            iRemoteVoice.sendMessage(voiceFeedback);
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                        SimpleLog.l("send");
+                    }
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            if(tpye.equals("cmd")){
-                VoiceFeedback voiceFeedback = DataChange.getInstance().notifyDataChange(nlpJson);
-                if(voiceFeedback != null){
-                    try {
-                        iRemoteVoice.sendMessage(voiceFeedback);
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
-                    }
-                    SimpleLog.l("send");
-                }
-            }else if(tpye.equals("middle_cmd")){
-                VoiceFeedback voiceFb = new VoiceFeedback();
-                voiceFb.isHasResult = true;
-                voiceFb.listMiddleData = new ArrayList<>();
-                voiceFb.feedback = "中间层接受到指令哈哈哈";
-                voiceFb.type = VoiceFeedback.TYPE_MIDDLE;
-                for(int i = 0; i < 1; i++){
-                    voiceFb.listMiddleData.add(makeData());
-                }
-                try {
-                    iRemoteVoice.sendMessage(voiceFb);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
+//            if(type.equals("help_cmd")){
+//                VoiceFeedback voiceFeedback = DataChange.getInstance().notifyDataChange(nlpJson);
+//                if(voiceFeedback != null){
+//                    try {
+//                        iRemoteVoice.sendMessage(voiceFeedback);
+//                    } catch (RemoteException e) {
+//                        e.printStackTrace();
+//                    }
+//                    SimpleLog.l("send");
+//                }
+//            }else if(type.equals("middle_cmd")){
+//                VoiceFeedback voiceFb = new VoiceFeedback();
+//                voiceFb.isHasResult = true;
+//                voiceFb.listMiddleData = new ArrayList<>();
+//                voiceFb.feedback = "中间层接受到指令哈哈哈";
+//                voiceFb.type = VoiceFeedback.TYPE_MIDDLE;
+//                for(int i = 0; i < 1; i++){
+//                    voiceFb.listMiddleData.add(makeData());
+//                }
+//                try {
+//                    iRemoteVoice.sendMessage(voiceFb);
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
+//            }
 
         }
         else{

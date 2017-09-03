@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -45,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
         /**
          * 获取相应的权限 第三方开发者忽略就好
          */
-        try{
+        try {
             VoiceAccessibility.enable(this);
             VoiceAccessibility.openSystemSetting(this);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -58,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean result = CommentsDataSource.isSupportAidl(MainActivity.this,PCK_A);
-                Toast.makeText(MainActivity.this,"A是否支持aid:"+result,Toast.LENGTH_SHORT).show();
+                boolean result = CommentsDataSource.isSupportAidl(MainActivity.this, PCK_A);
+                Toast.makeText(MainActivity.this, "A是否支持aid:" + result, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -79,13 +80,12 @@ public class MainActivity extends AppCompatActivity {
                  * 按照 暴风平台跳转规则进行转换
                  * https://github.com/BFTVVoice/VoiceLink/blob/master/intent.md
                  */
-                HashMap<String,String> hashMap = new HashMap<String, String>();
-                hashMap.put("type","uri");
-                hashMap.put("uri","tvtaobao://home?app=taobaosdk&module=detail&notshowloading=true&from=tvspeech&itemId=547757210519");
-                AppIntentManager.getInstance().setIntent(MainActivity.this,hashMap.toString(),false);
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("type", "uri");
+                hashMap.put("uri", "tvtaobao://home?app=taobaosdk&module=detail&notshowloading=true&from=tvspeech&itemId=547757210519");
+                AppIntentManager.getInstance().setIntent(MainActivity.this, hashMap.toString(), false);
             }
         });
-
 
         /**
          * 发送指令控制
@@ -93,24 +93,25 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 HashMap<String,String> hashMap = new HashMap<String, String>();
-                 hashMap.put("type","cmd");
-                 hashMap.put("content","收藏");
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("filter", "bigPic");
                 JSONObject jsonObject = null;
                 try {
                     jsonObject = new JSONObject(hashMap.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                BindAidlManager.getInstance().dealMessage(MainActivity.this,"com.bftv.fui.test","收藏",jsonObject.toString(), new BindAidlManager.OnBindAidlListener() {
+                String json = jsonObject.toString();
+                String finalJson = getContainJson("help_cmd", json);
+                Log.e("Less","finalJson:"+finalJson);
+                BindAidlManager.getInstance().dealMessage(MainActivity.this, "com.bftv.fui.test", "查看大图", finalJson, new BindAidlManager.OnBindAidlListener() {
                     @Override
                     public void onSuccess(final VoiceFeedback voiceFeedback) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                if(voiceFeedback != null){
+                                if (voiceFeedback != null) {
                                 }
-
                             }
                         });
                     }
@@ -134,18 +135,18 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BindAidlManager.getInstance().dealMessage(MainActivity.this,"com.bftv.fui.test","我想买牛仔裤",null, new BindAidlManager.OnBindAidlListener() {
+                BindAidlManager.getInstance().dealMessage(MainActivity.this, "com.bftv.fui.test", "我想买牛仔裤", null, new BindAidlManager.OnBindAidlListener() {
                     @Override
                     public void onSuccess(final VoiceFeedback voiceFeedback) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                    if(voiceFeedback != null){
-                                        Toast.makeText(MainActivity.this,voiceFeedback.feedback,Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(MainActivity.this,MiddleActivity.class);
-                                        intent.putExtra("test",voiceFeedback);
-                                        startActivity(intent);
-                                    }
+                                if (voiceFeedback != null) {
+                                    Toast.makeText(MainActivity.this, voiceFeedback.feedback, Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this, MiddleActivity.class);
+                                    intent.putExtra("test", voiceFeedback);
+                                    startActivity(intent);
+                                }
                             }
                         });
                     }
@@ -165,5 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    public static String getContainJson(String key, String value) {
+        return "{\"" + key + "\":" + value + "}";
+    }
 }

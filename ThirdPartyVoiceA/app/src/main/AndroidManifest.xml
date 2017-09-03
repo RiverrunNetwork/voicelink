@@ -30,7 +30,7 @@
             android:enabled="true"
             >
             <intent-filter>
-                <action android:name="android.intent.action.remotevoice" />
+                <action android:name="intent.action.remotevoice.com.bftv.fui.test" />
             </intent-filter>
         </service>
 

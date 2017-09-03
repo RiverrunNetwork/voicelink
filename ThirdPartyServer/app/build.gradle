@@ -32,7 +32,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
-    compile(name: 'voicethirdparty-release-12-40', ext: 'aar')
+    compile(name: 'voicethirdparty-release', ext: 'aar')
     compile(name: 'accessibilityhelp-release', ext: 'aar')
     compile(name: 'voicecontentprovider-release', ext: 'aar')
     compile(name: 'appintent-release', ext: 'aar')
