@@ -37,6 +37,12 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md <br>
 - 具体对接文档 <br>
 https://github.com/RiverrunNetwork/voicelink/blob/master/cmd_control.md <br>
 
+- 目前支持的指令 <br>
+https://github.com/RiverrunNetwork/voicelink/blob/master/cmd.md <br>
+
+- 扩充指令 <br>
+如果您有扩充的需求发送邮件到renyang@bftv.com <br>
+
 ## 中间层展示
 
 - 描述 <br>
