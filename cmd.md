@@ -60,5 +60,21 @@
 扫码购买
 {
 	"action" : "scanBuy"
-}     
+}
+
+立即购买
+{
+	"action" : "buyNow"
+}
+
+确定
+{
+	"action" : "clickOk"
+}
+
+添加第2个到购物车/加入购物车(position="")
+{
+	"action" : "add2ShoppingCart",
+	"position" : "2"
+}
 ```
