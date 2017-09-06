@@ -77,10 +77,12 @@
 	"action" : "add2ShoppingCart",
 	"position" : "2"
 }
+
 图片切换
 {
 	"action" : "pic_change"
 }
+
 数量选择
 {
 	"action" : "amount_select"
