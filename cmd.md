@@ -72,12 +72,6 @@
 	"action" : "clickOk"
 }
 
-添加第2个到购物车/加入购物车(position="")
-{
-	"action" : "add2ShoppingCart",
-	"position" : "2"
-}
-
 图片切换
 {
 	"action" : "pic_change"
