@@ -81,4 +81,10 @@
 {
 	"action" : "amount_select"
 }
+
+加入购物车
+{
+	"action" : "add2ShoppingCart"
+}
+
 ```
