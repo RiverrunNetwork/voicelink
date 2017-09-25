@@ -1,6 +1,6 @@
 # 暴风语音接入平台
 
-> 文档版本:V0.7
+> 文档版本:V0.8
 
 暴风语音接入平台支持以下几个功能 <br>
 
@@ -91,6 +91,11 @@ action com.baofengtv.action.tts 大耳朵接受广播的action
     vocie_tts   string   语音播报的内容
     vocie_is_end boolean 语音播报完是否自动关闭 如果true关闭 反之不关闭
 ```
+
+## 第三方应用拉起远场
+
+- 广播 action com.baofengtv.action_pull_far <br>
+
 
 
 
