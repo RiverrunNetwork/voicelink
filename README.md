@@ -86,21 +86,11 @@ getApplication().sendBroadcast(intent);
 - 广播action com.baofengtv.action.tts <br>
 - 目前大耳朵接受广播的代码如下 <br>
 ```java
-                PMLog.log("第三方app调用语音播报-ACTION_ACTION_TTS");
-                boolean isClose = intent.getBooleanExtra("vocie_close",false);
-                if(isClose){
-                    if(!VoiceAccessibility.isTopActivity(sContext,"com.bftv.function.middle.MiddleActivity")){
-                        FloatingChatManager.getInstance().destory();
-                    }
-                    return;
-                }
-                String tts = intent.getStringExtra("vocie_tts");
-                boolean isEnd = intent.getBooleanExtra("vocie_is_end",true);
-                if(!TextUtils.isEmpty(tts)){
-                    PMLog.log("第三方app调用语音播报:"+tts);
-                    TTManager.getInstance().speak(tts,isEnd);
-                }
- ```
+action com.baofengtv.action.tts 大耳朵接受广播的action
+参数 vocie_close boolean true 是否关闭大耳朵  true关闭 反之不作处理
+    vocie_tts  string 语音播报的内容
+    vocie_is_end boolean 语音播报完是否自动关闭 如果true关闭 反之不关闭
+```
 
 
 
