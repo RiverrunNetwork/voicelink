@@ -87,8 +87,8 @@ getApplication().sendBroadcast(intent);
 - 目前大耳朵接受广播的代码如下 <br>
 ```java
 action com.baofengtv.action.tts 大耳朵接受广播的action
-参数 vocie_close boolean true 是否关闭大耳朵  true关闭 反之不作处理
-    vocie_tts  string 语音播报的内容
+参数 vocie_close boolean  是否关闭大耳朵  true关闭 反之不作处理
+    vocie_tts   string   语音播报的内容
     vocie_is_end boolean 语音播报完是否自动关闭 如果true关闭 反之不关闭
 ```
 
