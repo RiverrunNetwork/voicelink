@@ -77,7 +77,7 @@ getApplication().sendBroadcast(intent);
 
 ## 下载暴风大耳朵
 
-- http://pan.baidu.com/s/1jHTV9Mu <br>
+- http://pan.baidu.com/s/1eSgsfOu <br>
 
 - 密码私信暴风的小伙伴 <br>
 
