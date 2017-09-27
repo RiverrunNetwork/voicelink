@@ -96,6 +96,8 @@ action com.baofengtv.action.tts 大耳朵接受广播的action
 
 - 广播 action com.baofengtv.action_pull_far <br>
 
+## 开启大耳朵调试开关
 
+-  adb shell am broadcast -a com.baofengtv.action_debug_log --ez debug true <br>
 
 
