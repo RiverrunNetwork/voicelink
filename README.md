@@ -102,12 +102,10 @@ action com.baofengtv.action.tts 大耳朵接受广播的action
 
 ## 开启大耳朵压力测试
 
-－ adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 0 关闭压力测试 <br>
 
-－ adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 1 开启压力测试 <br>
-
-－ adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 2 获取压力测试次数 <br>
-
-－ adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 3 清空压力测试次数<br>
+- adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 0 关闭压力测试 <br>
+— adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 1 开启压力测试 <br>
+- adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 2 获取压力测试次数 <br>
+- adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 3 清空压力测试次数<br>
 
 
