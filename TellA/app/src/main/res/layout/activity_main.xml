@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:id="@+id/btn_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前界面的功能"
+        />
+
+    <Button
+        android:id="@+id/btn_tts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开启语音播报"
+        tools:layout_editor_absoluteY="114dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/btn_far"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拉起远场语音"
+        tools:layout_editor_absoluteY="58dp"
+        tools:layout_editor_absoluteX="0dp" />
+</LinearLayout>
