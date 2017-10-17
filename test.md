@@ -39,8 +39,8 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
 大耳朵控制第三方应用 并且提供必要数据支持第三方这里叫做主控<br>
 
 - 第三方应用自定义语音动画 并且拿到用户状态<br>
-  首先需要在matis里面注册service
-  ```java
+  第一步需要在matis里面注册service
+```java
    <service
             android:name="xxx"
             android:exported="true"
@@ -50,9 +50,9 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
                 <action android:name="intent.action.user.you_package" />
             </intent-filter>
         </service>
-   ```
-   之后创建自己的Service
-   ```java
+ ```
+  第二步创建自己的Service
+```java
    public class xxx extends Service {
 
     @Nullable
@@ -93,5 +93,5 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
         }
     };
    }
-   ```
+ ```
 
