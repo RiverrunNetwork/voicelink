@@ -60,6 +60,13 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver {
                 TellManager.getInstance().tts(MainActivity.this,tts);
             }
         });
+
+        findViewById(R.id.btn_need_asr).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TellManager.getInstance().needAsr(MainActivity.this,MainActivity.this.getPackageName());
+            }
+        });
     }
 
     @Override

@@ -29,4 +29,12 @@
         android:text="拉起远场语音"
         tools:layout_editor_absoluteY="58dp"
         tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/btn_need_asr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="告诉大耳朵我需要asr"
+        tools:layout_editor_absoluteY="58dp"
+        tools:layout_editor_absoluteX="0dp" />
 </LinearLayout>

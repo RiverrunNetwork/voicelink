@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.bftv.fui.tell.ITellMessage;
 import com.bftv.fui.tell.TTS;
 import com.bftv.fui.tell.Tell;
+import com.bftv.fui.thirdparty.UserStatusNoticeManager;
 import com.bftv.fui.verification.AuthenticationManager;
 
 /**
@@ -43,34 +44,45 @@ public class VoiceTellService extends Service{
         public void sendMessage(Tell tell) throws RemoteException {
             boolean isOK = AuthenticationManager.getInstance().isSupport(VoiceTellService.this,tell.pck);
             if(!isOK){
-                Log.e("Less","verification fail");
+                Log.e("Less","voicehelp-nverification fail");
                 return;
             }
-            Log.e("Less","verification success");
+            Log.e("Less","voicehelp-nverification success");
             CollectTell.getInstance().fixData(tell);
-            Log.e("Less","tell:"+tell.toString()+"||"+Thread.currentThread().getName());
+            Log.e("Less","voicehelp-ntell:"+tell.toString()+"||"+Thread.currentThread().getName());
         }
 
         @Override
         public void farPull(String s) throws RemoteException {
             boolean isOK = AuthenticationManager.getInstance().isSupport(VoiceTellService.this,s);
             if(!isOK){
-                Log.e("Less","verification fail");
+                Log.e("Less","voicehelp-nverification fail");
                 return;
             }
-            Log.e("Less","verification success");
-            Log.e("Less","farPull:"+"||"+Thread.currentThread().getName());
+            Log.e("Less","voicehelp-nverification success");
+            Log.e("Less","fvoicehelp-narPull:"+"||"+Thread.currentThread().getName());
         }
 
         @Override
         public void ttsControl(TTS tts) throws RemoteException {
             boolean isOK = AuthenticationManager.getInstance().isSupport(VoiceTellService.this,tts.pck);
             if(!isOK){
-                Log.e("Less","verification fail");
+                Log.e("Less","voicehelp-nverification fail");
                 return;
             }
-            Log.e("Less","verification success");
-            Log.e("Less","ttsControl:"+tts.toString()+"||"+Thread.currentThread().getName());
+            Log.e("Less","voicehelp-nverification success");
+            Log.e("Less","voicehelp-nttsControl:"+tts.toString()+"||"+Thread.currentThread().getName());
+        }
+
+        @Override
+        public void needAsr(String s) throws RemoteException {
+            Log.e("Less","voicehelp-needAsr:"+s);
+            UserStatusNoticeManager.getInstance().onBind(VoiceTellService.this,s);
+        }
+
+        @Override
+        public void clearAsr(String s) throws RemoteException {
+
         }
     };
 

@@ -28,35 +28,34 @@ public class ReceiveSpeak extends BroadcastReceiver{
         callMiddle.execute(intent.getStringExtra("test"), new BaseCall.OnNlpDealListener() {
             @Override
             public void onTTS(NlpData nlpData) {
-                Log.e("Less","onTTS:"+nlpData.toString());
+                Log.e("Less","voicehelp-nonTTS:"+nlpData.toString());
                 Toast.makeText(context,"onTTS:"+nlpData.toString(),Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onResult(NlpData nlpData) {
-                Log.e("Less","onResult:"+nlpData.toString());
+                Log.e("Less","voicehelp-nonResult:"+nlpData.toString());
                 Toast.makeText(context,"onResult:"+nlpData.toString(),Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onTransport(NlpData nlpData) {
-                Log.e("Less","onTransport:"+nlpData.toString());
+                Log.e("Less","voicehelp-nonTransport:"+nlpData.toString());
                 Toast.makeText(context,"onTransport:"+nlpData.toString(),Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onCache(NlpData nlpData) {
-                Log.e("Less","onCache:"+nlpData.toString());
+                Log.e("Less","voicehelp-nonCache:"+nlpData.toString());
                 Toast.makeText(context,"onCache:"+nlpData.toString(),Toast.LENGTH_LONG).show();
             }
 
             @Override
             public Pair<String, HashMap<String, String>> fromCacheData() {
-                Tell tell = CollectTell.getInstance().getCacheData();
-                if(tell == null){
-                    return null;
-                }
-                return new Pair<>(tell.pck,tell.mTellMaps);
+                HashMap<String,String> hashMap = new HashMap<String, String>();
+                hashMap.put("你好","哈哈哈命中了");
+                return new Pair<>("com.bftv.fui.voicehelp",hashMap);
+
             }
         });
 

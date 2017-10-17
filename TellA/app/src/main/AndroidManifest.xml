@@ -23,12 +23,22 @@
             android:exported="true" />
 
         <service
-            android:name="com.bftv.tell.a.TestAidl"
+            android:name="com.bftv.tell.a.DataAidl"
             android:exported="true"
             android:enabled="true"
             >
             <intent-filter>
                 <action android:name="intent.action.remotevoice.com.bftv.tell.a" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.bftv.tell.a.UserStatusAidl"
+            android:exported="true"
+            android:enabled="true"
+            >
+            <intent-filter>
+                <action android:name="intent.action.user.com.bftv.tell.a" />
             </intent-filter>
         </service>
     </application>
