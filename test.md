@@ -108,7 +108,7 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
 - 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调howUserText(String userTxt, int age, int sex) 方法
 
 ## 大耳朵应用和资源文件下载
-- 链接:http://pan.baidu.com/s/1b5nKQU  密码:ytw8
+- 链接:http://pan.baidu.com/s/1b5nKQU  密码需要联系 yulingyan@bftv.com
 
 ## 合作伙伴
 <img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" /> 
