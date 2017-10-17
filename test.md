@@ -43,6 +43,7 @@ TellManager.getInstance().clearAsr(Context context, String you_app_pck);
 
 - 第三方应用自定义语音动画 并且拿到用户状态<br>
 第一步需要在matis里面注册service
+==========
 ```java
    <service
             android:name="xxx"
