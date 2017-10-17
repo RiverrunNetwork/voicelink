@@ -29,7 +29,7 @@
 
 大耳朵允许被第三方应用控制 这里简称反控<br>
 
-- 如果您想得到大耳朵的asr信息，并且自己开发语音动画 你需要调用如下方法<br>
+- 如果您想得到大耳朵的asr信息，并且自己开发语音动画 你需要在用户说话之前将自己应用的package_name告诉大耳朵 只告诉一次就可以 大耳朵自己会做缓存，之后看主控<br>
 ```java
 TellManager.getInstance().needAsr(Context context, String you_app_pck);
 ```
