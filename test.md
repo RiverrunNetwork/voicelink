@@ -5,7 +5,6 @@
 - 简介
 - 鉴权
 - 自定义语音界面
-- 主控
 
 ## 简介
 
@@ -28,11 +27,11 @@
 ## 自定义语音界面
 
 在特殊的场景下 大耳朵的语音界面会把当前界面挡住 或者当前的应用想自定义自己的界面 如果有这种需求那么很高兴的告诉你 大耳朵是支持的<br>
-－ 第一步 就是当用户进入特定的(需要自定义语音动画的界面)界面 通知大耳朵 调用如下代码
+- 第一步 就是当用户进入特定的(需要自定义语音动画的界面)界面 通知大耳朵 调用如下代码
 ```java
 TellManager.getInstance().needAsr(Context context, String you_app_pck);
 ```
-－ 第二步 需要您注册一个service 用于接收当前用户的状态 代码如下
+- 第二步 需要您注册一个service 用于接收当前用户的状态 代码如下
 ```java
    <service
             android:name="xxx"
@@ -57,105 +56,33 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
         
         @Override
         public void onShow(boolean b) throws RemoteException {
-            Log.e("Less", "remoteOnShow");
+            Log.e("Less", "用户开始说话");
         }
 
         @Override
-        public void showUserText(String s, int i, int i1) throws RemoteException {
-            Log.e("Less", "remoteShowUserText");
+        public void showUserText(String userTxt, int age, int sex) throws RemoteException {
+            Log.e("Less", "用户说完话了 age-用户的年龄 sex－用户的性别");
         }
 
         @Override
-        public void setRecording(int i) throws RemoteException {
-            Log.e("Less", "remoteSetRecording");
-        }
-
-        @Override
-        public void setRecognizing() throws RemoteException {
-            Log.e("Less", "remoteSetRecognizing");
-        }
-
-        @Override
-        public void onShowErrorText(String s) throws RemoteException {
-            Log.e("Less", "remoteOnShowErrorText");
-        }
-
-        @Override
-        public void shortClick() throws RemoteException {
-            Log.e("Less", "remoteShortClick");
-        }
-    };
-   }
- ```
-
-－ 第二步 需要您注册一个service 用于接收当前用户的状态如下
-－ 第二步 需要您注册一个service 用于接收当前用户的
-- 如果您想得到大耳朵的asr信息，并且自己开发语音动画 你需要在用户说话之前将自己应用的package_name告诉大耳朵 只告诉一次就可以 大耳朵自己会做缓存，之后看主控<br>
-```java
-TellManager.getInstance().needAsr(Context context, String you_app_pck);
-```
-以及用完之后立刻调用
-```java
-TellManager.getInstance().clearAsr(Context context, String you_app_pck);
-```
-## 主控
-
-大耳朵控制第三方应用 并且提供必要数据支持第三方这里简称主控<br>
-
-- 第三方应用自定义语音动画 并且拿到用户状态 共三步<br>
-(1)需要在matis里面注册service
-```java
-   <service
-            android:name="xxx"
-            android:exported="true"
-            android:enabled="true"
-            >
-            <intent-filter>
-                <action android:name="intent.action.user.you_package" />
-            </intent-filter>
-        </service>
- ```
-(2)创建自己的Service
-```java
-   public class xxx extends Service {
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return stub;
-    }
-
-    IUserStatusNotice.Stub stub = new IUserStatusNotice.Stub() {
-        @Override
-        public void onShow(boolean b) throws RemoteException {
-            Log.e("Less", "remoteOnShow");
-        }
-
-        @Override
-        public void showUserText(String s, int i, int i1) throws RemoteException {
-            Log.e("Less", "remoteShowUserText");
-        }
-
-        @Override
-        public void setRecording(int i) throws RemoteException {
-            Log.e("Less", "remoteSetRecording");
+        public void setRecording(int vol) throws RemoteException {
+            Log.e("Less", "用户说话的声音大小");
         }
 
         @Override
         public void setRecognizing() throws RemoteException {
-            Log.e("Less", "remoteSetRecognizing");
+            Log.e("Less", "用户说完话了 开始语音转文字 需要时间");
         }
 
         @Override
-        public void onShowErrorText(String s) throws RemoteException {
-            Log.e("Less", "remoteOnShowErrorText");
+        public void onShowErrorText(String error) throws RemoteException {
+            Log.e("Less", "发生错误了");
         }
 
         @Override
         public void shortClick() throws RemoteException {
-            Log.e("Less", "remoteShortClick");
+            Log.e("Less", "用户按的非常快");
         }
     };
    }
  ```
-(3)您需要通过反控在用户说话之前把您的package_name 告诉大耳朵 之后就ok了<br>
