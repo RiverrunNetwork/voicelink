@@ -4,6 +4,7 @@
 
 - 简介
 - 鉴权
+- 反控
 
 ## 简介
 
@@ -21,4 +22,13 @@
             android:name="com.bftv.fui.authentication.AuthenticationProvider"
             android:authorities="com.bftv.voice.provider.you_package"
             android:exported="true" />
+```
+
+## 反控
+
+大耳朵允许被第三方应用控制 这里简称反控<br>
+
+- 如果您想得到大耳朵的asr信息，并且自己开发语音动画 你需要调用如下方法<br>
+```java
+TellManager.getInstance().needAsr(Context context, String you_app_pck);
 ```
