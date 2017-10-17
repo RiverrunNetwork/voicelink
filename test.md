@@ -86,3 +86,7 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
     };
    }
  ```
+ - 第三步 退出界面 或者不用了一定要调用如下方法 否则会导致大耳朵异常
+ ```java
+ TellManager.getInstance().clearAsr(Context context, String pck)
+ ```
