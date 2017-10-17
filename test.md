@@ -41,8 +41,8 @@ TellManager.getInstance().clearAsr(Context context, String you_app_pck);
 
 大耳朵控制第三方应用 并且提供必要数据支持第三方这里叫做主控<br>
 
-- 第三方应用自定义语音动画 并且拿到用户状态<br>
-第一步需要在matis里面注册service
+- 第三方应用自定义语音动画 并且拿到用户状态 共三步<br>
+(1)需要在matis里面注册service
 ```java
    <service
             android:name="xxx"
@@ -54,7 +54,7 @@ TellManager.getInstance().clearAsr(Context context, String you_app_pck);
             </intent-filter>
         </service>
  ```
-第二步创建自己的Service
+(2)创建自己的Service
 ```java
    public class xxx extends Service {
 
@@ -97,4 +97,4 @@ TellManager.getInstance().clearAsr(Context context, String you_app_pck);
     };
    }
  ```
-第三步 您需要通过反控在用户说话之前把您的package_name 告诉大耳朵 之后就ok了<br>
+(3)您需要通过反控在用户说话之前把您的package_name 告诉大耳朵 之后就ok了<br>
