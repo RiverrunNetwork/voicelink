@@ -111,7 +111,7 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
 - 链接:http://pan.baidu.com/s/1b5nKQU  密码:ytw8
 
 ## 合作伙伴
-<img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="700" height="100" /> 
+<img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="100" height="100" /> 
 
 
  
