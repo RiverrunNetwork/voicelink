@@ -39,7 +39,7 @@ TellManager.getInstance().clearAsr(Context context, String you_app_pck);
 ```
 ## 主控
 
-大耳朵控制第三方应用 并且提供必要数据支持第三方这里叫做主控<br>
+大耳朵控制第三方应用 并且提供必要数据支持第三方这里简称主控<br>
 
 - 第三方应用自定义语音动画 并且拿到用户状态 共三步<br>
 (1)需要在matis里面注册service
