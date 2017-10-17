@@ -6,6 +6,7 @@
 - 鉴权
 - 自定义语音界面
 - 特定指令词
+- 大耳朵应用和资源文件下载
 
 ## 简介
 
@@ -104,4 +105,8 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
  TellManager.getInstance().send(Context context, Tell tell);
  ```
 - 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调howUserText(String userTxt, int age, int sex) 方法
+
+## 大耳朵应用和资源文件下载
+- 链接:http://pan.baidu.com/s/1b5nKQU  密码:ytw8
+
  
