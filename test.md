@@ -5,6 +5,7 @@
 - 简介
 - 鉴权
 - 自定义语音界面
+- 特定指令词
 
 ## 简介
 
@@ -90,3 +91,13 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
  ```java
  TellManager.getInstance().clearAsr(Context context, String pck)
  ```
+
+
+## 特定指令词
+任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “聊天” 那么当用户命中“聊天”这个词语那么我们就将当前用户的指令词 分发给微信<br>
+ - 第一步 将你自定义的词组通过如下方式传给大耳朵
+ ```java
+ TellManager.getInstance().send(Context context, Tell tell);
+ ```
+ - 第二步 注册service 改步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调howUserText(String userTxt, int age, int sex) 方法
+ 
