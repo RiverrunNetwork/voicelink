@@ -99,5 +99,5 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
  ```java
  TellManager.getInstance().send(Context context, Tell tell);
  ```
- - 第二步 注册service 改步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调howUserText(String userTxt, int age, int sex) 方法
+ - 第二步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调howUserText(String userTxt, int age, int sex) 方法
  
