@@ -28,11 +28,13 @@
 ## 自定义语音界面
 
 在特殊的场景下 大耳朵的语音界面会把当前界面挡住 或者当前的应用想自定义自己的界面 如果有这种需求那么很高兴的告诉你 大耳朵是支持的<br>
-- 第一步 就是当用户进入特定的(需要自定义语音动画的界面)界面 通知大耳朵 调用如下代码
+- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
+
+- 第二步 就是当用户进入特定的(需要自定义语音动画的界面)界面 通知大耳朵 调用如下代码
 ```java
 TellManager.getInstance().needAsr(Context context, String you_app_pck);
 ```
-- 第二步 需要您注册一个service 用于接收当前用户的状态 代码如下
+- 第三步 需要您注册一个service 用于接收当前用户的状态 代码如下
 ```java
    <service
             android:name="xxx"
@@ -87,7 +89,7 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
     };
    }
  ```
- - 第三步 退出界面 或者不用了一定要调用如下方法 否则会导致大耳朵异常
+ - 第四步 退出界面 或者不用了一定要调用如下方法 否则会导致大耳朵异常
  ```java
  TellManager.getInstance().clearAsr(Context context, String pck)
  ```
@@ -95,9 +97,11 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
 
 ## 特定指令词
 任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “聊天” 那么当用户命中“聊天”这个词语那么我们就将当前用户的指令词 分发给微信<br>
- - 第一步 将你自定义的词组通过如下方式传给大耳朵
+- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
+
+- 第二步 将你自定义的词组通过如下方式传给大耳朵
  ```java
  TellManager.getInstance().send(Context context, Tell tell);
  ```
- - 第二步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调howUserText(String userTxt, int age, int sex) 方法
+- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调howUserText(String userTxt, int age, int sex) 方法
  
