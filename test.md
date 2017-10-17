@@ -33,7 +33,10 @@
 ```java
 TellManager.getInstance().needAsr(Context context, String you_app_pck);
 ```
-
+以及用完之后立刻调用
+```java
+TellManager.getInstance().clearAsr(Context context, String you_app_pck);
+```
 ## 主控
 
 大耳朵控制第三方应用 并且提供必要数据支持第三方这里叫做主控<br>
