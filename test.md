@@ -4,7 +4,7 @@
 
 - 简介
 - 鉴权
-- 反控
+- 自定义语音界面
 - 主控
 
 ## 简介
@@ -25,10 +25,71 @@
             android:exported="true" />
 ```
 
-## 反控
+## 自定义语音界面
 
-大耳朵允许被第三方应用控制 这里简称反控<br>
+在特殊的场景下 大耳朵的语音界面会把当前界面挡住 或者当前的应用想自定义自己的界面 如果有这种需求那么很高兴的告诉你 大耳朵是支持的<br>
+－ 第一步 就是当用户进入特定的(需要自定义语音动画的界面)界面 通知大耳朵 调用如下代码
+```java
+TellManager.getInstance().needAsr(Context context, String you_app_pck);
+```
+－ 第二步 需要您注册一个service 用于接收当前用户的状态 代码如下
+```java
+   <service
+            android:name="xxx"
+            android:exported="true"
+            android:enabled="true"
+            >
+            <intent-filter>
+                <action android:name="intent.action.user.you_package" />
+            </intent-filter>
+        </service>
+ ```
+ ```java
+   public class xxx extends Service {
 
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return stub;
+    }
+
+    IUserStatusNotice.Stub stub = new IUserStatusNotice.Stub() {
+        
+        @Override
+        public void onShow(boolean b) throws RemoteException {
+            Log.e("Less", "remoteOnShow");
+        }
+
+        @Override
+        public void showUserText(String s, int i, int i1) throws RemoteException {
+            Log.e("Less", "remoteShowUserText");
+        }
+
+        @Override
+        public void setRecording(int i) throws RemoteException {
+            Log.e("Less", "remoteSetRecording");
+        }
+
+        @Override
+        public void setRecognizing() throws RemoteException {
+            Log.e("Less", "remoteSetRecognizing");
+        }
+
+        @Override
+        public void onShowErrorText(String s) throws RemoteException {
+            Log.e("Less", "remoteOnShowErrorText");
+        }
+
+        @Override
+        public void shortClick() throws RemoteException {
+            Log.e("Less", "remoteShortClick");
+        }
+    };
+   }
+ ```
+
+－ 第二步 需要您注册一个service 用于接收当前用户的状态如下
+－ 第二步 需要您注册一个service 用于接收当前用户的
 - 如果您想得到大耳朵的asr信息，并且自己开发语音动画 你需要在用户说话之前将自己应用的package_name告诉大耳朵 只告诉一次就可以 大耳朵自己会做缓存，之后看主控<br>
 ```java
 TellManager.getInstance().needAsr(Context context, String you_app_pck);
