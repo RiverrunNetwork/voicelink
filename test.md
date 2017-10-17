@@ -7,6 +7,7 @@
 - 自定义语音界面
 - 特定指令词
 - 大耳朵应用和资源文件下载
+- 合作伙伴
 
 ## 简介
 
@@ -108,5 +109,8 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
 
 ## 大耳朵应用和资源文件下载
 - 链接:http://pan.baidu.com/s/1b5nKQU  密码:ytw8
+
+## 合作伙伴
+http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png
 
  
