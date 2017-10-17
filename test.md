@@ -5,6 +5,7 @@
 - 简介
 - 鉴权
 - 反控
+- 主控
 
 ## 简介
 
@@ -32,3 +33,65 @@
 ```java
 TellManager.getInstance().needAsr(Context context, String you_app_pck);
 ```
+
+## 主控
+
+大耳朵控制第三方应用 并且提供必要数据支持第三方这里叫做主控<br>
+
+- 第三方应用自定义语音动画 并且拿到用户状态<br>
+  首先需要在matis里面注册service
+  ```java
+   <service
+            android:name="xxx"
+            android:exported="true"
+            android:enabled="true"
+            >
+            <intent-filter>
+                <action android:name="intent.action.user.you_package" />
+            </intent-filter>
+        </service>
+   ```
+   之后创建自己的Service
+   ```java
+   public class xxx extends Service {
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return stub;
+    }
+
+    IUserStatusNotice.Stub stub = new IUserStatusNotice.Stub() {
+        @Override
+        public void onShow(boolean b) throws RemoteException {
+            Log.e("Less", "remoteOnShow");
+        }
+
+        @Override
+        public void showUserText(String s, int i, int i1) throws RemoteException {
+            Log.e("Less", "remoteShowUserText");
+        }
+
+        @Override
+        public void setRecording(int i) throws RemoteException {
+            Log.e("Less", "remoteSetRecording");
+        }
+
+        @Override
+        public void setRecognizing() throws RemoteException {
+            Log.e("Less", "remoteSetRecognizing");
+        }
+
+        @Override
+        public void onShowErrorText(String s) throws RemoteException {
+            Log.e("Less", "remoteOnShowErrorText");
+        }
+
+        @Override
+        public void shortClick() throws RemoteException {
+            Log.e("Less", "remoteShortClick");
+        }
+    };
+   }
+   ```
+
