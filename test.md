@@ -103,7 +103,14 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
 
 - 第二步 将你自定义的词组通过如下方式传给大耳朵
  ```java
- TellManager.getInstance().send(Context context, Tell tell);
+TellManager.getInstance().send(Context context, Tell tell);
+
+Tell tell = new Tell();
+HashMap<String,String> hashMap = new HashMap<String, String>();
+hashMap.put("大耳朵会通过用户的话匹配这个map的key","匹配成功后会返回给你这个map的value");
+tell.mTellMaps = hashMap;
+tell.pck = "你项目的包名字";
+ellManager.getInstance().send(MainActivity.this,tell);
  ```
 - 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调howUserText(String userTxt, int age, int sex) 方法
 
