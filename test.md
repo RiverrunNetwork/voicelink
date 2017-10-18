@@ -7,6 +7,7 @@
 - 自定义语音界面
 - 特定指令词
 - 大耳朵应用和资源文件下载
+- 问题反馈
 - 合作伙伴
 
 ## 简介
@@ -116,6 +117,9 @@ TellManager.getInstance().send(MainActivity.this,tell);
 
 ## 大耳朵应用和资源文件下载
 - 链接:http://pan.baidu.com/s/1b5nKQU  密码需要联系 yulingyan@bftv.com
+
+## 问题反馈
+－ 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题
 
 ## 合作伙伴
 <img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" /> 
