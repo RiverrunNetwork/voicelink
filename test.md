@@ -6,6 +6,7 @@
 - 鉴权
 - 自定义语音界面
 - 特定指令词
+- 主动拉起大耳朵
 - 大耳朵应用和资源文件下载
 - 问题反馈
 - 合作伙伴
@@ -113,7 +114,13 @@ tell.mTellMaps = hashMap;
 tell.pck = "你项目的包名字";
 TellManager.getInstance().send(MainActivity.this,tell);
  ```
-- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调howUserText(String userTxt, int age, int sex) 方法
+- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调showUserText(String userTxt, int age, int sex) 方法
+
+## 主动拉起大耳朵
+为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
+```java
+ TellManager.getInstance().farPull(Context context, you_app_pck);
+```
 
 ## 大耳朵应用和资源文件下载
 - 链接:http://pan.baidu.com/s/1b5nKQU  密码需要联系 yulingyan@bftv.com
