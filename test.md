@@ -6,6 +6,7 @@
 - 鉴权
 - 自定义语音界面
 - 特定指令词
+- 功能指令词
 - 主动拉起大耳朵
 - 大耳朵应用和资源文件下载
 - 问题反馈
@@ -128,6 +129,26 @@ tell.pck = "你项目的包名字";
 TellManager.getInstance().tell(MainActivity.this,tell);
  ```
 - 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
+
+## 功能指令词
+任何一个应用都可以向大耳朵注册功能指令词 功能指令词一般用来控制按钮点击 比如语音控制某一个button点击,这里举一个例子 比如某一个播放器的详情界面 他有一个收藏按钮 当用户在这个详情界面之上 并且喊 “收藏” 或者其他相关指令词 大耳朵就会将该指令词传给当前的app用来告诉当前app执行收藏按钮的点击操作<br>
+
+- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
+- 第二步 在当前界面Activity onCreate() 的时候向大耳朵注册功能指令词
+```java
+Tell tell = new Tell();
+tell.falg = "btn_function";
+HashMap<String, String> hashMap = new HashMap<String, String>();
+hashMap.put("play", "播放功能");
+tell.mTellMaps = hashMap;
+tell.pck = MainActivity.this.getPackageName();
+TellManager.getInstance().addFunctionTell(MainActivity.this, tell);
+```
+- 第三步 在界面退出 onDestroy() 方法调用清空操作
+```java
+TellManager.getInstance().removeFunctionTell()
+```
+- 第四步 - 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
 
 ## 主动拉起大耳朵
 为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
