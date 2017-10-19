@@ -41,7 +41,7 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
 - 第三步 需要您注册一个service 用于接收当前用户的状态 代码如下
 ```java
    <service
-            android:name="xxx"
+            android:name="TestService"
             android:exported="true"
             android:enabled="true"
             >
@@ -51,7 +51,7 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
         </service>
  ```
  ```java
-   public class xxx extends Service {
+   public class TestService extends Service {
 
     @Nullable
     @Override
@@ -60,38 +60,50 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
     }
 
     IUserStatusNotice.Stub stub = new IUserStatusNotice.Stub() {
-        
+
         @Override
         public void onShow(boolean b) throws RemoteException {
-            Log.e("Less", "用户开始说话");
+            Log.e("Less", "用户开始说话");
         }
 
         @Override
-        public void showUserText(String userTxt, int age, int sex) throws RemoteException {
-            Log.e("Less", "用户说完话了 age-用户的年龄 sex－用户的性别");
+        public void showUserText(final String userTxt, int age, int sex) throws RemoteException {
+            Log.e("Less", "用户说完话了 age-用户的年龄 sex－用户的性别");
+
         }
 
         @Override
         public void setRecording(int vol) throws RemoteException {
-            Log.e("Less", "用户说话的声音大小");
+            Log.e("Less", "用户说话的声音大小");
         }
 
         @Override
         public void setRecognizing() throws RemoteException {
-            Log.e("Less", "用户说完话了 开始语音转文字 需要时间");
+            Log.e("Less", "用户说完话了 开始语音转文字 需要时间");
         }
 
         @Override
-        public void onShowErrorText(String error) throws RemoteException {
-            Log.e("Less", "发生错误了");
+        public void onShowErrorText(String error) throws RemoteException {
+            Log.e("Less", "发生错误了");
         }
 
         @Override
         public void shortClick() throws RemoteException {
-            Log.e("Less", "用户按的非常快");
+            Log.e("Less", "用户按的非常快");
+        }
+
+        @Override
+        public void onInterception(final String nlpJson, final String flag, String pck, int age, int sex, int index) throws RemoteException {
+            Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(TestService.this,"TestApp接到了:"+nlpJson+"|falg:"+flag,Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     };
-   }
+}
  ```
  - 第四步 退出界面 或者不用了一定要调用如下方法 否则会导致大耳朵异常
  ```java
