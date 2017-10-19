@@ -1,87 +1,62 @@
 package com.bftv.tell.a;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.ArrayMap;
-import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
-import com.bftv.fui.tell.TTS;
 import com.bftv.fui.tell.Tell;
 import com.bftv.fui.tell.TellManager;
-import com.bftv.fui.thirdparty.VoiceFeedback;
-import com.bftv.fui.thirdparty.notify.DataChange;
-import com.bftv.fui.thirdparty.notify.IVoiceObserver;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements IVoiceObserver {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DataChange.getInstance().addObserver(this);
+        final EditText et = (EditText) findViewById(R.id.user_txt);
 
+        //模拟用户说话点击确定
+        findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction("intent.action.bftv.test");
+                intent.putExtra("test", et.getText().toString());
+                sendBroadcast(intent);
+            }
+        });
+
+        //特定指令词
+        findViewById(R.id.btn_tedingzhilingci).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Tell tell = new Tell();
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("test", "我这里返回结果了 哈哈哈哈");
+                tell.mTellMaps = hashMap;
+                tell.pck = MainActivity.this.getPackageName();
+                TellManager.getInstance().tell(MainActivity.this, tell);
+            }
+        });
+
+        //
         findViewById(R.id.btn_function).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Tell tell = new Tell();
-                HashMap<String,String> hashMap = new HashMap<String, String>();
-                hashMap.put("我是码农","这里是自定义json格式");
-                //tell.mTellMaps = hashMap;
+                tell.falg = "btn_function";
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("play", "播放功能");
+                tell.mTellMaps = hashMap;
                 tell.pck = MainActivity.this.getPackageName();
-                List<String> list = new ArrayList<>();
-                list.add("喊暴风大耳朵说 我是码农");
-                tell.mTips = list;
-                TellManager.getInstance().send(MainActivity.this,tell);
+                TellManager.getInstance().addFunctionTell(MainActivity.this, tell);
             }
         });
 
-
-        findViewById(R.id.btn_far).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TellManager.getInstance().farPull(MainActivity.this,MainActivity.this.getPackageName());
-            }
-        });
-
-        findViewById(R.id.btn_tts).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TTS tts = new TTS();
-                tts.isTTSClose = false;
-                tts.isTTSEnd = true;
-                tts.tts = "我叫暴风大耳朵";
-                tts.pck = MainActivity.this.getPackageName();
-                TellManager.getInstance().tts(MainActivity.this,tts);
-            }
-        });
-
-        findViewById(R.id.btn_need_asr).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TellManager.getInstance().needAsr(MainActivity.this,MainActivity.this.getPackageName());
-            }
-        });
-    }
-
-    @Override
-    public VoiceFeedback update(String s) {
-        Log.e("Less","update:"+s);
-        VoiceFeedback voiceFeedback = new VoiceFeedback();
-        voiceFeedback.feedback = "我是Test1";
-        voiceFeedback.isHasResult = true;
-        voiceFeedback.type = VoiceFeedback.TYPE_CMD;
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                findViewById(R.id.btn_function).performClick();
-            }
-        });
-        return voiceFeedback;
     }
 }

@@ -45,12 +45,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.onshow).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UserStatusNoticeManager.getInstance().onShow(true);
-            }
-        });
     }
 
 

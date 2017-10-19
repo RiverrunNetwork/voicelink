@@ -7,34 +7,33 @@
     android:orientation="vertical"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <EditText
+            android:id="@+id/user_txt"
+            android:layout_width="300dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/ok"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="确定"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_tedingzhilingci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="特定指令词"
+        />
+
     <Button
         android:id="@+id/btn_function"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="当前界面的功能"
+        android:text="功能注册"
         />
-
-    <Button
-        android:id="@+id/btn_tts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="开启语音播报"
-        tools:layout_editor_absoluteY="114dp"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/btn_far"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="拉起远场语音"
-        tools:layout_editor_absoluteY="58dp"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/btn_need_asr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="告诉大耳朵我需要asr"
-        tools:layout_editor_absoluteY="58dp"
-        tools:layout_editor_absoluteX="0dp" />
 </LinearLayout>

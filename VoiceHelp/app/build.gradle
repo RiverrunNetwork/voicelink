@@ -34,9 +34,9 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 
-    compile(name: 'nlpdeal-171013', ext: 'aar')
+    compile(name: 'nlpdeal-171019', ext: 'aar')
     compile(name: 'acitivityuse-171011', ext: 'aar')
-    compile(name: 'voicethirdparty-171017', ext: 'aar')
-    compile(name: 'thirdtell-171017', ext: 'aar')
+    compile(name: 'voicethirdparty-171019', ext: 'aar')
+    compile(name: 'thirdtell-171019', ext: 'aar')
     compile(name: 'verification-171013', ext: 'aar')
 }

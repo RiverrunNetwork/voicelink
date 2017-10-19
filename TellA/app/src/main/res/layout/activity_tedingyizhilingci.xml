@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bftv.fui.voicehelp.MainActivity">
+    >
 
     <Button
-        android:id="@+id/control"
+        android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="控制第三方app执行播放操作"
+        android:text="点击我像大耳朵注册自定义指令词"
         />
+
 
 </LinearLayout>
