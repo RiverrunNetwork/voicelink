@@ -8,6 +8,7 @@
 - 特定指令词
 - 功能指令词
 - 主动拉起大耳朵
+- 界面跳转
 - 大耳朵应用和资源文件下载
 - 问题反馈
 - 合作伙伴
@@ -179,6 +180,8 @@ DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
 ```java
  TellManager.getInstance().farPull(Context context, you_app_pck);
 ```
+
+## 界面跳转
 
 ## 大耳朵应用和资源文件下载
 - 链接:http://pan.baidu.com/s/1b5nKQU  密码需要联系 yulingyan@bftv.com
