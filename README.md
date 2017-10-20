@@ -9,6 +9,8 @@
 - 功能指令词
 - 主动拉起大耳朵
 - 界面跳转
+- 系统指令词
+- 快速指令词
 - 大耳朵应用和资源文件下载
 - 问题反馈
 - 合作伙伴
@@ -187,6 +189,15 @@ DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
 https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md
 - 审核后台
 敬请期待(服务端的小伙伴在加紧开发)
+
+## 系统指令词
+任何第三方都可以使用大耳朵已经成熟的指令词模块 比如第x集 快进3分 ...<br>
+- 敬请期待
+
+## 快速指令词
+大耳朵强大的能力在这里又一次展现，在这里第三方app无需改动任何代码 就能和大耳朵配合 第三方需要把某一个按钮的相应的信息配置在大耳朵审核后台，审核通过后，
+大耳朵就能控制该按钮了，别问我怎么做的，只管欣赏大耳朵的魔力就好
+- 敬请期待
 
 ## 大耳朵应用和资源文件下载
 - 链接:http://pan.baidu.com/s/1b5nKQU  密码需要联系 yulingyan@bftv.com
