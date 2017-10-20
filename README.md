@@ -1,114 +1,201 @@
 # 暴风语音接入平台
 
-> 文档版本:V0.8
+> 文档版本:V1.0
 
-暴风语音接入平台支持以下几个功能 <br>
-
+- 简介
+- 鉴权
+- 自定义语音界面
+- 特定指令词
+- 功能指令词
+- 主动拉起大耳朵
 - 界面跳转
-- 指令控制
-- 中间层展示
+- 大耳朵应用和资源文件下载
+- 问题反馈
+- 合作伙伴
 
-## 界面跳转 
+## 简介
 
-- 描述 <br>
-用户通过暴风大耳朵 打开某个界面 这里 叫做 "界面跳转" 下面以 影视库详情界面举例
+暴风大耳朵是基于暴风电视的一款免遥控的语音软件,任何第三方软件 需要在暴风电视上使用语音功能必须接入暴风语音平台<br>
 
-- 语句 <br>
-用户 : 打开影视库的详情界面
+## 鉴权
 
-- 具体对接文档 <br>
-https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md <br>
+任何第三方应用和大耳朵进行语音交互都需要和大耳朵进行语音鉴权<br>
 
-## 指令控制
+- 如何鉴权 ？<br>
+将如下代码放到应用的AndroidManifest文件中<br>
 
-- 描述 <br>
-用户通过暴风大耳朵 在某个界面下控制 某一个按钮 下面以 影视库详情界面 播放按钮举例 <br>
-
-- 语句 <br>
-用户 : 播放 (当前用户已经处在 影视库 详情界面下)
-- 场景数据格式 <br>
 ```java
-{
-    "type": "cmd",
-    "content": "收藏"
-}
+<provider
+            android:name="com.bftv.fui.authentication.AuthenticationProvider"
+            android:authorities="com.bftv.voice.provider.you_package"
+            android:exported="true" />
 ```
 
-- 具体对接文档 <br>
-https://github.com/RiverrunNetwork/voicelink/blob/master/cmd_control.md <br>
+## 自定义语音界面
 
-- 目前支持的指令 <br>
-https://github.com/RiverrunNetwork/voicelink/blob/master/cmd.md <br>
+在特殊的场景下 大耳朵的语音界面会把当前界面挡住 或者当前的应用想自定义自己的界面 如果有这种需求那么很高兴的告诉你 大耳朵是支持的<br>
+- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
 
-- 扩充指令 <br>
-如果您有扩充的需求发送邮件到renyang@bftv.com <br>
-
-## 中间层展示
-
-- 描述 <br>
-用户通过暴风大耳朵 喊 某一个场景类的词语  然后返回数据给 中间层 并且展示<br>
-
-- 语句 <br>
-用户 : 我想看刘德华的电影 <br>
-
-- 具体对接文档 <br>
- 和指令控制类似 具体见demo <br>
-- 中间层指令控制 <br>
+- 第二步 就是当用户进入特定的(需要自定义语音动画的界面)界面 通知大耳朵 调用如下代码
+```java
+TellManager.getInstance().needAsr(Context context, String you_app_pck);
+```
+- 第三步 需要您注册一个service 用于接收当前用户的状态 代码如下
+```java
+   <service
+            android:name="TestService"
+            android:exported="true"
+            android:enabled="true"
+            >
+            <intent-filter>
+                <action android:name="intent.action.user.you_package" />
+            </intent-filter>
+        </service>
+ ```
  ```java
-{
-    "type": "middle_cmd",
-    "content": "下一页"
+   public class TestService extends Service {
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return stub;
+    }
+
+    IUserStatusNotice.Stub stub = new IUserStatusNotice.Stub() {
+
+        @Override
+        public void onShow(boolean b) throws RemoteException {
+            Log.e("Less", "用户开始说话");
+        }
+
+        @Override
+        public void showUserText(final String userTxt, int age, int sex) throws RemoteException {
+            Log.e("Less", "用户说完话了 age-用户的年龄 sex－用户的性别");
+
+        }
+
+        @Override
+        public void setRecording(int vol) throws RemoteException {
+            Log.e("Less", "用户说话的声音大小");
+        }
+
+        @Override
+        public void setRecognizing() throws RemoteException {
+            Log.e("Less", "用户说完话了 开始语音转文字 需要时间");
+        }
+
+        @Override
+        public void onShowErrorText(String error) throws RemoteException {
+            Log.e("Less", "发生错误了");
+        }
+
+        @Override
+        public void shortClick() throws RemoteException {
+            Log.e("Less", "用户按的非常快");
+        }
+
+        @Override
+        public void onInterception(final String nlpJson, final String flag, String pck, int age, int sex, int index) throws RemoteException {
+            Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(TestService.this,"TestApp接到了:"+nlpJson+"|falg:"+flag,Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    };
+}
+ ```
+ - 第四步 退出界面 或者不用了一定要调用如下方法 否则会导致大耳朵异常
+ ```java
+ TellManager.getInstance().clearAsr(Context context, String pck)
+ ```
+
+
+## 特定指令词
+任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “聊天” 那么当用户命中“聊天”这个词语那么我们就将当前用户的指令词 分发给微信
+,注意该功能只是临时性的,当有新的指令词注册进来 之前的就会失效.<br>
+
+- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
+- 第二步 将你自定义的词组通过如下方式传给大耳朵
+ ```java
+TellManager.getInstance().send(Context context, Tell tell);
+
+Tell tell = new Tell();
+HashMap<String,String> hashMap = new HashMap<String, String>();
+hashMap.put("大耳朵会通过用户的话匹配这个map的key","匹配成功后会返回给你这个map的value");
+tell.mTellMaps = hashMap;
+tell.pck = "你项目的包名字";
+TellManager.getInstance().tell(MainActivity.this,tell);
+ ```
+- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
+
+## 功能指令词
+任何一个应用都可以向大耳朵注册功能指令词 功能指令词一般用来控制按钮点击 比如语音控制某一个button点击,这里举一个例子 比如某一个播放器的详情界面 他有一个收藏按钮 当用户在这个详情界面之上 并且喊 “收藏” 或者其他相关指令词 大耳朵就会将该指令词传给当前的app用来告诉当前app执行收藏按钮的点击操作<br>
+
+- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
+- 第二步 在当前界面Activity onCreate() 的时候向大耳朵注册功能指令词
+```java
+Tell tell = new Tell();
+tell.falg = "btn_function";
+HashMap<String, String> hashMap = new HashMap<String, String>();
+hashMap.put("play", "播放功能");
+tell.mTellMaps = hashMap;
+tell.pck = MainActivity.this.getPackageName();
+TellManager.getInstance().addFunctionTell(MainActivity.this, tell);
+```
+- 第三步 在界面退出 onDestroy() 方法调用清空操作
+
+```java
+TellManager.getInstance().removeFunctionTell()
+```
+- 第四步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
+
+- 第五步 到了第四步已经能将大耳朵的命令传送到了service了，但是如何从service将命令给到当前的activity呢？这里大耳朵提供一套解决方案提供给第三方app<br>
+在当前的界面实现接口<br>
+```java
+MainActivity extends AppCompatActivity implements IVoiceObserver
+```
+在onCreate注册监听<br>
+```java
+DataChange.getInstance().addObserver(this);
+```
+在onDestroy()移除监听<br>
+```java
+DataChange.getInstance().deleteObserver(this);
+```
+最后在service上添加如下代码<br>
+```java
+@Override
+public void onInterception(final String nlpJson, final String flag, String pck, int age, int sex, int index) throws RemoteException {
+       Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
+DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
 }
 ```
+在当前界面就能收到消息了<br>
 
-## 测试ASR
-
-- 用过暴风大耳朵 获取用户的Asr <br>
-
-- 联系暴风的小伙伴 获取Debug apk 暴风的小伙伴通过如下方式发送用户的asr 
-
+## 主动拉起大耳朵
+为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
 ```java
-
-Intent intent = new Intent("com.bftv.fui.test.speak");
-intent.putExtra("userTxt",txt);
-getApplication().sendBroadcast(intent);  
-
+ TellManager.getInstance().farPull(Context context, you_app_pck);
 ```
 
-## 下载暴风大耳朵
+## 界面跳转
+大耳朵能跳转任何Acitivty 启动任何广播 启动任何广播 发送特定的系统事件，这些都功能都是对第三方开放的，第三方的app需要按照对应的规则配置到暴风大耳朵审核后台，审核通过后即可上线<br>
+- 界面跳转配置规则
+https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md
+- 审核后台
+敬请期待(服务端的小伙伴在加紧开发)
 
-- http://pan.baidu.com/s/1eSgsfOu <br>
+## 大耳朵应用和资源文件下载
+- 链接:http://pan.baidu.com/s/1b5nKQU  密码需要联系 yulingyan@bftv.com
 
-- 密码私信暴风的小伙伴 <br>
+## 问题反馈
+- 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题
 
-## 第三方应用控制大耳朵
-
-- 广播action com.baofengtv.action.tts <br>
-- 目前大耳朵接受广播的代码如下 <br>
-```java
-action com.baofengtv.action.tts 大耳朵接受广播的action
-参数 vocie_close boolean  是否关闭大耳朵  true关闭 反之不作处理
-    vocie_tts   string   语音播报的内容
-    vocie_is_end boolean 语音播报完是否自动关闭 如果true关闭 反之不关闭
-```
-
-## 第三方应用拉起远场
-
-- 广播 action com.baofengtv.action_pull_far <br>
-
-## 开启大耳朵调试开关
-
--  adb shell am broadcast -a com.baofengtv.action_debug_log --ez debug true <br>
-
-## 开启大耳朵压力测试
+## 合作伙伴
+<img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" /> 
 
 
-- adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 0 关闭压力测试 <br>
-
-- adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 1 开启压力测试 <br>
-
-- adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 2 获取压力测试次数 <br>
-
-- adb shell am broadcast -a com.baofengtv.action_pressure_test --ei test 3 清空压力测试次数<br>
-
-
+ 
