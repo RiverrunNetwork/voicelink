@@ -185,7 +185,7 @@ DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
 大耳朵能跳转任何Acitivty 启动任何广播 启动任何广播 发送特定的系统事件，这些都功能都是对第三方开放的，第三方的app需要按照对应的规则配置到暴风大耳朵审核后台，审核通过后即可上线<br>
 - 界面跳转配置规则
 https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md
-－ 审核后台
+- 审核后台
 敬请期待(服务端的小伙伴在加紧开发)
 
 ## 大耳朵应用和资源文件下载
