@@ -11,6 +11,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.bftv.fui.thirdparty.IUserStatusNotice;
+import com.bftv.fui.thirdparty.VoiceFeedback;
+import com.bftv.fui.thirdparty.notify.DataChange;
 
 /**
  * Author by Less on 17/10/19.
@@ -58,13 +60,10 @@ public class TestService extends Service {
         }
 
         @Override
-        public void onInterception(final String userTxt, final String flag, String pck, int age, int sex, int index) throws RemoteException {
-            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(TestService.this,"TestApp接到了:"+userTxt+"|falg:"+flag,Toast.LENGTH_SHORT).show();
-                }
-            });
+        public void onInterception(final String nlpJson, final String flag, String pck, int age, int sex, int index) throws RemoteException {
+            Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
+            DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
+
         }
     };
 }

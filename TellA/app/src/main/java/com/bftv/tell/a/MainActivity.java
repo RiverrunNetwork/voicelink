@@ -1,22 +1,30 @@
 package com.bftv.tell.a;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bftv.fui.tell.Tell;
 import com.bftv.fui.tell.TellManager;
+import com.bftv.fui.thirdparty.VoiceFeedback;
+import com.bftv.fui.thirdparty.notify.DataChange;
+import com.bftv.fui.thirdparty.notify.IVoiceObserver;
 
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IVoiceObserver{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DataChange.getInstance().addObserver(this);
 
         final EditText et = (EditText) findViewById(R.id.user_txt);
 
@@ -40,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
                 hashMap.put("test", "我这里返回结果了 哈哈哈哈");
                 tell.mTellMaps = hashMap;
                 tell.pck = MainActivity.this.getPackageName();
-                TellManager.getInstance().tell(MainActivity.this, tell);
+                TellManager.getInstance().tell(App.sApp, tell);
             }
         });
 
-        //
+        //功能指令词
         findViewById(R.id.btn_function).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,9 +62,27 @@ public class MainActivity extends AppCompatActivity {
                 hashMap.put("play", "播放功能");
                 tell.mTellMaps = hashMap;
                 tell.pck = MainActivity.this.getPackageName();
-                TellManager.getInstance().addFunctionTell(MainActivity.this, tell);
+                TellManager.getInstance().addFunctionTell(App.sApp, tell);
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DataChange.getInstance().deleteObserver(this);
+        TellManager.getInstance().removeFunctionTell(App.sApp,MainActivity.this.getPackageName());
+    }
+
+    @Override
+    public VoiceFeedback update(final String str) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this,"TestApp-MainActivity接到了:"+str,Toast.LENGTH_SHORT).show();
+            }
+        });
+        return null;
     }
 }
