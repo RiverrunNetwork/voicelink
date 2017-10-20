@@ -145,10 +145,34 @@ tell.pck = MainActivity.this.getPackageName();
 TellManager.getInstance().addFunctionTell(MainActivity.this, tell);
 ```
 - 第三步 在界面退出 onDestroy() 方法调用清空操作
+
 ```java
 TellManager.getInstance().removeFunctionTell()
 ```
-- 第四步 - 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
+- 第四步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
+
+- 第五步 到了第四步已经能将大耳朵的命令传送到了service了，但是如何从service将命令给到当前的activity呢？这里大耳朵提供一套解决方案提供给第三方app<br>
+在当前的界面实现接口<br>
+```java
+MainActivity extends AppCompatActivity implements IVoiceObserver
+```
+在onCreate注册监听<br>
+```java
+DataChange.getInstance().addObserver(this);
+```
+在onDestroy()移除监听<br>
+```java
+DataChange.getInstance().deleteObserver(this);
+```
+最后在service上添加如下代码<br>
+```java
+@Override
+public void onInterception(final String nlpJson, final String flag, String pck, int age, int sex, int index) throws RemoteException {
+       Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
+DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
+}
+```
+在当前界面就能收到消息了<br>
 
 ## 主动拉起大耳朵
 为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
