@@ -36,4 +36,18 @@
         android:layout_height="wrap_content"
         android:text="功能注册"
         />
+
+    <Button
+        android:id="@+id/btn_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义语音动画并获取asr"
+        />
+
+    <Button
+        android:id="@+id/btn_system_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取系统指令"
+        />
 </LinearLayout>

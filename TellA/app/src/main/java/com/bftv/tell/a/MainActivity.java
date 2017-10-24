@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bftv.fui.constantplugin.SequenceCode;
 import com.bftv.fui.tell.Tell;
 import com.bftv.fui.tell.TellManager;
 import com.bftv.fui.thirdparty.VoiceFeedback;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
             public void onClick(View view) {
                 Tell tell = new Tell();
                 HashMap<String, String> hashMap = new HashMap<String, String>();
-                hashMap.put("test", "我这里返回结果了 哈哈哈哈");
+                hashMap.put("你好", "我这里返回结果了 哈哈哈哈");
                 tell.mTellMaps = hashMap;
                 tell.pck = MainActivity.this.getPackageName();
                 TellManager.getInstance().tell(App.sApp, tell);
@@ -65,7 +66,20 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
                 TellManager.getInstance().addFunctionTell(App.sApp, tell);
             }
         });
-
+        //自定义语音动画并且获取asr
+        findViewById(R.id.btn_custom).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TellManager.getInstance().needAsr(App.sApp,MainActivity.this.getPackageName());
+            }
+        });
+       //获取系统功能
+        findViewById(R.id.btn_system_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TellManager.getInstance().needSystemFunction(App.sApp,"com.bftv.tell.a","com.bftv.tell.a.MainActivity", SequenceCode.TYPE_NUM);
+            }
+        });
     }
 
     @Override
