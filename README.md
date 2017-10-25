@@ -188,7 +188,11 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md
 
 ## 系统指令词
 任何第三方都可以使用大耳朵已经成熟的指令词模块 比如第x集 快进3分 ...<br>
-- 敬请期待
+- 需要调用needSystemFunction的方法来通知大耳朵当前界面支持的功能
+needSystemFunction(Application context, String pck, String className, int sequence)<br>
+pck       当前应用的包名字 <br>
+className 当前界面的类名字 <br>
+sequence  需要的功能 SequenceCode.TYPE_NUM(支持第x个) SequenceCode.TYPE_PAGE(支持页数) 如果想都支持用“｜”间隔就好 <br>
 
 ## 快速指令词
 大耳朵强大的能力在这里又一次展现，在这里第三方app无需改动任何代码 就能和大耳朵配合 第三方需要把某一个按钮的相应的信息配置在大耳朵审核后台，审核通过后，
