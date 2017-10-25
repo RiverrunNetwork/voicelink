@@ -33,8 +33,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile(name: 'thirdtell-171024', ext: 'aar')
+    compile(name: 'thirdtell-171025', ext: 'aar')
     compile(name: 'authentication-171013', ext: 'aar')
-    compile(name: 'voicethirdparty-171020', ext: 'aar')
+    compile(name: 'voicethirdparty-171025', ext: 'aar')
     compile(name: 'constantplugin-171024', ext: 'aar')
 }

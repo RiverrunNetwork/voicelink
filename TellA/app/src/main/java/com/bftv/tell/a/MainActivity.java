@@ -58,10 +58,11 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
             @Override
             public void onClick(View view) {
                 Tell tell = new Tell();
-                tell.falg = "btn_function";
+                tell.flag = "btn_function";
                 HashMap<String, String> hashMap = new HashMap<String, String>();
-                hashMap.put("play", "播放功能");
+                hashMap.put("你好", "播放功能");
                 tell.mTellMaps = hashMap;
+                tell.className = "com.bftv.tell.a.MainActivity";
                 tell.pck = MainActivity.this.getPackageName();
                 TellManager.getInstance().addFunctionTell(App.sApp, tell);
             }
