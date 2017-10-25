@@ -23,7 +23,7 @@
 
 ## 集成
 
-如何集成大耳朵 目前大耳朵的sdk 采用的的jar包的形式 主要事为了兼容eclisep的用用 将如下jar一次集成到项目中<br>
+目前大耳朵的sdk 采用的的jar包的形式 主要事为了兼容eclipse的用户 将如下jar一次集成到项目中<br>
 链接 : https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/app/libs<br>
 
 ## 鉴权
