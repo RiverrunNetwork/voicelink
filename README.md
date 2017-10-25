@@ -135,12 +135,13 @@ TellManager.getInstance().tell(MainActivity.this,tell);
 - 第二步 在当前界面Activity onCreate() 的时候向大耳朵注册功能指令词
 ```java
 Tell tell = new Tell();
-tell.falg = "btn_function";
+tell.flag = "btn_function";
 HashMap<String, String> hashMap = new HashMap<String, String>();
-hashMap.put("play", "播放功能");
+hashMap.put("你好", "播放功能");
 tell.mTellMaps = hashMap;
+tell.className = "com.bftv.tell.a.MainActivity";
 tell.pck = MainActivity.this.getPackageName();
-TellManager.getInstance().addFunctionTell(MainActivity.this, tell);
+TellManager.getInstance().addFunctionTell(App.sApp, tell);
 ```
 - 第三步 在界面退出 onDestroy() 方法调用清空操作
 
