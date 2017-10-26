@@ -12,7 +12,6 @@
 - 界面跳转
 - 系统指令词
 - 快速指令词
-- 大耳朵应用和资源文件下载
 - 问题反馈
 - 合作伙伴
 
@@ -25,6 +24,8 @@
 
 目前大耳朵的sdk 采用的的jar包的形式 主要事为了兼容eclipse的用户 将如下jar一次集成到项目中<br>
 链接 : https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/app/libs<br>
+下载大耳朵<br>
+https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/com.bftv.fui.voicehelp_3.1.1.1413_VoiceHelp-release.apk<br>
 
 ## 鉴权
 
@@ -39,6 +40,64 @@
             android:authorities="com.bftv.voice.provider.you_package"
             android:exported="true" />
 ```
+## 特定指令词
+任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “聊天” 那么当用户命中“聊天”这个词语那么我们就将当前用户的指令词 分发给微信
+,注意该功能只是临时性的,当有新的指令词注册进来 之前的就会失效.<br>
+
+- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
+- 第二步 将你自定义的词组通过如下方式传给大耳朵
+ ```java
+Tell tell = new Tell();
+HashMap<String, String> hashMap = new HashMap<String, String>();
+hashMap.put("你好", "缓存");
+tell.cacheMap = hashMap;
+tell.pck = MainActivity.this.getPackageName();
+tell.tellType = TELL_CACHE;
+TellManager.getInstance().tell(App.sApp, tell);
+ ```
+- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
+
+# 功能指令词
+任何一个应用都可以向大耳朵注册功能指令词 功能指令词一般用来控制按钮点击 比如语音控制某一个button点击,这里举一个例子 比如某一个播放器的详情界面 他有一个收藏按钮 当用户在这个详情界面之上 并且喊 “收藏” 或者其他相关指令词 大耳朵就会将该指令词传给当前的app用来告诉当前app执行收藏按钮的点击操作<br>
+
+- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
+- 第二步 在当前界面Activity onCreate() 的时候向大耳朵注册功能指令词
+```java
+ Tell tell = new Tell();
+HashMap<String, String> hashMap = new HashMap<String, String>();
+hashMap.put("播放", "功能");
+tell.functionMap = hashMap;
+tell.pck = MainActivity.this.getPackageName();
+tell.tellType = TELL_FUNCTION;
+tell.className = MainActivity.this.getClass().getName();
+TellManager.getInstance().tell(App.sApp, tell);
+```
+- 第三步 在界面退出 onDestroy() 方法调用清空操作
+- 第四步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
+
+- 第五步 到了第四步已经能将大耳朵的命令传送到了service了，但是如何从service将命令给到当前的activity呢？这里大耳朵提供一套解决方案提供给第三方app<br>
+在当前的界面实现接口<br>
+```java
+MainActivity extends AppCompatActivity implements IVoiceObserver
+```
+在onCreate注册监听<br>
+```java
+DataChange.getInstance().addObserver(this);
+```
+在onDestroy()移除监听<br>
+```java
+DataChange.getInstance().deleteObserver(this);
+```
+最后在service上添加如下代码<br>
+```java
+@Override
+public void onInterception(InterceptionData interceptionData) throws RemoteException {
+       Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
+DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
+}
+```
+在当前界面就能收到消息了<br>
+
 
 ## 自定义语音界面
 
@@ -117,69 +176,9 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
  ```
 
 
-## 特定指令词
-任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “聊天” 那么当用户命中“聊天”这个词语那么我们就将当前用户的指令词 分发给微信
-,注意该功能只是临时性的,当有新的指令词注册进来 之前的就会失效.<br>
 
-- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
-- 第二步 将你自定义的词组通过如下方式传给大耳朵
- ```java
-TellManager.getInstance().send(Context context, Tell tell);
 
-Tell tell = new Tell();
-HashMap<String,String> hashMap = new HashMap<String, String>();
-hashMap.put("大耳朵会通过用户的话匹配这个map的key","匹配成功后会返回给你这个map的value");
-tell.mTellMaps = hashMap;
-tell.pck = "你项目的包名字";
-TellManager.getInstance().tell(MainActivity.this,tell);
- ```
-- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
-
-## 功能指令词
-任何一个应用都可以向大耳朵注册功能指令词 功能指令词一般用来控制按钮点击 比如语音控制某一个button点击,这里举一个例子 比如某一个播放器的详情界面 他有一个收藏按钮 当用户在这个详情界面之上 并且喊 “收藏” 或者其他相关指令词 大耳朵就会将该指令词传给当前的app用来告诉当前app执行收藏按钮的点击操作<br>
-
-- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
-- 第二步 在当前界面Activity onCreate() 的时候向大耳朵注册功能指令词
-```java
-Tell tell = new Tell();
-tell.flag = "btn_function";
-HashMap<String, String> hashMap = new HashMap<String, String>();
-hashMap.put("你好", "播放功能");
-tell.mTellMaps = hashMap;
-tell.className = "com.bftv.tell.a.MainActivity";
-tell.pck = MainActivity.this.getPackageName();
-TellManager.getInstance().addFunctionTell(App.sApp, tell);
-```
-- 第三步 在界面退出 onDestroy() 方法调用清空操作
-
-```java
-TellManager.getInstance().removeFunctionTell()
-```
-- 第四步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
-
-- 第五步 到了第四步已经能将大耳朵的命令传送到了service了，但是如何从service将命令给到当前的activity呢？这里大耳朵提供一套解决方案提供给第三方app<br>
-在当前的界面实现接口<br>
-```java
-MainActivity extends AppCompatActivity implements IVoiceObserver
-```
-在onCreate注册监听<br>
-```java
-DataChange.getInstance().addObserver(this);
-```
-在onDestroy()移除监听<br>
-```java
-DataChange.getInstance().deleteObserver(this);
-```
-最后在service上添加如下代码<br>
-```java
-@Override
-public void onInterception(final String nlpJson, final String flag, String pck, int age, int sex, int index) throws RemoteException {
-       Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
-DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
-}
-```
-在当前界面就能收到消息了<br>
-
+#
 ## 主动拉起大耳朵
 为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
 ```java
