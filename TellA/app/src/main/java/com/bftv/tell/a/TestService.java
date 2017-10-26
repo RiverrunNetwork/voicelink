@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.bftv.fui.thirdparty.IUserStatusNotice;
+import com.bftv.fui.thirdparty.InterceptionData;
 import com.bftv.fui.thirdparty.VoiceFeedback;
 import com.bftv.fui.thirdparty.notify.DataChange;
 
@@ -29,19 +30,25 @@ public class TestService extends Service {
     IUserStatusNotice.Stub stub = new IUserStatusNotice.Stub() {
 
         @Override
-        public void onShow(boolean b) throws RemoteException {
+        public void onInterception(InterceptionData interceptionData) throws RemoteException {
+            Log.e("Less", "onInterception:" + interceptionData.toString());
+            DataChange.getInstance().notifyDataChange(interceptionData.needValue);
+        }
+
+        @Override
+        public void onShow(boolean isFar) throws RemoteException {
             Log.e("Less", "用户开始说话");
         }
 
         @Override
         public void showUserText(final String userTxt, int age, int sex) throws RemoteException {
-            Log.e("Less", "用户说完话了 age-用户的年龄 sex－用户的性别"+userTxt);
+            Log.e("Less", "用户说完话了 age-用户的年龄 sex－用户的性别" + userTxt);
 
         }
 
         @Override
         public void setRecording(int vol) throws RemoteException {
-            Log.e("Less", "用户说话的声音大小"+vol);
+            Log.e("Less", "用户说话的声音大小" + vol);
         }
 
         @Override
@@ -59,11 +66,6 @@ public class TestService extends Service {
             Log.e("Less", "用户按的非常快");
         }
 
-        @Override
-        public void onInterception(final String nlpJson, final String flag, String pck, int age, int sex, int index) throws RemoteException {
-            Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
-            DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
-        }
     };
 }
 

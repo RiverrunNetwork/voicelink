@@ -1,12 +1,10 @@
 package com.bftv.tell.a;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bftv.fui.constantplugin.SequenceCode;
@@ -18,37 +16,50 @@ import com.bftv.fui.thirdparty.notify.IVoiceObserver;
 
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity implements IVoiceObserver{
+import static com.bftv.fui.constantplugin.TellCode.TELL_CACHE;
+import static com.bftv.fui.constantplugin.TellCode.TELL_CORRECT;
+import static com.bftv.fui.constantplugin.TellCode.TELL_FUNCTION;
+import static com.bftv.fui.constantplugin.TellCode.TELL_SYSTEM;
+
+public class MainActivity extends AppCompatActivity implements IVoiceObserver {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         DataChange.getInstance().addObserver(this);
 
-        final EditText et = (EditText) findViewById(R.id.user_txt);
-
-        //模拟用户说话点击确定
-        findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_all).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setAction("intent.action.bftv.test");
-                intent.putExtra("test", et.getText().toString());
-                sendBroadcast(intent);
+                Tell tell = new Tell();
+                tell.className = MainActivity.this.getClass().getName();
+                tell.pck = MainActivity.this.getPackageName();
+                HashMap<String, String> cacheMap = new HashMap<String, String>();
+                cacheMap.put("你好", "缓存");
+                tell.cacheMap = cacheMap;
+                HashMap<String, String> functionMap = new HashMap<String, String>();
+                functionMap.put("播放", "功能");
+                tell.functionMap = functionMap;
+                tell.sequencecode = SequenceCode.TYPE_PAGE;
+                HashMap<String, String> correntMap = new HashMap<String, String>();
+                correntMap.put("错误", "纠错");
+                tell.correctMap = correntMap;
+                tell.tellType = TELL_CACHE | TELL_FUNCTION | TELL_SYSTEM | TELL_CORRECT;
+                TellManager.getInstance().tell(App.sApp, tell);
             }
         });
 
         //特定指令词
-        findViewById(R.id.btn_tedingzhilingci).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_cache).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Tell tell = new Tell();
                 HashMap<String, String> hashMap = new HashMap<String, String>();
-                hashMap.put("你好", "我这里返回结果了 哈哈哈哈");
-                tell.mTellMaps = hashMap;
+                hashMap.put("你好", "缓存");
+                tell.cacheMap = hashMap;
                 tell.pck = MainActivity.this.getPackageName();
+                tell.tellType = TELL_CACHE;
                 TellManager.getInstance().tell(App.sApp, tell);
             }
         });
@@ -58,36 +69,59 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
             @Override
             public void onClick(View view) {
                 Tell tell = new Tell();
-                tell.flag = "btn_function";
                 HashMap<String, String> hashMap = new HashMap<String, String>();
-                hashMap.put("你好", "播放功能");
-                tell.mTellMaps = hashMap;
-                tell.className = "com.bftv.tell.a.MainActivity";
+                hashMap.put("播放", "功能");
+                tell.functionMap = hashMap;
                 tell.pck = MainActivity.this.getPackageName();
-                TellManager.getInstance().addFunctionTell(App.sApp, tell);
+                tell.tellType = TELL_FUNCTION;
+                tell.className = MainActivity.this.getClass().getName();
+                TellManager.getInstance().tell(App.sApp, tell);
             }
         });
+
+        //获取系统功能
+        findViewById(R.id.btn_system_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Tell tell = new Tell();
+                tell.pck = MainActivity.this.getPackageName();
+                tell.tellType = TELL_SYSTEM;
+                tell.sequencecode = SequenceCode.TYPE_PAGE;
+                tell.className = MainActivity.this.getClass().getName();
+                TellManager.getInstance().tell(App.sApp, tell);
+            }
+        });
+
+        //纠错
+        findViewById(R.id.btn_corrent).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Tell tell = new Tell();
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("错误", "纠错");
+                tell.correctMap = hashMap;
+                tell.pck = MainActivity.this.getPackageName();
+                tell.tellType = TELL_CORRECT;
+                tell.className = MainActivity.this.getClass().getName();
+                TellManager.getInstance().tell(App.sApp, tell);
+            }
+        });
+
+
         //自定义语音动画并且获取asr
         findViewById(R.id.btn_custom).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TellManager.getInstance().needAsr(App.sApp,MainActivity.this.getPackageName());
+                TellManager.getInstance().needAsr(App.sApp, MainActivity.this.getPackageName());
             }
         });
-       //获取系统功能
-        findViewById(R.id.btn_system_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TellManager.getInstance().needSystemFunction(App.sApp,"com.bftv.tell.a","com.bftv.tell.a.MainActivity", SequenceCode.TYPE_NUM);
-            }
-        });
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         DataChange.getInstance().deleteObserver(this);
-        TellManager.getInstance().removeFunctionTell(App.sApp,MainActivity.this.getPackageName());
     }
 
     @Override
@@ -95,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver{
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MainActivity.this,"TestApp-MainActivity接到了:"+str,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "TestApp-MainActivity接到了:" + str, Toast.LENGTH_SHORT).show();
             }
         });
         return null;

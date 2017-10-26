@@ -7,24 +7,15 @@
     android:orientation="vertical"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-
-        <EditText
-            android:id="@+id/user_txt"
-            android:layout_width="300dp"
-            android:layout_height="match_parent" />
-        <Button
-            android:id="@+id/ok"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="确定"
-            />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="all in"
+        />
 
     <Button
-        android:id="@+id/btn_tedingzhilingci"
+        android:id="@+id/btn_cache"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="特定指令词"
@@ -38,16 +29,25 @@
         />
 
     <Button
+        android:id="@+id/btn_system_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取系统指令"
+        />
+
+    <Button
+        android:id="@+id/btn_corrent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="纠错"
+        />
+
+    <Button
         android:id="@+id/btn_custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="自定义语音动画并获取asr"
         />
 
-    <Button
-        android:id="@+id/btn_system_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="获取系统指令"
-        />
+
 </LinearLayout>

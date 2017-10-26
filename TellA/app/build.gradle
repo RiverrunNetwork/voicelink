@@ -34,7 +34,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile files('libs/authentication-171025.jar')
-    compile files('libs/constantplugin-171025.jar')
-    compile files('libs/thirdtell-171025.jar')
-    compile files('libs/voicethirdparty-171025.jar')
+    compile files('libs/thirdtell-171026.jar')
+    compile files('libs/constantplugin-171026.jar')
+    compile files('libs/voicethirdparty-171026.jar')
 }
