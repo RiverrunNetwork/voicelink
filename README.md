@@ -57,7 +57,7 @@ TellManager.getInstance().tell(App.sApp, tell);
  ```
 - 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
 
-# 功能指令词
+## 功能指令词
 任何一个应用都可以向大耳朵注册功能指令词 功能指令词一般用来控制按钮点击 比如语音控制某一个button点击,这里举一个例子 比如某一个播放器的详情界面 他有一个收藏按钮 当用户在这个详情界面之上 并且喊 “收藏” 或者其他相关指令词 大耳朵就会将该指令词传给当前的app用来告诉当前app执行收藏按钮的点击操作<br>
 
 - 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
@@ -72,10 +72,9 @@ tell.tellType = TELL_FUNCTION;
 tell.className = MainActivity.this.getClass().getName();
 TellManager.getInstance().tell(App.sApp, tell);
 ```
-- 第三步 在界面退出 onDestroy() 方法调用清空操作
-- 第四步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
+- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
 
-- 第五步 到了第四步已经能将大耳朵的命令传送到了service了，但是如何从service将命令给到当前的activity呢？这里大耳朵提供一套解决方案提供给第三方app<br>
+- 第四步 到了第四步已经能将大耳朵的命令传送到了service了，但是如何从service将命令给到当前的activity呢？这里大耳朵提供一套解决方案提供给第三方app<br>
 在当前的界面实现接口<br>
 ```java
 MainActivity extends AppCompatActivity implements IVoiceObserver
