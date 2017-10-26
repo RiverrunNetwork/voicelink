@@ -5,11 +5,11 @@
 - 简介
 - 集成
 - 鉴权
-- 自定义语音界面
 - 特定指令词
 - 功能指令词
 - 主动拉起大耳朵
 - 界面跳转
+- 自定义语音界面
 - 系统指令词
 - 快速指令词
 - 问题反馈
@@ -120,7 +120,12 @@ className 当前界面的类名字 <br>
 sequence  需要的功能 SequenceCode.TYPE_NUM(支持第x个) SequenceCode.TYPE_PAGE(支持页数) 如果想都支持用“｜”间隔就好 <br>
 例子如下<br>
 ```java
-TellManager.getInstance().needSystemFunction(App.sApp,"com.bftv.tell.a","com.bftv.tell.a.MainActivity", SequenceCode.TYPE_PAGE);
+Tell tell = new Tell();
+tell.pck = MainActivity.this.getPackageName();
+tell.tellType = TELL_SYSTEM;
+tell.sequencecode = SequenceCode.TYPE_PAGE;
+tell.className = MainActivity.this.getClass().getName();
+TellManager.getInstance().tell(App.sApp, tell);
 ```
 
 ## 快速指令词
@@ -191,8 +196,7 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
             Log.e("Less", "用户按的非常快");
         }
 
-        @Override
-        public void onInterception(final String nlpJson, final String flag, String pck, int age, int sex, int index) throws RemoteException {
+        public void onInterception(InterceptionData interceptionData) throws RemoteException {
             Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
             DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
         }
