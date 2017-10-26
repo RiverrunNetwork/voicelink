@@ -104,6 +104,8 @@ DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
 ```
 在当前界面就能收到消息了<br>
 
+- 第五步 关于tell.functionMap 的解释 详见 特定指令词第四步
+
 ## 主动拉起大耳朵
 为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
 ```java
@@ -133,7 +135,6 @@ tell.sequencecode = SequenceCode.TYPE_PAGE;
 tell.className = MainActivity.this.getClass().getName();
 TellManager.getInstance().tell(App.sApp, tell);
 ```
-
 ## 快速指令词
 大耳朵强大的能力在这里又一次展现，在这里第三方app无需改动任何代码 就能和大耳朵配合 第三方需要把某一个按钮的相应的信息配置在大耳朵审核后台，审核通过后，
 大耳朵就能控制该按钮了，别问我怎么做的，只管欣赏大耳朵的魔力就好
