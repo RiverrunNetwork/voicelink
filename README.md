@@ -25,7 +25,7 @@
 目前大耳朵的sdk 采用的的jar包的形式 主要事为了兼容eclipse的用户 将如下jar一次集成到项目中<br>
 链接 : https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/app/libs<br>
 下载大耳朵<br>
-https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/com.bftv.fui.voicehelp_3.1.1.1413_VoiceHelp-release.apk<br>
+https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/apk<br>
 
 ## 鉴权
 
