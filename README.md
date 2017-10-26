@@ -98,6 +98,35 @@ DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
 ```
 在当前界面就能收到消息了<br>
 
+## 主动拉起大耳朵
+为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
+```java
+ TellManager.getInstance().farPull(Context context, you_app_pck);
+```
+
+## 界面跳转
+大耳朵能跳转任何Acitivty 启动任何广播 启动任何广播 发送特定的系统事件，这些都功能都是对第三方开放的，第三方的app需要按照对应的规则配置到暴风大耳朵审核后台，审核通过后即可上线<br>
+- 界面跳转配置规则
+https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md
+- 审核后台
+敬请期待(服务端的小伙伴在加紧开发)
+
+## 系统指令词
+任何第三方都可以使用大耳朵已经成熟的指令词模块 比如第x集 快进3分 ...<br>
+- 需要调用needSystemFunction的方法来通知大耳朵当前界面支持的功能 <br>
+needSystemFunction(Application context, String pck, String className, int sequence)<br>
+pck       当前应用的包名字 <br>
+className 当前界面的类名字 <br>
+sequence  需要的功能 SequenceCode.TYPE_NUM(支持第x个) SequenceCode.TYPE_PAGE(支持页数) 如果想都支持用“｜”间隔就好 <br>
+例子如下<br>
+```java
+TellManager.getInstance().needSystemFunction(App.sApp,"com.bftv.tell.a","com.bftv.tell.a.MainActivity", SequenceCode.TYPE_PAGE);
+```
+
+## 快速指令词
+大耳朵强大的能力在这里又一次展现，在这里第三方app无需改动任何代码 就能和大耳朵配合 第三方需要把某一个按钮的相应的信息配置在大耳朵审核后台，审核通过后，
+大耳朵就能控制该按钮了，别问我怎么做的，只管欣赏大耳朵的魔力就好
+- 敬请期待
 
 ## 自定义语音界面
 
@@ -175,42 +204,6 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
  TellManager.getInstance().clearAsr(Context context, String pck)
  ```
 
-
-
-
-#
-## 主动拉起大耳朵
-为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
-```java
- TellManager.getInstance().farPull(Context context, you_app_pck);
-```
-
-## 界面跳转
-大耳朵能跳转任何Acitivty 启动任何广播 启动任何广播 发送特定的系统事件，这些都功能都是对第三方开放的，第三方的app需要按照对应的规则配置到暴风大耳朵审核后台，审核通过后即可上线<br>
-- 界面跳转配置规则
-https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md
-- 审核后台
-敬请期待(服务端的小伙伴在加紧开发)
-
-## 系统指令词
-任何第三方都可以使用大耳朵已经成熟的指令词模块 比如第x集 快进3分 ...<br>
-- 需要调用needSystemFunction的方法来通知大耳朵当前界面支持的功能 <br>
-needSystemFunction(Application context, String pck, String className, int sequence)<br>
-pck       当前应用的包名字 <br>
-className 当前界面的类名字 <br>
-sequence  需要的功能 SequenceCode.TYPE_NUM(支持第x个) SequenceCode.TYPE_PAGE(支持页数) 如果想都支持用“｜”间隔就好 <br>
-例子如下<br>
-```java
-TellManager.getInstance().needSystemFunction(App.sApp,"com.bftv.tell.a","com.bftv.tell.a.MainActivity", SequenceCode.TYPE_PAGE);
-```
-
-## 快速指令词
-大耳朵强大的能力在这里又一次展现，在这里第三方app无需改动任何代码 就能和大耳朵配合 第三方需要把某一个按钮的相应的信息配置在大耳朵审核后台，审核通过后，
-大耳朵就能控制该按钮了，别问我怎么做的，只管欣赏大耳朵的魔力就好
-- 敬请期待
-
-## 大耳朵应用和资源文件下载
-- 链接:http://pan.baidu.com/s/1b5nKQU  密码需要联系 yulingyan@bftv.com
 
 ## 问题反馈
 - 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题
