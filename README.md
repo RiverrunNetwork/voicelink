@@ -205,10 +205,45 @@ TellManager.getInstance().needAsr(Context context, String you_app_pck);
 
         public void onInterception(InterceptionData interceptionData) throws RemoteException {
             Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
-            DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
+            DataChange.getInstance().notifyDataChange();
         }
     };
 }
+
+public class InterceptionData implements Parcelable{
+
+    //用户说话的年龄
+    public int age;
+
+    //用户说话的性别
+    public int sex;
+
+    //坐标
+    public int index;
+
+    //当前应用的包名
+    public String pck;
+
+    //当前界面的className
+    public String className;
+
+    //Tell类型
+    public int tellType;
+
+    //预留给第三方自定义字段
+    public String flag;
+
+    //暂时没想好预留1
+    public String temp1;
+
+    //暂时没想好预留2
+    public String temp2;
+
+    //这个很重要,是你放到Map里面的value值
+    public String needValue;
+
+    //系统指令类型
+    public String nlpType;
  ```
  - 第四步 退出界面 或者不用了一定要调用如下方法 否则会导致大耳朵异常
  ```java
