@@ -98,8 +98,7 @@ DataChange.getInstance().deleteObserver(this);
 ```java
 @Override
 public void onInterception(InterceptionData interceptionData) throws RemoteException {
-       Log.e("Less", "拦截处理=nlpJson第三方自定义的value值｜flag第三方自定义的标签|pck包名字|age用户说话的年龄|sex用户说话的性别|index第几个");
-DataChange.getInstance().notifyDataChange(nlpJson+"|+"+flag);
+DataChange.getInstance().notifyDataChange();
 }
 ```
 在当前界面就能收到消息了<br>
