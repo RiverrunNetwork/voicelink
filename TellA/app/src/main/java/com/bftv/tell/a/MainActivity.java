@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.bftv.fui.constantplugin.SequenceCode;
 import com.bftv.fui.tell.Tell;
 import com.bftv.fui.tell.TellManager;
+import com.bftv.fui.thirdparty.InterceptionData;
 import com.bftv.fui.thirdparty.VoiceFeedback;
 import com.bftv.fui.thirdparty.notify.DataChange;
 import com.bftv.fui.thirdparty.notify.IVoiceObserver;
@@ -125,11 +126,11 @@ public class MainActivity extends AppCompatActivity implements IVoiceObserver {
     }
 
     @Override
-    public VoiceFeedback update(final String str) {
+    public VoiceFeedback update(final InterceptionData interceptionData) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MainActivity.this, "TestApp-MainActivity接到了:" + str, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "TestApp-MainActivity接到了:" + interceptionData.toString(), Toast.LENGTH_SHORT).show();
             }
         });
         return null;

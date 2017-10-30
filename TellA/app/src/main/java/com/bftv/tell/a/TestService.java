@@ -32,7 +32,7 @@ public class TestService extends Service {
         @Override
         public void onInterception(InterceptionData interceptionData) throws RemoteException {
             Log.e("Less", "onInterception:" + interceptionData.toString());
-            DataChange.getInstance().notifyDataChange(interceptionData.needValue);
+            DataChange.getInstance().notifyDataChange(interceptionData);
         }
 
         @Override
