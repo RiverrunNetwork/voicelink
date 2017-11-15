@@ -44,20 +44,7 @@ https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/apk<br>
 任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “聊天” 那么当用户命中“聊天”这个词语那么我们就将当前用户的指令词 分发给微信
 ,注意该功能只是临时性的,当有新的指令词注册进来 之前的就会失效.当你通过该接口注册了 应用指令词 那么你的整个应用都是生效的<br>
 
-- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
-- 第二步 将你自定义的词组通过如下方式传给大耳朵
- ```java
-Tell tell = new Tell();
-HashMap<String, String> hashMap = new HashMap<String, String>();
-hashMap.put("你好", "缓存");
-tell.cacheMap = hashMap;
-tell.pck = MainActivity.this.getPackageName();
-tell.tellType = TELL_CACHE;
-TellManager.getInstance().tell(App.sApp, tell);
- ```
-- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
 
-- 第四步 解释Key和Value的作用 hashMap.put("你好", "缓存");
 ```java
 Key的作用是 匹配用户说的话，比如 用户说 "你好" 然后你注册了“你好” 比如你的代码如下
 hashMap.put("你好", "缓存");
