@@ -94,4 +94,5 @@ public class InterceptionData implements Parcelable{
     public String nlpType;
 ```
 
+其中 public String needValue; 就是 你放到map里面的value <br>
 
