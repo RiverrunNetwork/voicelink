@@ -32,7 +32,7 @@ public class TestService extends Service {
         public void onInterception(InterceptionData interceptionData) throws RemoteException {
             Log.e("Less", "onInterception:" + interceptionData.toString());
             DataChange.getInstance().notifyDataChange(interceptionData);
-   }
+        }
 }
 
        <service
@@ -94,5 +94,34 @@ public class InterceptionData implements Parcelable{
     public String nlpType;
 ```
 
-其中 public String needValue; 就是 你放到map里面的value <br>
+其中 "needValue" 就是 你放到map里面的value <br>
+
+- 第四步 是不是大家还有一个疑问 那就是我在Service 里面获取到了InterceptionData 如何传到 需要的Activity 里面
+```java
+       @Override
+        public void onInterception(InterceptionData interceptionData) throws RemoteException {
+            Log.e("Less", "onInterception:" + interceptionData.toString());
+            DataChange.getInstance().notifyDataChange(interceptionData);
+        }
+        
+        class DemoView : Activity(), IVoiceObserver {...}
+        
+        override fun onResume() {
+        super.onResume()
+        DataChange.getInstance().addObserver(this)
+        }
+
+        override fun onPause() {
+        super.onPause()
+        DataChange.getInstance().deleteObserver(this)
+        }
+        
+        override fun update(interceptionData: InterceptionData?): VoiceFeedback? {
+        Handler(Looper.getMainLooper()).post { Toast.makeText(this@DemoView, "接到了:" + interceptionData.toString(),                   Toast.LENGTH_SHORT).show() }
+        return null
+        }
+```
+
+按照上面的步骤写代码  会将InterceptionData 传递到update方法中<br>
+
 
