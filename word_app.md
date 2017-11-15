@@ -45,5 +45,53 @@ public class TestService extends Service {
             </intent-filter>
         </service>
 ```
+关于 InterceptionData 大家是不是又是一脸蒙蔽 别急
+```java
+public class InterceptionData implements Parcelable{
+
+    public static final String PAGE = "page";
+    public static final String DEFAULT = "default";
+    public static final String PRE = "pre";
+    public static final String NEXT = "next";
+    public static final String LOOK = "look";
+    public static final String OPEN = "open";
+    public static final String PLAY = "play";
+    public static final String BUY = "buy";
+    public static final String COLLECT = "collect";
+    public static final String CART = "cart";
+
+    //用户说话的年龄
+    public int age;
+
+    //用户说话的性别
+    public int sex;
+
+    //坐标
+    public int index;
+
+    //当前应用的包名
+    public String pck;
+
+    //当前界面的className
+    public String className;
+
+    //Tell类型
+    public int tellType;
+
+    //预留给第三方自定义字段
+    public String flag;
+
+    //暂时没想好预留1
+    public String temp1;
+
+    //暂时没想好预留2
+    public String temp2;
+
+    //这个很重要,是你放到Map里面的value值
+    public String needValue;
+
+    //系统指令类型
+    public String nlpType;
+```
 
 
