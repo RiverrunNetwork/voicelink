@@ -5,7 +5,7 @@
 - 简介
 - 集成
 - 鉴权
-- 特定指令词
+- 应用指令词
 - 功能指令词
 - 主动拉起大耳朵
 - 界面跳转
@@ -40,7 +40,7 @@ https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/apk<br>
             android:authorities="com.bftv.voice.provider.you_package"
             android:exported="true" />
 ```
-## 特定指令词
+## 应用指令词
 任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “聊天” 那么当用户命中“聊天”这个词语那么我们就将当前用户的指令词 分发给微信
 ,注意该功能只是临时性的,当有新的指令词注册进来 之前的就会失效.<br>
 
