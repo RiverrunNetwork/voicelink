@@ -13,7 +13,6 @@
             tell.tellType = TELL_APP_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
  ```
-- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
-
-- 第四步 解释Key和Value的作用 hashMap.put("你好", "缓存");
+ 其中 “搜索” 会和用户说的话进行模糊匹配 如果用户说“xx搜索xx” 依然会命中，如果在“搜索”前面添加“!” 例如"!搜索" 则会进行精确匹配，
+ 如果命中那么 大耳朵会返回给你 "searchTag" 这块你可以写任何值 这就需要小伙伴的发挥了！<br>
 
