@@ -15,7 +15,18 @@
 ```
 其中 “播放” 会和用户说的话进行模糊匹配 如果用户说“xx播放xx” 依然会命中，如果在“播放”前面添加“!” 例如"!播放" 则会进行精确匹配，
 如果命中那么 大耳朵会返回给你 "playTag" 这块你可以写任何值 这就需要小伙伴的发挥了！<br>
-- 第三步 当大耳朵命中你注册的指令词之后如何回传给你呢？ 这块需要你写一个 应用级别的Server去接收
+- 第三步 那如果我想追加指令词？ 比如我一个界面需要多个地方调用界面指令词
+```java
+            val tell = Tell()
+            val hashMap = HashMap<String,String>()
+            hashMap.put("收藏","collectTag")
+            tell.viewCacheMap = hashMap
+            tell.pck = packageName
+            tell.isAppend = true
+            tell.tellType = TELL_VIEW_CACHE
+            TellManager.getInstance().tell(App.sApp, tell)
+```
+- 第四步 当大耳朵命中你注册的指令词之后如何回传给你呢？ 这块需要你写一个 应用级别的Server去接收
 ```java
 public class TestService extends Service {
 
@@ -95,7 +106,7 @@ public class InterceptionData implements Parcelable{
 
 其中 "needValue" 就是 你放到map里面的value <br>
 
-- 第四步 是不是大家还有一个疑问 那就是我在Service 里面获取到了InterceptionData 如何传到 需要的Activity 里面
+- 第五步 是不是大家还有一个疑问 那就是我在Service 里面获取到了InterceptionData 如何传到 需要的Activity 里面
 ```java
        @Override
         public void onInterception(InterceptionData interceptionData) throws RemoteException {
