@@ -8,11 +8,10 @@
     >
 
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/btn_app"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点击我像大耳朵注册自定义指令词"
+        android:text="应用指令词"
         />
-
 
 </LinearLayout>

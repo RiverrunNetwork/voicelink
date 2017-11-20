@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -34,7 +36,9 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile files('libs/authentication-171025.jar')
-    compile files('libs/thirdtell-171026.jar')
-    compile files('libs/constantplugin-171026.jar')
     compile files('libs/voicethirdparty-171030.jar')
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile files('libs/constantplugin-171115.jar')
+    compile files('libs/thirdtell-171115.jar')
 }
