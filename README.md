@@ -39,7 +39,7 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/word_system.md <br>
 ## 主动拉起大耳朵
 为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
 ```java
- TellManager.getInstance().farPull(Context context, you_app_pck);
+ TellManager.getInstance().farPull(App.sApp,packageName)
 ```
 ## 问题反馈
 - 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题
