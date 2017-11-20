@@ -7,10 +7,10 @@
 - 鉴权
 - 应用指令词
 - 界面指令词
+- 系统指令词
 - 主动拉起大耳朵
 - 界面跳转
 - 自定义语音界面
-- 系统指令词
 - 快速指令词
 - 问题反馈
 - 合作伙伴
@@ -46,19 +46,6 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/word_app.md<br>
 ## 界面指令词
 任何一个界面都可以大耳朵注册特定的指令词语  比如微信的和好友聊天界面 向大耳朵注册了指令词 “打开软键盘” 那么当用户命中了 “打开软键盘” 我们就将该用户提前注册好的 分发给朋友圈界面.当你通过该接口注册了 界面指令词 那么你当前界面就会生效<br>
 https://github.com/RiverrunNetwork/voicelink/blob/master/word_view.md<br>
-## 主动拉起大耳朵
-为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
-```java
- TellManager.getInstance().farPull(Context context, you_app_pck);
-```
-
-## 界面跳转
-大耳朵能跳转任何Acitivty 启动任何广播 启动任何广播 发送特定的系统事件，这些都功能都是对第三方开放的，第三方的app需要按照对应的规则配置到暴风大耳朵审核后台，审核通过后即可上线<br>
-- 界面跳转配置规则
-https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md
-- 审核后台
-敬请期待(服务端的小伙伴在加紧开发)
-
 ## 系统指令词
 任何第三方都可以使用大耳朵已经成熟的指令词模块 比如第x集 快进3分 ...<br>
 pck       当前应用的包名字 <br>
@@ -73,6 +60,18 @@ tell.sequencecode = SequenceCode.TYPE_PAGE;
 tell.className = MainActivity.this.getClass().getName();
 TellManager.getInstance().tell(App.sApp, tell);
 ```
+## 主动拉起大耳朵
+为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
+```java
+ TellManager.getInstance().farPull(Context context, you_app_pck);
+```
+
+## 界面跳转
+大耳朵能跳转任何Acitivty 启动任何广播 启动任何广播 发送特定的系统事件，这些都功能都是对第三方开放的，第三方的app需要按照对应的规则配置到暴风大耳朵审核后台，审核通过后即可上线<br>
+- 界面跳转配置规则
+https://github.com/RiverrunNetwork/voicelink/blob/master/intent.md
+- 审核后台
+敬请期待(服务端的小伙伴在加紧开发)
 ## 快速指令词
 大耳朵强大的能力在这里又一次展现，在这里第三方app无需改动任何代码 就能和大耳朵配合 第三方需要把某一个按钮的相应的信息配置在大耳朵审核后台，审核通过后，
 大耳朵就能控制该按钮了，别问我怎么做的，只管欣赏大耳朵的魔力就好
