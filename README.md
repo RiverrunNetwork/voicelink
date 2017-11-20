@@ -43,47 +43,8 @@ https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/apk<br>
 ## 应用指令词
 任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “打开朋友圈” 那么当用户命中“打开朋友圈”这个词语那么我们就将当前用户的指令词 分发给微信.当你通过该接口注册了 应用指令词 那么你的整个应用都是生效的<br>
 https://github.com/RiverrunNetwork/voicelink/blob/master/word_app.md<br>
-## 功能指令词
-任何一个应用都可以向大耳朵注册功能指令词 功能指令词一般用来控制按钮点击 比如语音控制某一个button点击,这里举一个例子 比如某一个播放器的详情界面 他有一个收藏按钮 当用户在这个详情界面之上 并且喊 “收藏” 或者其他相关指令词 大耳朵就会将该指令词传给当前的app用来告诉当前app执行收藏按钮的点击操作<br>
-
-- 第一步 需要鉴权 具体步骤参考 “鉴权” 如果不鉴权 将不能和大耳朵进行通信
-- 第二步 在当前界面Activity onCreate() 的时候向大耳朵注册功能指令词
-```java
- Tell tell = new Tell();
-HashMap<String, String> hashMap = new HashMap<String, String>();
-hashMap.put("播放", "功能");
-tell.functionMap = hashMap;
-tell.pck = MainActivity.this.getPackageName();
-tell.tellType = TELL_FUNCTION;
-tell.className = MainActivity.this.getClass().getName();
-TellManager.getInstance().tell(App.sApp, tell);
-```
-- 第三步 注册service 步骤和 “自定义语音界面 第二步” 步骤相同 当用户命中我们会回调onInterception(...) 方法
-
-- 第四步 到了第四步已经能将大耳朵的命令传送到了service了，但是如何从service将命令给到当前的activity呢？这里大耳朵提供一套解决方案提供给第三方app<br>
-在当前的界面实现接口<br>
-```java
-MainActivity extends AppCompatActivity implements IVoiceObserver
-```
-在onCreate注册监听<br>
-```java
-DataChange.getInstance().addObserver(this);
-```
-在onDestroy()移除监听<br>
-```java
-DataChange.getInstance().deleteObserver(this);
-```
-最后在service上添加如下代码<br>
-```java
-@Override
-public void onInterception(InterceptionData interceptionData) throws RemoteException {
-DataChange.getInstance().notifyDataChange();
-}
-```
-在当前界面就能收到消息了<br>
-
-- 第五步 关于tell.functionMap 的解释 详见 特定指令词第四步
-
+## 界面指令词
+任何一个界面都可以大耳朵注册特定的指令词语  比如微信的和好友聊天界面 向大耳朵注册了指令词 “打开软键盘” 那么当用户命中了 “打开软键盘” 我们就将该用户提前注册好的 分发给朋友圈界面.当你通过该接口注册了 界面指令词 那么你当前界面就会生效<br>
 ## 主动拉起大耳朵
 为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
 ```java
