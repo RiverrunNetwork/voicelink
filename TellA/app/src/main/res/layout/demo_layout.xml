@@ -13,5 +13,37 @@
         android:layout_height="wrap_content"
         android:text="应用指令词"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/btn_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="界面指令词"
+            />
 
+        <Button
+            android:id="@+id/btn_view_append"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="追加界面指令词"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_system_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="系统指令词"
+        />
+
+    <Button
+        android:id="@+id/btn_pull_far"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拉起语音"
+        />
 </LinearLayout>
