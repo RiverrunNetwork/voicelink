@@ -48,18 +48,7 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/word_app.md<br>
 https://github.com/RiverrunNetwork/voicelink/blob/master/word_view.md<br>
 ## 系统指令词
 任何第三方都可以使用大耳朵已经成熟的指令词模块 比如第x集 快进3分 ...<br>
-pck       当前应用的包名字 <br>
-className 当前界面的类名字 <br>
-sequence  需要的功能 SequenceCode.TYPE_NUM(支持第x个) SequenceCode.TYPE_PAGE(支持页数) 如果想都支持用“｜”间隔就好 <br>
-例子如下<br>
-```java
-Tell tell = new Tell();
-tell.pck = MainActivity.this.getPackageName();
-tell.tellType = TELL_SYSTEM;
-tell.sequencecode = SequenceCode.TYPE_PAGE;
-tell.className = MainActivity.this.getClass().getName();
-TellManager.getInstance().tell(App.sApp, tell);
-```
+https://github.com/RiverrunNetwork/voicelink/blob/master/word_system.md <br>
 ## 主动拉起大耳朵
 为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
 ```java
