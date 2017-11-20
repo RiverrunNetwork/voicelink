@@ -45,6 +45,7 @@ https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/apk<br>
 https://github.com/RiverrunNetwork/voicelink/blob/master/word_app.md<br>
 ## 界面指令词
 任何一个界面都可以大耳朵注册特定的指令词语  比如微信的和好友聊天界面 向大耳朵注册了指令词 “打开软键盘” 那么当用户命中了 “打开软键盘” 我们就将该用户提前注册好的 分发给朋友圈界面.当你通过该接口注册了 界面指令词 那么你当前界面就会生效<br>
+https://github.com/RiverrunNetwork/voicelink/blob/master/word_view.md<br>
 ## 主动拉起大耳朵
 为了省去 喊暴风大耳朵的麻烦操作 第三方可以在合适的场景下 直接启动语音 进行说话<br>
 ```java
