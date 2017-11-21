@@ -41,6 +41,11 @@ https://github.com/RiverrunNetwork/voicelink/blob/master/word_system.md <br>
 ```java
  TellManager.getInstance().farPull(App.sApp,packageName)
 ```
+## 消息控制大耳朵
+任何第三方应用都能向大耳朵发送消息 例如 你可以发送 “刘德华的电影” 那么 大耳朵会对该消息进行 分词-理解－查找数据－展示,当然您只需要传递一个消息就可以了，剩下的工作交给大耳朵就好
+```java
+TellManager.getInstance().sendAsr(App.sApp,packageName,"下一页")
+```
 ## 问题反馈
 - 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题<br>
 <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/%E6%9A%B4%E9%A3%8E%E8%AF%AD%E9%9F%B3%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png" width="300" height="300" /> 
