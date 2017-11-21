@@ -1,5 +1,4 @@
 package com.bftv.tell.a
-
 import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
@@ -79,6 +78,11 @@ class DemoView : Activity(), IVoiceObserver {
         btn_pull_far.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().farPull(App.sApp,packageName)
         })
+
+        //发送ASR
+        btn_send_asr.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().sendAsr(App.sApp,packageName,"下一页")
+        })
     }
 
     override fun onResume() {
@@ -90,4 +94,5 @@ class DemoView : Activity(), IVoiceObserver {
         super.onPause()
         DataChange.getInstance().deleteObserver(this)
     }
+
 }

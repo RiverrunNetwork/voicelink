@@ -40,5 +40,5 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile files('libs/constantplugin-171115.jar')
-    compile files('libs/thirdtell-171120.jar')
+    compile files('libs/thirdtell-171121.jar')
 }
