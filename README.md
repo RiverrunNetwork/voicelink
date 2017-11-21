@@ -52,6 +52,7 @@ TellManager.getInstance().sendAsr(App.sApp,packageName,"下一页")
 
 ## 合作伙伴
 <img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" /> 
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/xiaobanlong.png" width="70" height="70" /> 
 
 
  
