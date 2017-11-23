@@ -9,12 +9,8 @@
 
 ## [集成](https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/app/libs)<br>
 目前大耳朵的sdk 采用的的jar包的形式 主要是为了兼容eclipse的用户 将如下jar一次集成到项目中<br>
-
-下载大耳朵<br>
-https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/apk<br>
-
+## [下载大耳朵](https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/apk)<br>
 ## 鉴权
-
 任何第三方应用和大耳朵进行语音交互都需要和大耳朵进行语音鉴权<br>
 
 - 如何鉴权 ？<br>
