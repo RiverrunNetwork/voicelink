@@ -10,7 +10,7 @@
 ## 集成
 
 目前大耳朵的sdk 采用的的jar包的形式 主要是为了兼容eclipse的用户 将如下jar一次集成到项目中<br>
-### 链接(https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/app/libs)<br>
+### [链接](https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/app/libs)<br>
 下载大耳朵<br>
 https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/apk<br>
 
