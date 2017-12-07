@@ -7,7 +7,7 @@ android {
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.bftv.tell.a"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -25,6 +25,10 @@ repositories {
     flatDir {
         dirs 'libs'
     }
+    maven {
+        url 'https://maven.google.com/'
+        name 'Google'
+    }
 }
 
 dependencies {
@@ -35,10 +39,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile files('libs/authentication-171025.jar')
-    compile files('libs/voicethirdparty-171030.jar')
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile files('libs/constantplugin-171115.jar')
-    compile files('libs/thirdtell-171121.jar')
+    compile files('libs/thirdtell-171207.jar')
+    compile files('libs/voicethirdparty-171206.jar')
+    compile files('libs/authentication-171206.jar')
+    compile files('libs/constantplugin-171207.jar')
+    compile(name: 'voicehelpexpandview-171207', ext: 'aar')
+
+    compile 'com.android.support:recyclerview-v7:26.1.0'
 }

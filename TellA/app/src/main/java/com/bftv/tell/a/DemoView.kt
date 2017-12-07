@@ -3,8 +3,11 @@ import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.bftv.fui.constantplugin.Constant
+import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.SequenceCode
 import com.bftv.fui.constantplugin.TellCode.*
 import com.bftv.fui.tell.Tell
@@ -13,8 +16,9 @@ import com.bftv.fui.thirdparty.InterceptionData
 import com.bftv.fui.thirdparty.VoiceFeedback
 import com.bftv.fui.thirdparty.notify.DataChange
 import com.bftv.fui.thirdparty.notify.IVoiceObserver
+import com.bftv.fui.voicehelpexpandview.AIFuncViewListener
+import com.bftv.fui.voicehelpexpandview.util.Tip
 import kotlinx.android.synthetic.main.demo_layout.*
-import java.util.HashMap
 
 /**
  * Author by Less on 17/11/15.
@@ -33,8 +37,9 @@ class DemoView : Activity(), IVoiceObserver {
         btn_app.setOnClickListener(View.OnClickListener {
             val tell = Tell()
             val hashMap = HashMap<String, String>()
-            hashMap.put("!搜索", "searchTag")
+            hashMap.put("搜索", "searchTag")
             tell.appCacheMap = hashMap
+            tell.functionSupportType = FunctionCode.PLAY
             tell.pck = packageName
             tell.tellType = TELL_APP_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
@@ -47,6 +52,7 @@ class DemoView : Activity(), IVoiceObserver {
             hashMap.put("播放","playTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
+            tell.functionSupportType = FunctionCode.PLAY
             tell.className = this@DemoView.javaClass.name
             tell.tellType = TELL_VIEW_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
@@ -83,6 +89,33 @@ class DemoView : Activity(), IVoiceObserver {
         btn_send_asr.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().sendAsr(App.sApp,packageName,"下一页")
         })
+
+        //提示词
+        btn_tips.setOnClickListener(View.OnClickListener {
+            val hashMap = HashMap<String,String>()
+            hashMap.put("影视库", "video")
+            hashMap.put("下一页", Constant.NO_VALUE)
+            funview.updateTipWords(hashMap,object :AIFuncViewListener{
+                override fun onRenderTip(map: HashMap<String, String>, code: Int) {
+                    val tell = Tell()
+                    tell.tipsMap = map
+                    tell.pck = packageName
+                    tell.className = this@DemoView.javaClass.name
+                    tell.tellType = TELL_SYSTEM or TELL_TIPS
+                    if(code == 0){
+                        tell.sequencecode = SequenceCode.TYPE_PAGE
+                    }else{
+                        tell.sequencecode = code
+                    }
+                    TellManager.getInstance().tell(App.sApp, tell)
+                }
+                override fun onItemClicked(position: Int, tip: Tip) {
+                    Log.e("Less","onItemClicked"+tip.key)
+                    TellManager.getInstance().sendAsr(App.sApp,packageName,tip.key)
+                }
+            },this@DemoView.javaClass.name,"1.0")
+        })
+
     }
 
     override fun onResume() {

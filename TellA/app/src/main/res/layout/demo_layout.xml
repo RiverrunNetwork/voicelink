@@ -53,4 +53,17 @@
         android:layout_height="wrap_content"
         android:text="发送ASR"
         />
+
+    <Button
+        android:id="@+id/btn_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提示词"
+        />
+
+    <com.bftv.fui.voicehelpexpandview.AIFuncView
+        android:id="@+id/funview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 </LinearLayout>
