@@ -1,4 +1,5 @@
 package com.bftv.tell.a
+
 import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
@@ -48,8 +49,8 @@ class DemoView : Activity(), IVoiceObserver {
         //界面指令词
         btn_view.setOnClickListener(View.OnClickListener {
             val tell = Tell()
-            val hashMap = HashMap<String,String>()
-            hashMap.put("播放","playTag")
+            val hashMap = HashMap<String, String>()
+            hashMap.put("播放", "playTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
             tell.functionSupportType = FunctionCode.PLAY
@@ -61,8 +62,8 @@ class DemoView : Activity(), IVoiceObserver {
         //追加界面指令词
         btn_view_append.setOnClickListener(View.OnClickListener {
             val tell = Tell()
-            val hashMap = HashMap<String,String>()
-            hashMap.put("收藏","collectTag")
+            val hashMap = HashMap<String, String>()
+            hashMap.put("收藏", "collectTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
             tell.isAppend = true
@@ -82,38 +83,37 @@ class DemoView : Activity(), IVoiceObserver {
 
         //拉起语音
         btn_pull_far.setOnClickListener(View.OnClickListener {
-            TellManager.getInstance().farPull(App.sApp,packageName)
+            TellManager.getInstance().farPull(App.sApp, packageName)
         })
 
         //发送ASR
         btn_send_asr.setOnClickListener(View.OnClickListener {
-            TellManager.getInstance().sendAsr(App.sApp,packageName,"下一页")
+            TellManager.getInstance().sendAsr(App.sApp, packageName, "下一页")
         })
 
         //提示词
         btn_tips.setOnClickListener(View.OnClickListener {
-            val hashMap = HashMap<String,String>()
-            hashMap.put("影视库", "video")
-            hashMap.put("下一页", Constant.NO_VALUE)
-            funview.updateTipWords(hashMap,object :AIFuncViewListener{
+            val hashMap = HashMap<String, String>()
+            hashMap.put("音乐", "music")
+            funview.okUpdate(hashMap, object : AIFuncViewListener {
+                override fun onItemClicked(position: Int, tip: Tip) {
+                    Log.e("Less", "onItemClicked" + tip.key)
+                    TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
+                }
+
                 override fun onRenderTip(map: HashMap<String, String>, code: Int) {
                     val tell = Tell()
                     tell.tipsMap = map
                     tell.pck = packageName
                     tell.className = this@DemoView.javaClass.name
-                    tell.tellType = TELL_SYSTEM or TELL_TIPS
-                    if(code == 0){
-                        tell.sequencecode = SequenceCode.TYPE_PAGE
-                    }else{
+                    tell.tellType = TELL_TIPS
+                    if (code != 0) {
                         tell.sequencecode = code
+                        tell.tellType = TELL_SYSTEM or TELL_TIPS
                     }
                     TellManager.getInstance().tell(App.sApp, tell)
                 }
-                override fun onItemClicked(position: Int, tip: Tip) {
-                    Log.e("Less","onItemClicked"+tip.key)
-                    TellManager.getInstance().sendAsr(App.sApp,packageName,tip.key)
-                }
-            },this@DemoView.javaClass.name,"1.0")
+            })
         })
 
     }
