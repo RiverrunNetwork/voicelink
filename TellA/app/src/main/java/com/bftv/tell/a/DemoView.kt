@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.SequenceCode
 import com.bftv.fui.constantplugin.TellCode.*
+import com.bftv.fui.tell.Notice
 import com.bftv.fui.tell.Tell
 import com.bftv.fui.tell.TellManager
 import com.bftv.fui.thirdparty.InterceptionData
@@ -89,6 +90,23 @@ class DemoView : Activity(), IVoiceObserver {
         //发送ASR
         btn_send_asr.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().sendAsr(App.sApp, packageName, "下一页")
+        })
+
+        //发送通知
+        btn_send_notice.setOnClickListener(View.OnClickListener {
+            var notice = Notice()
+            notice.pck = packageName
+            notice.message = "消息"
+            notice.title = "标题"
+            val hashMap = HashMap<String, String>()
+            hashMap.put("提示词", "tips")
+            notice.tipsMap = hashMap
+            TellManager.getInstance().sendNotice(App.sApp,notice)
+        })
+
+        //是否需要翻译
+        btn_isNeedTranslate.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().isNeedTranslate(App.sApp,packageName,this@DemoView.javaClass.name)
         })
 
         tips()

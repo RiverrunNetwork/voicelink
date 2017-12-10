@@ -42,8 +42,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile files('libs/thirdtell-171210.jar')
-    compile files('libs/voicethirdparty-171206.jar')
-    compile files('libs/authentication-171206.jar')
+    compile files('libs/voicethirdparty-171210.jar')
+    compile files('libs/authentication-171210.jar')
     compile files('libs/constantplugin-171207.jar')
     compile(name: 'voicehelpexpandview-release', ext: 'aar')
     compile 'com.android.support:appcompat-v7:26.+'

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="应用指令词" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="界面指令词" />
+
+            <Button
+                android:id="@+id/btn_view_append"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="追加界面指令词" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_system_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="系统指令词" />
+
+        <Button
+            android:id="@+id/btn_pull_far"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拉起语音" />
+
+        <Button
+            android:id="@+id/btn_send_asr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送ASR" />
+
+        <Button
+            android:id="@+id/btn_send_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送通知" />
+
+        <Button
+            android:id="@+id/btn_isNeedTranslate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="需要转译" />
+
+    </LinearLayout>
+
+    <com.bftv.fui.voicehelpexpandview.AIFuncView
+        android:id="@+id/funview"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="my name is B"
+        android:textSize="32dp"
+        android:textColor="@android:color/holo_red_dark">
+
+    </TextView>
+</FrameLayout>
