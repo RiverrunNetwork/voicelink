@@ -1,69 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_app"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="应用指令词"
-        />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:id="@+id/btn_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="界面指令词"
-            />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_view_append"
+            android:id="@+id/btn_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="追加界面指令词"
-            />
+            android:text="应用指令词" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="界面指令词" />
+
+            <Button
+                android:id="@+id/btn_view_append"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="追加界面指令词" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_system_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="系统指令词" />
+
+        <Button
+            android:id="@+id/btn_pull_far"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拉起语音" />
+
+        <Button
+            android:id="@+id/btn_send_asr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送ASR" />
+
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_system_app"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="系统指令词"
-        />
-
-    <Button
-        android:id="@+id/btn_pull_far"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="拉起语音"
-        />
-
-    <Button
-        android:id="@+id/btn_send_asr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="发送ASR"
-        />
-
-    <Button
-        android:id="@+id/btn_tips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="提示词"
-        />
 
     <com.bftv.fui.voicehelpexpandview.AIFuncView
         android:id="@+id/funview"
+        android:layout_gravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-</LinearLayout>
+        android:layout_height="wrap_content" />
+</FrameLayout>

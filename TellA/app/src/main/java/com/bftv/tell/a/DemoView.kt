@@ -7,7 +7,6 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.bftv.fui.constantplugin.Constant
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.SequenceCode
 import com.bftv.fui.constantplugin.TellCode.*
@@ -66,6 +65,7 @@ class DemoView : Activity(), IVoiceObserver {
             hashMap.put("收藏", "collectTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
+            tell.className = this@DemoView.javaClass.name
             tell.isAppend = true
             tell.tellType = TELL_VIEW_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
@@ -91,31 +91,7 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().sendAsr(App.sApp, packageName, "下一页")
         })
 
-        //提示词
-        btn_tips.setOnClickListener(View.OnClickListener {
-            val hashMap = HashMap<String, String>()
-            hashMap.put("音乐", "music")
-            funview.okUpdate(hashMap, object : AIFuncViewListener {
-                override fun onItemClicked(position: Int, tip: Tip) {
-                    Log.e("Less", "onItemClicked" + tip.key)
-                    TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
-                }
-
-                override fun onRenderTip(map: HashMap<String, String>, code: Int) {
-                    val tell = Tell()
-                    tell.tipsMap = map
-                    tell.pck = packageName
-                    tell.className = this@DemoView.javaClass.name
-                    tell.tellType = TELL_TIPS
-                    if (code != 0) {
-                        tell.sequencecode = code
-                        tell.tellType = TELL_SYSTEM or TELL_TIPS
-                    }
-                    TellManager.getInstance().tell(App.sApp, tell)
-                }
-            })
-        })
-
+        tips()
     }
 
     override fun onResume() {
@@ -128,4 +104,28 @@ class DemoView : Activity(), IVoiceObserver {
         DataChange.getInstance().deleteObserver(this)
     }
 
+    fun tips(){
+        val hashMap = HashMap<String, String>()
+        hashMap.put("音乐", "music")
+        funview.okUpdate(hashMap, object : AIFuncViewListener {
+            override fun onItemClicked(position: Int, tip: Tip) {
+                Log.e("Less", "onItemClicked" + tip.key)
+                TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
+            }
+
+            override fun onRenderTip(map: HashMap<String, String>, code: Int) {
+                Log.e("Less", "onRenderTip" + map.size+"|code:"+code)
+                val tell = Tell()
+                tell.tipsMap = map
+                tell.pck = packageName
+                tell.className = this@DemoView.javaClass.name
+                tell.tellType = TELL_TIPS
+                if (code != 0) {
+                    tell.sequencecode = code
+                    tell.tellType = TELL_SYSTEM or TELL_TIPS
+                }
+                TellManager.getInstance().tell(App.sApp, tell)
+            }
+        })
+    }
 }
