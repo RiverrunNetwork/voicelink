@@ -100,7 +100,7 @@ class DemoView : Activity(), IVoiceObserver {
             notice.title = "标题"
             val hashMap = HashMap<String, String>()
             hashMap.put("提示词", "tips")
-            notice.tipsMap = hashMap
+            notice.noticeTipsMap = hashMap
             TellManager.getInstance().sendNotice(App.sApp,notice)
         })
 
