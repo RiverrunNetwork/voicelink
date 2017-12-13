@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.demo_layout.*
  */
 class DemoView : Activity(), IVoiceObserver {
     override fun update(interceptionData: InterceptionData?): VoiceFeedback? {
-        Handler(Looper.getMainLooper()).post { Toast.makeText(this@DemoView, "接到了:" + interceptionData.toString(), Toast.LENGTH_SHORT).show() }
+        Handler(Looper.getMainLooper()).post { Toast.makeText(this@DemoView, "接到了:+A", Toast.LENGTH_SHORT).show() }
         return null
     }
 
