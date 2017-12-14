@@ -7,8 +7,17 @@
 ```java
 compile 'com.android.support:recyclerview-v7:26.1.0'
 ```
+第三步 : xml中引入
+```xml
+<com.bftv.fui.voicehelpexpandview.AIFuncView
+            android:id="@+id/main_tips"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_marginTop="20dp"
+            tools:background="#dda"/>
+```
 
-第三步 再界面的onCreate方法中添加如下代码
+第四步 再界面的onCreate方法中添加如下代码
 ```java
 fun tips(){
         val hashMap = HashMap<String, String>()
