@@ -108,13 +108,12 @@ class DemoView : Activity(), IVoiceObserver {
         btn_isNeedTranslate.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().isNeedTranslate(App.sApp,packageName,this@DemoView.javaClass.name)
         })
-
-        tips()
     }
 
     override fun onResume() {
         super.onResume()
         DataChange.getInstance().addObserver(this)
+        tips()
     }
 
     override fun onPause() {

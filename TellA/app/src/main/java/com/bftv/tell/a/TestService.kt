@@ -15,6 +15,11 @@ import com.bftv.fui.thirdparty.notify.DataChange
 
 class TestService : Service() {
 
+    override fun onCreate() {
+        super.onCreate()
+        Log.e("Less", "TestService-onCreate")
+    }
+
     override fun onBind(intent: Intent?): IBinder {
         return stub
     }
