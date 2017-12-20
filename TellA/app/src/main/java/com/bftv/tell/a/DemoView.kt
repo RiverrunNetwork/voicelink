@@ -78,7 +78,7 @@ class DemoView : Activity(), IVoiceObserver {
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
             tell.tellType = TELL_SYSTEM
-            tell.sequencecode = SequenceCode.TYPE_PAGE
+            tell.sequencecode = SequenceCode.TYPE_PAGE or SequenceCode.TYPE_NUM
             TellManager.getInstance().tell(App.sApp, tell)
         })
 
@@ -107,6 +107,16 @@ class DemoView : Activity(), IVoiceObserver {
         //是否需要翻译
         btn_isNeedTranslate.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().isNeedTranslate(App.sApp,packageName,this@DemoView.javaClass.name)
+        })
+
+        //自己处理返回
+        btn_back.setOnClickListener(View.OnClickListener {
+            val tell = Tell()
+            tell.pck = packageName
+            tell.className = this@DemoView.javaClass.name
+            tell.tellType = TELL_SYSTEM
+            tell.sequencecode = SequenceCode.TYPE_BACK
+            TellManager.getInstance().tell(App.sApp, tell)
         })
     }
 
