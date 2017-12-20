@@ -133,3 +133,9 @@ public class InterceptionData implements Parcelable{
 ```
 
 按照上面的步骤写代码  会将InterceptionData 传递到update方法中<br>
+
+- 第五步
+```java
+InterceptionData 这个Bean中 的 functionType 是很重要值，当functionType == -1 的时候 
+那就是**指令词 这个时候你需要去needValue 寻找你需要的内容
+```
