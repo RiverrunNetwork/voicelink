@@ -123,9 +123,9 @@ public class InterceptionData implements Parcelable{
 按照上面的步骤写代码  会将InterceptionData 传递到update方法中<br>
 
 - 第五步
-```java
 InterceptionData 这个Bean中 的 functionType 是很重要值
 你需要通过functionType的值去和FunctionCode里面的常量去对比 例如
+```java
 if(interceptionData.functionType == FunctionCode.NEXT){
 //下一页
 ｝
