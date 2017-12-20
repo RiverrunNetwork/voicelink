@@ -59,17 +59,6 @@ public class TestService extends Service {
 ```java
 public class InterceptionData implements Parcelable{
 
-    public static final String PAGE = "page";
-    public static final String DEFAULT = "default";
-    public static final String PRE = "pre";
-    public static final String NEXT = "next";
-    public static final String LOOK = "look";
-    public static final String OPEN = "open";
-    public static final String PLAY = "play";
-    public static final String BUY = "buy";
-    public static final String COLLECT = "collect";
-    public static final String CART = "cart";
-
     //用户说话的年龄
     public int age;
 
@@ -102,6 +91,9 @@ public class InterceptionData implements Parcelable{
 
     //系统指令类型
     public String nlpType;
+
+    //功能指令类型
+    public int functionType;
 ```
 
 其中 "needValue" 就是 你放到map里面的value <br>
