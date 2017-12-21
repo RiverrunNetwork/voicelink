@@ -29,6 +29,7 @@
 任何一个界面都可以大耳朵注册特定的指令词语  比如微信的和好友聊天界面 向大耳朵注册了指令词 “打开软键盘” 那么当用户命中了 “打开软键盘” 我们就将该用户提前注册好的 分发给朋友圈界面.当你通过该接口注册了 界面指令词 那么你当前界面就会生效<br>
 ## [大耳朵系统指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/word_system.md)
 也叫"通用指令词",该功能包含常用的指令词,比如 "下一页" “第三个” “第5页” 等等<br>
+大耳朵为了开发者方便，将通用的功能统一封装，提供给开发者使用<br>
 ## [语音bar](https://github.com/RiverrunNetwork/voicelink/blob/master/bar.md)
 大耳朵开放了语音bar,任何第三方app,都可以引入语音bar<br>
 ## 主动拉起大耳朵
