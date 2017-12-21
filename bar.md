@@ -48,5 +48,13 @@ fun tips(){
         })
     }
 ```
+第五步
+记得回收资源
+```java
+override fun onDestroy() {
+        super.onDestroy()
+        funview.release()
+    }
+```
 
 
