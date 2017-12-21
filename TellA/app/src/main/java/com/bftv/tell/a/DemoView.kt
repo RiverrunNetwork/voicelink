@@ -104,11 +104,6 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().sendNotice(App.sApp,notice)
         })
 
-        //是否需要翻译
-        btn_isNeedTranslate.setOnClickListener(View.OnClickListener {
-            TellManager.getInstance().isNeedTranslate(App.sApp,packageName,this@DemoView.javaClass.name)
-        })
-
         //自己处理返回
         btn_back.setOnClickListener(View.OnClickListener {
             val tell = Tell()
@@ -116,6 +111,16 @@ class DemoView : Activity(), IVoiceObserver {
             tell.className = this@DemoView.javaClass.name
             tell.tellType = TELL_SYSTEM
             tell.sequencecode = SequenceCode.TYPE_BACK
+            TellManager.getInstance().tell(App.sApp, tell)
+        })
+
+        //接管语音的ASR
+        btn_asr.setOnClickListener(View.OnClickListener {
+            val tell = Tell()
+            tell.pck = packageName
+            tell.className = this@DemoView.javaClass.name
+            tell.tellType = TELL_ASR
+            tell.isNeedPinYin = true
             TellManager.getInstance().tell(App.sApp, tell)
         })
     }

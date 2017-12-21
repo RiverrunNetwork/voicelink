@@ -61,16 +61,16 @@
             android:text="发送通知" />
 
         <Button
-            android:id="@+id/btn_isNeedTranslate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="需要转译" />
-
-        <Button
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="自己处理返回" />
+
+        <Button
+            android:id="@+id/btn_asr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接管ASR" />
 
     </LinearLayout>
 
