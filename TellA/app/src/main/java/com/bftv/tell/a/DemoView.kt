@@ -7,6 +7,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.bftv.fui.constantplugin.Constant
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.SequenceCode
 import com.bftv.fui.constantplugin.TellCode.*
@@ -140,6 +141,7 @@ class DemoView : Activity(), IVoiceObserver {
     fun tips(){
         val hashMap = HashMap<String, String>()
         hashMap.put("音乐", "music")
+        hashMap.put("第二个",Constant.NO_VALUE)
         funview.okUpdate(hashMap, object : AIFuncViewListener {
             override fun onItemClicked(position: Int, tip: Tip) {
                 Log.e("Less", "onItemClicked" + tip.key)
@@ -153,10 +155,8 @@ class DemoView : Activity(), IVoiceObserver {
                 tell.pck = packageName
                 tell.className = this@DemoView.javaClass.name
                 tell.tellType = TELL_TIPS
-                if (code != 0) {
-                    tell.sequencecode = code
-                    tell.tellType = TELL_SYSTEM or TELL_TIPS
-                }
+                tell.sequencecode = SequenceCode.TYPE_NUM
+                tell.tellType = TELL_SYSTEM or TELL_TIPS
                 TellManager.getInstance().tell(App.sApp, tell)
             }
         })
