@@ -19,10 +19,10 @@ compile 'com.android.support:recyclerview-v7:26.1.0'
 第四步 再界面的onCreate方法中添加如下代码<br>
 <br>
 这里重点解释下onRenderTip回调接口<br>
-首选onRenderTip 会回调两次 第一次是本地提示词  第二 次是网络词提示词 <br>
-你需要将提示词告诉大耳朵 <br>
-map: HashMap<String, String> 是提示词数组 <br>
-code: Int 是 sequencecode （这个code只是网络的,不包含本地，你本地的需要自己设置）<br>
+－ 首选onRenderTip 会回调两次 第一次是本地提示词  第二 次是网络词提示词 <br>
+－ 你需要将提示词告诉大耳朵 <br>
+－ map: HashMap<String, String> 是提示词数组 <br>
+－ code: Int 是 sequencecode （这个code只是网络的,不包含本地，你本地的需要自己设置）<br>
 ```java
 fun tips(){
         val hashMap = HashMap<String, String>()
