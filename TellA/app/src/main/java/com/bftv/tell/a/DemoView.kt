@@ -53,6 +53,7 @@ class DemoView : Activity(), IVoiceObserver {
             hashMap.put("播放", "playTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
+            tell.isAppend = true
             tell.functionSupportType = FunctionCode.PLAY
             tell.className = this@DemoView.javaClass.name
             tell.tellType = TELL_VIEW_CACHE
@@ -159,5 +160,10 @@ class DemoView : Activity(), IVoiceObserver {
                 TellManager.getInstance().tell(App.sApp, tell)
             }
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        funview.release()
     }
 }

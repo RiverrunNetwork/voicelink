@@ -43,7 +43,7 @@ dependencies {
     compile files('libs/thirdtell-171221.jar')
     compile files('libs/voicethirdparty-171221.jar')
     compile files('libs/authentication-171210.jar')
-    compile files('libs/constantplugin-171221.jar')
+    compile files('libs/constantplugin-171222.jar')
     compile(name: 'voicehelpexpandview-release', ext: 'aar')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:recyclerview-v7:26.1.0'
