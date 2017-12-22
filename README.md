@@ -51,7 +51,17 @@ tell.tellType = TELL_ASR
 tell.isNeedPinYin = true
 TellManager.getInstance().tell(App.sApp, tell)
  ````
-
+## 返回
+大耳朵目前的返回是模式的遥控器返回建，基本满足大部分需求，但是有一部分应用需求比较特殊，比如 “爱奇艺” 的播放界面，需要连续按两次返回键才能才会
+为了满足这种场景，大耳朵开放了“返回”功能，会将back指令发送给用户的app,自己去处理界面的关闭
+```java
+val tell = Tell()
+            tell.pck = packageName
+            tell.className = this@DemoView.javaClass.name
+            tell.tellType = TELL_SYSTEM
+            tell.sequencecode = SequenceCode.TYPE_BACK
+            TellManager.getInstance().tell(App.sApp, tell)
+```
 ## 问题反馈
 - 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题<br>
 <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/%E6%9A%B4%E9%A3%8E%E8%AF%AD%E9%9F%B3%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png" width="300" height="300" /> 
