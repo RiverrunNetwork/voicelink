@@ -56,11 +56,11 @@ TellManager.getInstance().tell(App.sApp, tell)
 为了满足这种场景，大耳朵开放了“返回”功能，会将back指令发送给用户的app,自己去处理界面的关闭
 ```java
 val tell = Tell()
-            tell.pck = packageName
-            tell.className = this@DemoView.javaClass.name
-            tell.tellType = TELL_SYSTEM
-            tell.sequencecode = SequenceCode.TYPE_BACK
-            TellManager.getInstance().tell(App.sApp, tell)
+tell.pck = packageName
+tell.className = this@DemoView.javaClass.name
+tell.tellType = TELL_SYSTEM
+tell.sequencecode = SequenceCode.TYPE_BACK
+TellManager.getInstance().tell(App.sApp, tell)
 ```
 ## 问题反馈
 - 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题<br>
