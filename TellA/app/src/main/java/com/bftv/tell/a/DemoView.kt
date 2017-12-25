@@ -47,6 +47,18 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().tell(App.sApp, tell)
         })
 
+        //应用指令模糊效果
+        btn_app_blurry.setOnClickListener(View.OnClickListener {
+            val tell = Tell()
+            val hashMap = HashMap<String, String>()
+            hashMap.put("!谢谢你", "searchTag")
+            tell.appCacheMap = hashMap
+            tell.functionSupportType = FunctionCode.PLAY
+            tell.pck = packageName
+            tell.tellType = TELL_APP_CACHE
+            TellManager.getInstance().tell(App.sApp, tell)
+        })
+
         //界面指令词
         btn_view.setOnClickListener(View.OnClickListener {
             val tell = Tell()

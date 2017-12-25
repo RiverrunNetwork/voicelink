@@ -18,6 +18,12 @@
             android:layout_height="wrap_content"
             android:text="应用指令词" />
 
+        <Button
+            android:id="@+id/btn_app_blurry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="应用指令词模糊搜索" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
