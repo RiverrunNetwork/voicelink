@@ -151,11 +151,11 @@ class DemoView : Activity(), IVoiceObserver {
     }
 
     fun tips(){
-        val hashMap = HashMap<String, String>()
+        val hashMap = LinkedHashMap<String, String>()
         hashMap.put("音乐", "music")
         hashMap.put("第二个",Constant.NO_VALUE)
         funview.okUpdate(hashMap, object : AIFuncViewListener {
-            override fun onItemClicked(position: Int, tip: Tip) {
+            override fun onItemClicked(tip: Tip) {
                 Log.e("Less", "onItemClicked" + tip.key)
                 TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
             }
