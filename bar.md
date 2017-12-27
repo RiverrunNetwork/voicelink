@@ -18,10 +18,11 @@ compile 'com.android.support:recyclerview-v7:26.1.0'
 第四步 再界面的onCreate()或者onResume()方法中添加如下代码<br>
 ```java
 fun tips(){
-        val hashMap = HashMap<String, String>()
+        val hashMap = LinkedHashMap<String, String>()
         hashMap.put("音乐", "music")
+        hashMap.put("第二个",Constant.NO_VALUE)
         funview.okUpdate(hashMap, object : AIFuncViewListener {
-            override fun onItemClicked(position: Int, tip: Tip) {
+            override fun onItemClicked(tip: Tip) {
                 Log.e("Less", "onItemClicked" + tip.key)
                 TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
             }
@@ -33,13 +34,11 @@ fun tips(){
                 tell.pck = packageName
                 tell.className = this@DemoView.javaClass.name
                 tell.tellType = TELL_TIPS
-                if (code != 0) {
-                    tell.sequencecode = code
-                    tell.tellType = TELL_SYSTEM or TELL_TIPS
-                }
+                tell.sequencecode = SequenceCode.TYPE_NUM
+                tell.tellType = TELL_SYSTEM or TELL_TIPS
                 TellManager.getInstance().tell(App.sApp, tell)
             }
-        })
+        },"appendName")
     }
 ```
 第五步
