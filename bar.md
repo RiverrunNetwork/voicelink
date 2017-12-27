@@ -17,11 +17,12 @@ compile 'com.android.support:recyclerview-v7:26.1.0'
 ```
 第四步 再界面的onCreate()或者onResume()方法中添加如下代码<br>
 
-- 先解释下onRenderTip(map: HashMap<String, String>, code: Int)
+- 先解释下onRenderTip(map: HashMap<String, String>, code: Int)<br>
 map  是值得提示词<br>
 code 是指的sequencecode <bar>
-- 具体描述下整个流程
-
+- 具体描述下整个流程 <br>
+该功能不负责和大耳朵通讯，所以会通过onRenderTip方法将需要通讯的数据回调给你，由你来和大耳朵通讯<br>
+提示词分为两部分 一种是网络的,一种是本地的,本地的提示词是你给的比如 “音乐” “第二个”,网络提示词是bar自己拉取的<br>
 ```java
 fun tips(){
         val hashMap = LinkedHashMap<String, String>()
