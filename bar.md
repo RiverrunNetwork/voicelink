@@ -17,7 +17,7 @@ compile 'com.android.support:recyclerview-v7:26.1.0'
 ```
 第四步 再界面的onCreate()或者onResume()方法中添加如下代码<br>
 
-－ 先解释下onRenderTip
+- 先解释下onRenderTip
 
 ```java
 fun tips(){
