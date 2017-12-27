@@ -32,7 +32,6 @@ code 是指的sequencecode <bar>
         是指灵活多变的词语 比如“第x个” “xxx的电影”<br>
         复杂提示词 你需要写value，比如 hashMap.put("第二个",Constant.NO_VALUE)当用户命中第几个<br>
         这块大耳朵返回可以参考下[大耳朵系统指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/word_system.md)<br>
-
 (2)网络提示词<br> 
 ```java
 fun tips(){
