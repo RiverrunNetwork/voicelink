@@ -1,7 +1,7 @@
 
 # 语音bar
 
-第一步 : [导入bar](https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/app/libs/voicehelpexpandview-release.aar)<br>
+第一步 : [导入bar](https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/app/libs)<br>
 
 第二步 : 引入bar依赖文件
 ```java
