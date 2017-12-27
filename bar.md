@@ -17,7 +17,10 @@ compile 'com.android.support:recyclerview-v7:26.1.0'
 ```
 第四步 再界面的onCreate()或者onResume()方法中添加如下代码<br>
 
-- 先解释下onRenderTip
+- 先解释下onRenderTip(map: HashMap<String, String>, code: Int)
+map  是值得提示词<br>
+code 是指的sequencecode <bar>
+- 具体描述下整个流程
 
 ```java
 fun tips(){
