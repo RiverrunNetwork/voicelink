@@ -29,6 +29,9 @@ code 是指的sequencecode <bar>
         是指一些没有变化的词语 比如 “音乐” “开心”<br>
       - 复杂提示词<br>
         是指灵活多变的词语 比如“第x个” “xxx的电影”<br>
+简单提示词 你需要自己写value,比如 hashMap.put("音乐", "music") 当用户说“音乐” 大耳朵会给你“music”<br>
+复杂提示词 你需要写value，比如 hashMap.put("第二个",Constant.NO_VALUE) 当用户命中第几个这块的逻辑和 ##[大耳朵系统指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/word_system.md)一样<br>
+        
 ```java
 fun tips(){
         val hashMap = LinkedHashMap<String, String>()
