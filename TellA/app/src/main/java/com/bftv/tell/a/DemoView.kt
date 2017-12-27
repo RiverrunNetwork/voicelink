@@ -171,7 +171,7 @@ class DemoView : Activity(), IVoiceObserver {
                 tell.tellType = TELL_SYSTEM or TELL_TIPS
                 TellManager.getInstance().tell(App.sApp, tell)
             }
-        })
+        },"appendName")
     }
 
     override fun onDestroy() {
