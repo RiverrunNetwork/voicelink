@@ -15,14 +15,7 @@ compile 'com.android.support:recyclerview-v7:26.1.0'
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 ```
-
-第四步 再界面的onResume方法中添加如下代码<br>
-这里重点解释下onRenderTip回调接口<br>
-- 首选onRenderTip 会回调两次 第一次是本地提示词  第二 次是网络词提示词 <br>
-- 其次你需要将提示词告诉大耳朵 <br>
-- map: HashMap<String, String> 是提示词数组 <br>
-- code: Int 是 sequencecode （这个code只是网络的,不包含本地，你本地的需要自己设置）<br>
-- 提示词需要单独的map,提示词只是用来显示在系统bar的数组,该功能和界面指令词类似，但是从产品层面上做了区分
+第四步 再界面的onCreate()或者onResume()方法中添加如下代码<br>
 ```java
 fun tips(){
         val hashMap = HashMap<String, String>()
