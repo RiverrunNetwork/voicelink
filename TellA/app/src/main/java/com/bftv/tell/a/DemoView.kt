@@ -34,7 +34,6 @@ class DemoView : Activity(), IVoiceObserver {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.demo_layout)
-
         //应用指令词
         btn_app.setOnClickListener(View.OnClickListener {
             val tell = Tell()
@@ -167,7 +166,7 @@ class DemoView : Activity(), IVoiceObserver {
                 tell.pck = packageName
                 tell.className = this@DemoView.javaClass.name
                 tell.tellType = TELL_TIPS
-                tell.sequencecode = SequenceCode.TYPE_NUM
+                tell.sequencecode = SequenceCode.TYPE_NUM or code
                 tell.tellType = TELL_SYSTEM or TELL_TIPS
                 TellManager.getInstance().tell(App.sApp, tell)
             }
