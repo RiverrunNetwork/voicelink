@@ -153,6 +153,7 @@ class DemoView : Activity(), IVoiceObserver {
         val hashMap = LinkedHashMap<String, String>()
         hashMap.put("音乐", "music")
         hashMap.put("第二个",Constant.NO_VALUE)
+        hashMap.put("下一页",Constant.NO_VALUE)
         funview.okUpdate(hashMap, object : AIFuncViewListener {
             override fun onItemClicked(tip: Tip) {
                 Log.e("Less", "onItemClicked" + tip.key)
@@ -166,11 +167,11 @@ class DemoView : Activity(), IVoiceObserver {
                 tell.pck = packageName
                 tell.className = this@DemoView.javaClass.name
                 tell.tellType = TELL_TIPS
-                tell.sequencecode = SequenceCode.TYPE_NUM or code
+                tell.sequencecode = SequenceCode.TYPE_NUM or code or SequenceCode.TYPE_PAGE
                 tell.tellType = TELL_SYSTEM or TELL_TIPS
                 TellManager.getInstance().tell(App.sApp, tell)
             }
-        },"appendName")
+        })
     }
 
     override fun onDestroy() {
