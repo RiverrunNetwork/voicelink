@@ -5,7 +5,7 @@
 - 第二步 系统指令词 是指运用大耳朵内部已经成熟的指令词 帮助其他的应用完善功能
 pck       当前应用的包名字 <br>
 className 当前界面的类名字 <br>
-sequence  需要的功能 SequenceCode.TYPE_NUM(支持第x个) SequenceCode.TYPE_PAGE(支持页数) 如果想都支持用“｜”间隔就好 <br>
+sequence  需要的功能 SequenceCode.TYPE_NUM(支持第x个) SequenceCode.TYPE_PAGE(支持页数) 如果想都支持用“or”(如果用java开发,则用“｜”)间隔就好 <br>
 ```java
             val tell = Tell()
             tell.pck = packageName
