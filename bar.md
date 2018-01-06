@@ -51,7 +51,6 @@ fun tips(){
                 tell.tipsMap = map
                 tell.pck = packageName
                 tell.className = this@DemoView.javaClass.name
-                tell.tellType = TELL_TIPS
                 tell.sequencecode = SequenceCode.TYPE_NUM or code
                 tell.tellType = TELL_SYSTEM or TELL_TIPS
                 TellManager.getInstance().tell(App.sApp, tell)
