@@ -114,7 +114,7 @@ class DemoView : Activity(), IVoiceObserver {
             val hashMap = HashMap<String, String>()
             hashMap.put("提示词", "tips")
             notice.noticeTipsMap = hashMap
-            TellManager.getInstance().sendNotice(App.sApp,notice)
+            TellManager.getInstance().sendNotice(App.sApp, notice)
         })
 
         //自己处理返回
@@ -149,11 +149,12 @@ class DemoView : Activity(), IVoiceObserver {
         DataChange.getInstance().deleteObserver(this)
     }
 
-    fun tips(){
+    fun tips() {
         val hashMap = LinkedHashMap<String, String>()
         hashMap.put("音乐", "music")
-        hashMap.put("第二个",Constant.NO_VALUE)
-        hashMap.put("下一页",Constant.NO_VALUE)
+        hashMap.put("第二个", Constant.NO_VALUE)
+        hashMap.put("下一页", Constant.NO_VALUE)
+        hashMap.put("刘德华的电影", Constant.NO_VALUE)
         funview.okUpdate(hashMap, object : AIFuncViewListener {
             override fun onItemClicked(tip: Tip) {
                 Log.e("Less", "onItemClicked" + tip.key)
@@ -161,17 +162,17 @@ class DemoView : Activity(), IVoiceObserver {
             }
 
             override fun onRenderTip(map: HashMap<String, String>, code: Int) {
-                Log.e("Less", "onRenderTip" + map.size+"|code:"+code)
+                Log.e("Less", "onRenderTip" + map.size + "|code:" + code)
                 val tell = Tell()
                 tell.tipsMap = map
                 tell.pck = packageName
                 tell.className = this@DemoView.javaClass.name
                 tell.tellType = TELL_TIPS
-                tell.sequencecode = SequenceCode.TYPE_NUM or code or SequenceCode.TYPE_PAGE
+                tell.sequencecode = code
                 tell.tellType = TELL_SYSTEM or TELL_TIPS
                 TellManager.getInstance().tell(App.sApp, tell)
             }
-        })
+        },null,SequenceCode.TYPE_NUM or SequenceCode.TYPE_PAGE)
     }
 
     override fun onDestroy() {
