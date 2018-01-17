@@ -62,6 +62,17 @@ tell.tellType = TELL_SYSTEM
 tell.sequencecode = SequenceCode.TYPE_BACK
 TellManager.getInstance().tell(App.sApp, tell)
 ```
+## 发送通知
+```java
+var notice = Notice()
+notice.pck = packageName
+notice.message = "消息"
+notice.title = "标题"
+val hashMap = HashMap<String, String>()
+hashMap.put("提示词", "tips")
+notice.noticeTipsMap = hashMap
+TellManager.getInstance().sendNotice(App.sApp, notice)
+```
 ## 问题反馈
 - 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题<br>
 <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/%E6%9A%B4%E9%A3%8E%E8%AF%AD%E9%9F%B3%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png" width="300" height="300" /> 
