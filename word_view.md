@@ -132,3 +132,17 @@ public class InterceptionData implements Parcelable{
 InterceptionData 这个Bean中 的 functionType 是很重要值，当functionType == -1 的时候 
 这个时候你需要去needValue 寻找你需要的内容
 ```
+- 第六步
+目前大耳朵添加了回收通知机制,当你的数据被大耳朵回收的时候，大耳朵会及时通知你<br>
+tell.isNeedViewCacheRecyclingNotice = true 是需要通知 反之是不需要通知<br>
+```java
+val tell = Tell()
+val hashMap = HashMap<String, String>()
+hashMap.put("呵呵", "recycler")
+tell.viewCacheMap = hashMap
+tell.pck = packageName
+tell.isNeedViewCacheRecyclingNotice = true
+tell.className = this@DemoView.javaClass.name
+tell.tellType = TELL_VIEW_CACHE
+TellManager.getInstance().tell(App.sApp, tell)
+```
