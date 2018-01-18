@@ -40,7 +40,6 @@ class DemoView : Activity(), IVoiceObserver {
             val hashMap = HashMap<String, String>()
             hashMap.put("搜索", "searchTag")
             tell.appCacheMap = hashMap
-            tell.functionSupportType = FunctionCode.PLAY
             tell.pck = packageName
             tell.tellType = TELL_APP_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
@@ -52,7 +51,6 @@ class DemoView : Activity(), IVoiceObserver {
             val hashMap = HashMap<String, String>()
             hashMap.put("!谢谢你", "searchTag")
             tell.appCacheMap = hashMap
-            tell.functionSupportType = FunctionCode.PLAY
             tell.pck = packageName
             tell.tellType = TELL_APP_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
@@ -66,7 +64,6 @@ class DemoView : Activity(), IVoiceObserver {
             tell.viewCacheMap = hashMap
             tell.pck = packageName
             tell.isAppend = true
-            tell.functionSupportType = FunctionCode.PLAY
             tell.className = this@DemoView.javaClass.name
             tell.tellType = TELL_VIEW_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
