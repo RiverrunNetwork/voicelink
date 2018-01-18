@@ -41,6 +41,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="追加界面指令词" />
+
+            <Button
+                android:id="@+id/btn_view_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="界面回收通知" />
         </LinearLayout>
 
         <Button

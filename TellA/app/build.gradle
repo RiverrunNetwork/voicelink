@@ -40,8 +40,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile files('libs/thirdtell-171221.jar')
-    compile files('libs/voicethirdparty-171221.jar')
+    compile files('libs/thirdtell-180118.jar')
+    compile files('libs/voicethirdparty-180118.jar')
     compile files('libs/authentication-171210.jar')
     compile files('libs/constantplugin-171222.jar')
     compile(name: 'voicehelpexpandview-180118', ext: 'aar')

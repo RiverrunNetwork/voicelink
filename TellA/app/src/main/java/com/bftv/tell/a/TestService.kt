@@ -8,6 +8,7 @@ import android.util.Log
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.thirdparty.IUserStatusNotice
 import com.bftv.fui.thirdparty.InterceptionData
+import com.bftv.fui.thirdparty.RecyclingData
 import com.bftv.fui.thirdparty.notify.DataChange
 
 /**
@@ -26,6 +27,10 @@ class TestService : Service() {
     }
 
     var stub: IUserStatusNotice.Stub = object : IUserStatusNotice.Stub() {
+        override fun onRecyclingNotice(recyclingData: RecyclingData?) {
+            Log.e("Less", "回收数据通知${recyclingData.toString()}")
+        }
+
         override fun onAsr(asr: String?, age: Int, sex: Int) {
             Log.e("Less", "用户说完话了:"+asr)
         }

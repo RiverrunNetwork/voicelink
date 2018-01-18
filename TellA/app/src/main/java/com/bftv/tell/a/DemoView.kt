@@ -63,7 +63,6 @@ class DemoView : Activity(), IVoiceObserver {
             hashMap.put("播放", "playTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
-            tell.isAppend = true
             tell.className = this@DemoView.javaClass.name
             tell.tellType = TELL_VIEW_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
@@ -78,6 +77,19 @@ class DemoView : Activity(), IVoiceObserver {
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
             tell.isAppend = true
+            tell.tellType = TELL_VIEW_CACHE
+            TellManager.getInstance().tell(App.sApp, tell)
+        })
+
+        //界面回收通知
+        btn_view_recycler.setOnClickListener(View.OnClickListener {
+            val tell = Tell()
+            val hashMap = HashMap<String, String>()
+            hashMap.put("呵呵", "recycler")
+            tell.viewCacheMap = hashMap
+            tell.pck = packageName
+            tell.isNeedViewCacheRecyclingNotice = true
+            tell.className = this@DemoView.javaClass.name
             tell.tellType = TELL_VIEW_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
         })
