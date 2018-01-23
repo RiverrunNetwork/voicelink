@@ -21,6 +21,7 @@ import com.bftv.fui.thirdparty.notify.IVoiceObserver
 import com.bftv.fui.voicehelpexpandview.AIFuncViewListener
 import com.bftv.fui.voicehelpexpandview.util.Tip
 import kotlinx.android.synthetic.main.demo_layout.*
+import java.util.concurrent.ConcurrentHashMap
 
 /**
  * Author by Less on 17/11/15.
@@ -37,7 +38,7 @@ class DemoView : Activity(), IVoiceObserver {
         //应用指令词
         btn_app.setOnClickListener(View.OnClickListener {
             val tell = Tell()
-            val hashMap = HashMap<String, String>()
+            val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("搜索", "searchTag")
             tell.appCacheMap = hashMap
             tell.pck = packageName
@@ -50,7 +51,7 @@ class DemoView : Activity(), IVoiceObserver {
             val tell = Tell()
             val hashMap = HashMap<String, String>()
             hashMap.put("!谢谢你", "searchTag")
-            tell.appCacheMap = hashMap
+            tell.setHashMapAppCacheMap(hashMap)
             tell.pck = packageName
             tell.tellType = TELL_APP_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
@@ -59,7 +60,7 @@ class DemoView : Activity(), IVoiceObserver {
         //界面指令词
         btn_view.setOnClickListener(View.OnClickListener {
             val tell = Tell()
-            val hashMap = HashMap<String, String>()
+            val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("播放", "playTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
@@ -71,7 +72,7 @@ class DemoView : Activity(), IVoiceObserver {
         //追加界面指令词
         btn_view_append.setOnClickListener(View.OnClickListener {
             val tell = Tell()
-            val hashMap = HashMap<String, String>()
+            val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("收藏", "collectTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
@@ -84,7 +85,7 @@ class DemoView : Activity(), IVoiceObserver {
         //界面回收通知
         btn_view_recycler.setOnClickListener(View.OnClickListener {
             val tell = Tell()
-            val hashMap = HashMap<String, String>()
+            val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("呵呵", "recycler")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
@@ -164,13 +165,13 @@ class DemoView : Activity(), IVoiceObserver {
         hashMap.put("第二个", Constant.NO_VALUE)
         hashMap.put("下一页", Constant.NO_VALUE)
         hashMap.put("刘德华的电影", Constant.NO_VALUE)
-        funview.okUpdate(hashMap, object : AIFuncViewListener {
+        funview.okUpdate(hashMap, "you platfrom", 0, object : AIFuncViewListener {
             override fun onItemClicked(tip: Tip) {
                 Log.e("Less", "onItemClicked" + tip.key)
                 TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
             }
 
-            override fun onRenderTip(map: HashMap<String, String>, code: Int) {
+            override fun onRenderTip(map: ConcurrentHashMap<String, String>, code: Int) {
                 Log.e("Less", "onRenderTip" + map.size + "|code:" + code)
                 val tell = Tell()
                 tell.tipsMap = map
@@ -181,7 +182,8 @@ class DemoView : Activity(), IVoiceObserver {
                 tell.tellType = TELL_SYSTEM or TELL_TIPS
                 TellManager.getInstance().tell(App.sApp, tell)
             }
-        },null,SequenceCode.TYPE_NUM or SequenceCode.TYPE_PAGE)
+
+        })
     }
 
     override fun onDestroy() {
