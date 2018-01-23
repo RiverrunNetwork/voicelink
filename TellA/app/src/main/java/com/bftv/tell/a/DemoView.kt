@@ -1,5 +1,4 @@
 package com.bftv.tell.a
-
 import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
@@ -17,7 +16,6 @@ import com.bftv.fui.thirdparty.InterceptionData
 import com.bftv.fui.thirdparty.VoiceFeedback
 import com.bftv.fui.thirdparty.notify.DataChange
 import com.bftv.fui.thirdparty.notify.IVoiceObserver
-import com.bftv.fui.voicehelpexpandview.AIFuncView
 import com.bftv.fui.voicehelpexpandview.AIFuncViewListener
 import com.bftv.fui.voicehelpexpandview.util.Tip
 import kotlinx.android.synthetic.main.demo_layout.*
@@ -146,12 +144,23 @@ class DemoView : Activity(), IVoiceObserver {
             tell.isNeedPinYin = true
             TellManager.getInstance().tell(App.sApp, tell)
         })
+
+        tips1.setOnClickListener(View.OnClickListener {
+            var map1 = LinkedHashMap<String,String>()
+            map1.put("你好","test1")
+            tips("testa",map1)
+        })
+
+        tips2.setOnClickListener(View.OnClickListener {
+            var map2 = LinkedHashMap<String,String>()
+            map2.put("哈哈","test2")
+            tips("testb",map2)
+        })
     }
 
     override fun onResume() {
         super.onResume()
         DataChange.getInstance().addObserver(this)
-        tips()
     }
 
     override fun onPause() {
@@ -159,13 +168,8 @@ class DemoView : Activity(), IVoiceObserver {
         DataChange.getInstance().deleteObserver(this)
     }
 
-    fun tips() {
-        val hashMap = LinkedHashMap<String, String>()
-        hashMap.put("音乐", "music")
-        hashMap.put("第二个", Constant.NO_VALUE)
-        hashMap.put("下一页", Constant.NO_VALUE)
-        hashMap.put("刘德华的电影", Constant.NO_VALUE)
-        funview.okUpdate(hashMap, "you platfrom", 0, object : AIFuncViewListener {
+    fun tips(appendName : String,map : LinkedHashMap<String, String>) {
+        funview.okUpdate(map, "you platfrom",appendName, 0,true, object : AIFuncViewListener {
             override fun onItemClicked(tip: Tip) {
                 Log.e("Less", "onItemClicked" + tip.key)
                 TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
@@ -179,10 +183,10 @@ class DemoView : Activity(), IVoiceObserver {
                 tell.className = this@DemoView.javaClass.name
                 tell.tellType = TELL_TIPS
                 tell.sequencecode = code
+                tell.isAppend = true
                 tell.tellType = TELL_SYSTEM or TELL_TIPS
                 TellManager.getInstance().tell(App.sApp, tell)
             }
-
         })
     }
 
