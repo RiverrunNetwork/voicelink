@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bftv.fui.constantplugin.Constant
-import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.SequenceCode
 import com.bftv.fui.constantplugin.TellCode.*
 import com.bftv.fui.tell.Notice
@@ -18,6 +17,7 @@ import com.bftv.fui.thirdparty.InterceptionData
 import com.bftv.fui.thirdparty.VoiceFeedback
 import com.bftv.fui.thirdparty.notify.DataChange
 import com.bftv.fui.thirdparty.notify.IVoiceObserver
+import com.bftv.fui.voicehelpexpandview.AIFuncView
 import com.bftv.fui.voicehelpexpandview.AIFuncViewListener
 import com.bftv.fui.voicehelpexpandview.util.Tip
 import kotlinx.android.synthetic.main.demo_layout.*
