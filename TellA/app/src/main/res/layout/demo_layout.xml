@@ -17,12 +17,14 @@
             android:id="@+id/btn_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_selector_red"
             android:text="应用指令词" />
 
         <Button
             android:id="@+id/btn_app_blurry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_selector_red"
             android:text="应用指令词模糊搜索" />
 
         <LinearLayout
@@ -34,11 +36,13 @@
                 android:id="@+id/btn_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_selector_red"
                 android:text="界面指令词" />
 
             <Button
                 android:id="@+id/btn_view_append"
                 android:layout_width="wrap_content"
+                android:background="@drawable/bg_selector_red"
                 android:layout_height="wrap_content"
                 android:text="追加界面指令词" />
 
@@ -46,43 +50,57 @@
                 android:id="@+id/btn_view_recycler"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_selector_red"
                 android:text="界面回收通知" />
+
+            <Button
+                android:id="@+id/btn_view_delete"
+                android:layout_width="wrap_content"
+                android:background="@drawable/bg_selector_red"
+                android:layout_height="wrap_content"
+                android:text="界面删除" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_system_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_selector_red"
             android:text="系统指令词" />
 
         <Button
             android:id="@+id/btn_pull_far"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_selector_red"
             android:text="拉起语音" />
 
         <Button
             android:id="@+id/btn_send_asr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_selector_red"
             android:text="发送ASR" />
 
         <Button
             android:id="@+id/btn_send_notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_selector_red"
             android:text="发送通知" />
 
         <Button
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_selector_red"
             android:text="自己处理返回" />
 
         <Button
             android:id="@+id/btn_asr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_selector_red"
             android:text="接管ASR" />
 
         <LinearLayout
@@ -95,12 +113,14 @@
                 android:id="@+id/tips1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_selector_red"
                 android:text="测试给大耳朵提示词A"
                 />
 
             <Button
                 android:id="@+id/tips2"
                 android:layout_width="wrap_content"
+                android:background="@drawable/bg_selector_red"
                 android:layout_height="wrap_content"
                 android:text="测试给大耳朵提示词B"
                 />

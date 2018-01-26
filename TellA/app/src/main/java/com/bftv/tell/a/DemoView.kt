@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bftv.fui.constantplugin.Constant
+import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.SequenceCode
 import com.bftv.fui.constantplugin.TellCode.*
 import com.bftv.fui.tell.Notice
@@ -93,6 +94,19 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().tell(App.sApp, tell)
         })
 
+        //界面删除功能
+        btn_view_delete.setOnClickListener(View.OnClickListener {
+            val tell = Tell()
+            val hashMap = ConcurrentHashMap<String, String>()
+            hashMap.put("删除百度", "delete_baidu")
+            tell.viewCacheMap = hashMap
+            tell.pck = packageName
+            tell.isNeedViewCacheRecyclingNotice = true
+            tell.className = this@DemoView.javaClass.name
+            tell.tellType = TELL_VIEW_CACHE
+            tell.functionSupportType = FunctionCode.DELETE
+            TellManager.getInstance().tell(App.sApp, tell)
+        })
         //系统指令词
         btn_system_app.setOnClickListener(View.OnClickListener {
             val tell = Tell()
