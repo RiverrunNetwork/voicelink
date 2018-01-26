@@ -98,7 +98,7 @@ class DemoView : Activity(), IVoiceObserver {
         btn_view_delete.setOnClickListener(View.OnClickListener {
             val tell = Tell()
             val hashMap = ConcurrentHashMap<String, String>()
-            hashMap.put("删除百度", "delete_baidu")
+            hashMap.put("百度", "delete_baidu")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
             tell.isNeedViewCacheRecyclingNotice = true
@@ -183,7 +183,7 @@ class DemoView : Activity(), IVoiceObserver {
     }
 
     fun tips(appendName : String,map : LinkedHashMap<String, String>) {
-        funview.okUpdate(map, "you platfrom",appendName, 0,true, object : AIFuncViewListener {
+        funview.okUpdate(map, "you platfrom",appendName,0,true, object : AIFuncViewListener {
             override fun onItemClicked(tip: Tip) {
                 Log.e("Less", "onItemClicked" + tip.key)
                 TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
@@ -209,3 +209,4 @@ class DemoView : Activity(), IVoiceObserver {
         funview.release()
     }
 }
+
