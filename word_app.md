@@ -62,7 +62,7 @@ class TestService : Service() {
             </intent-filter>
         </service>
 ```
-关于 InterceptionData 大家是不是又是一脸蒙蔽 别急
+其中 onInterception 方法返回 InterceptionData 具体解释如下
 ```java
 public class InterceptionData implements Parcelable{
 
