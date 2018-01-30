@@ -5,8 +5,8 @@
 - 第二步 将你自定义的词组通过如下方式传给大耳朵，比如你做了一款 播放器类型的app,您希望在播放器界面只要用户说 “播放” 并且把该词语分发给你，用来控制播放 按钮 那么你就需要在界面的onCreate 中注册指令词<br>
 ```java
             val tell = Tell()
-            val hashMap = HashMap<String,String>()
-            hashMap.put("播放","playTag")
+            val hashMap = ConcurrentHashMap<String, String>()
+            hashMap.put("播放", "playTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
@@ -19,10 +19,11 @@
 - 第三步 那如果我想追加指令词？ 比如我一个界面需要多个地方调用界面指令词
 ```java
             val tell = Tell()
-            val hashMap = HashMap<String,String>()
-            hashMap.put("收藏","collectTag")
+            val hashMap = ConcurrentHashMap<String, String>()
+            hashMap.put("收藏", "collectTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
+            tell.className = this@DemoView.javaClass.name
             tell.isAppend = true
             tell.tellType = TELL_VIEW_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
@@ -136,13 +137,13 @@ InterceptionData 这个Bean中 的 functionType 是很重要值，当functionTyp
 目前大耳朵添加了回收通知机制,当你的数据被大耳朵回收的时候，大耳朵会及时通知你<br>
 tell.isNeedViewCacheRecyclingNotice = true 是需要通知 反之是不需要通知<br>
 ```java
-val tell = Tell()
-val hashMap = HashMap<String, String>()
-hashMap.put("呵呵", "recycler")
-tell.viewCacheMap = hashMap
-tell.pck = packageName
-tell.isNeedViewCacheRecyclingNotice = true
-tell.className = this@DemoView.javaClass.name
-tell.tellType = TELL_VIEW_CACHE
-TellManager.getInstance().tell(App.sApp, tell)
+            val tell = Tell()
+            val hashMap = ConcurrentHashMap<String, String>()
+            hashMap.put("呵呵", "recycler")
+            tell.viewCacheMap = hashMap
+            tell.pck = packageName
+            tell.isNeedViewCacheRecyclingNotice = true
+            tell.className = this@DemoView.javaClass.name
+            tell.tellType = TELL_VIEW_CACHE
+            TellManager.getInstance().tell(App.sApp, tell)
 ```
