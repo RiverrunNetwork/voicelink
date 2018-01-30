@@ -19,23 +19,39 @@
  
 - 第三步 当大耳朵命中你注册的指令词之后如何回传给你呢？ 这块需要你写一个 应用级别的Server去接收
 ```java
-public class TestService extends Service {
+class TestService : Service() {
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return stub;
+    override fun onCreate() {
+        super.onCreate()
+        Log.e("Less", "TestService-onCreate")
     }
 
-    IUserStatusNotice.Stub stub = new IUserStatusNotice.Stub() {
+    override fun onBind(intent: Intent?): IBinder {
+        return stub
+    }
 
-        @Override
-        public void onInterception(InterceptionData interceptionData) throws RemoteException {
-            Log.e("Less", "onInterception:" + interceptionData.toString());
-            DataChange.getInstance().notifyDataChange(interceptionData);
+    var stub: IUserStatusNotice.Stub = object : IUserStatusNotice.Stub() {
+        override fun onRecyclingNotice(recyclingData: RecyclingData?) {
+            Log.e("Less", "回收数据通知${recyclingData.toString()}")
         }
-}
 
+        override fun onAsr(asr: String?, age: Int, sex: Int) {
+            Log.e("Less", "用户说完话了:"+asr)
+        }
+
+        @Throws(RemoteException::class)
+        override fun onInterception(interceptionData: InterceptionData) {
+            Log.e("Less", "onInterception:" + interceptionData.toString())
+            DataChange.getInstance().notifyDataChange(interceptionData)
+        }
+
+        @Throws(RemoteException::class)
+        override fun onShow(isFar: Boolean) {
+            Log.e("Less", "用户开始说话")
+        }
+
+    }
+}
        <service
             android:name=".TestService"
             android:exported="true"
