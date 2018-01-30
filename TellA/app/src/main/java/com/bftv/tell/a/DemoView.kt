@@ -3,6 +3,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -27,7 +28,8 @@ import java.util.concurrent.ConcurrentHashMap
  */
 class DemoView : Activity(), IVoiceObserver {
     override fun update(interceptionData: InterceptionData?): VoiceFeedback? {
-        Handler(Looper.getMainLooper()).post { Toast.makeText(this@DemoView, "接到了:+A", Toast.LENGTH_SHORT).show() }
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(this@DemoView, "接到了"+interceptionData.toString(), Toast.LENGTH_LONG).show() }
         return null
     }
 
@@ -94,17 +96,17 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().tell(App.sApp, tell)
         })
 
-        //界面删除功能
-        btn_view_delete.setOnClickListener(View.OnClickListener {
+        //界面NLP 目前支持 删除** 打开** 关闭**
+        btn_view_nlp.setOnClickListener(View.OnClickListener {
             val tell = Tell()
             val hashMap = ConcurrentHashMap<String, String>()
-            hashMap.put("百度", "delete_baidu")
+            hashMap.put("音乐", "music")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
             tell.isNeedViewCacheRecyclingNotice = true
             tell.className = this@DemoView.javaClass.name
             tell.tellType = TELL_VIEW_CACHE
-            tell.functionSupportType = FunctionCode.DELETE
+            tell.functionSupportType = FunctionCode.DELETE or FunctionCode.CLOSE or FunctionCode.OPEN
             TellManager.getInstance().tell(App.sApp, tell)
         })
         //系统指令词
@@ -130,6 +132,7 @@ class DemoView : Activity(), IVoiceObserver {
         //发送通知
         btn_send_notice.setOnClickListener(View.OnClickListener {
             var notice = Notice()
+            notice.img = "xxx"
             notice.pck = packageName
             notice.message = "消息"
             notice.title = "标题"
