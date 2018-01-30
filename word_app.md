@@ -6,8 +6,8 @@
   那么你就将如下代码添加到application里面 例如：
  ```java
             val tell = Tell()
-            val hashMap = HashMap<String, String>()
-            hashMap.put("!搜索", "searchTag")
+            val hashMap = ConcurrentHashMap<String, String>()
+            hashMap.put("搜索", "searchTag")
             tell.appCacheMap = hashMap
             tell.pck = packageName
             tell.tellType = TELL_APP_CACHE
