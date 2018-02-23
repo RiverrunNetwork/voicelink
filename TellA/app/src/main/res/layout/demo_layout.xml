@@ -21,8 +21,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:clickable="true"
                 android:background="@drawable/bg_selector_red"
+                android:clickable="true"
                 android:text="应用指令词" />
 
             <Button
@@ -111,13 +111,44 @@
                 android:background="@drawable/bg_selector_red"
                 android:text="自己处理返回" />
 
-            <Button
-                android:id="@+id/btn_asr"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/bg_selector_red"
-                android:text="接管ASR" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_asr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="接管ASR" />
+
+                <Button
+                    android:id="@+id/btn_asr_hide_animation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="不显示语音动画" />
+
+                <Button
+                    android:id="@+id/btn_asr_hide_animation_ddz_game"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="斗地主游戏转译" />
+
+                <Button
+                    android:id="@+id/btn_asr_hide_animation_ddz_game_continuous_recognition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="开启连续识别" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
