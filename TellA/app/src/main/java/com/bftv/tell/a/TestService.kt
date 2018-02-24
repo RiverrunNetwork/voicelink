@@ -2,9 +2,12 @@ package com.bftv.tell.a
 
 import android.app.Service
 import android.content.Intent
+import android.os.Handler
 import android.os.IBinder
+import android.os.Looper
 import android.os.RemoteException
 import android.util.Log
+import android.widget.Toast
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.thirdparty.IUserStatusNotice
 import com.bftv.fui.thirdparty.InterceptionData
@@ -33,6 +36,9 @@ class TestService : Service() {
 
         override fun onAsr(asr: String?, age: Int, sex: Int) {
             Log.e("Less", "用户说完话了:"+asr)
+            Handler(Looper.getMainLooper()).post(Runnable {
+                Toast.makeText(App.sApp,"用户说完话了$asr",Toast.LENGTH_SHORT).show()
+            })
         }
 
         @Throws(RemoteException::class)
@@ -44,6 +50,9 @@ class TestService : Service() {
         @Throws(RemoteException::class)
         override fun onShow(isFar: Boolean) {
             Log.e("Less", "用户开始说话")
+            Handler(Looper.getMainLooper()).post(Runnable {
+                Toast.makeText(App.sApp,"onShow",Toast.LENGTH_SHORT).show()
+            })
         }
 
     }

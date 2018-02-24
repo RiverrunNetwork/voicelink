@@ -195,13 +195,13 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         tips1.setOnClickListener(View.OnClickListener {
-            var map1 = LinkedHashMap<String,String>()
+            val map1 = LinkedHashMap<String,String>()
             map1.put("你好","test1")
             tips("testa",map1)
         })
 
         tips2.setOnClickListener(View.OnClickListener {
-            var map2 = LinkedHashMap<String,String>()
+            val map2 = LinkedHashMap<String,String>()
             map2.put("哈哈","test2")
             tips("testb",map2)
         })
