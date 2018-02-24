@@ -3,7 +3,7 @@
 
 目前支持的功能如下 具体看TellA Demo
 ```java
-//接管语音的ASR
+        //接管语音的ASR
         btn_asr.setOnClickListener(View.OnClickListener {
             val tell = Tell()
             tell.pck = packageName
