@@ -41,7 +41,7 @@
 ```java
 TellManager.getInstance().sendAsr(App.sApp,packageName,"下一页")
 ```
-## 获取用户的asr(https://github.com/RiverrunNetwork/voicelink/blob/master/asr.md)
+## [获取用户的asr](https://github.com/RiverrunNetwork/voicelink/blob/master/asr.md)
 目前为了满足特殊需求的合作伙伴，大耳朵开放了ASR的功能
 ## 返回
 大耳朵目前的返回是模式的遥控器返回建，基本满足大部分需求，但是有一部分应用需求比较特殊，比如 “爱奇艺” 的播放界面，需要连续按两次返回键才能才会
