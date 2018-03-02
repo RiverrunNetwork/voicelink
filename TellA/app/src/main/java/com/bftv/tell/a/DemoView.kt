@@ -194,6 +194,19 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().tell(App.sApp, tell)
         })
 
+        //利用AIUI技术优化ASR结果,启动该技术会进行大量的计算,会影响返回速度。
+        btn_aiui_better_asr.setOnClickListener(View.OnClickListener {
+            val tell = Tell()
+            val hashMap = ConcurrentHashMap<String, String>()
+            hashMap.put("刘德华是谁", "yes")
+            tell.viewCacheMap = hashMap
+            tell.pck = packageName
+            tell.className = this@DemoView.javaClass.name
+            tell.tellType = TELL_VIEW_CACHE
+            tell.isEnableBetterAsr = true
+            TellManager.getInstance().tell(App.sApp, tell)
+        })
+
         tips1.setOnClickListener(View.OnClickListener {
             val map1 = LinkedHashMap<String,String>()
             map1.put("你好","test1")
