@@ -40,11 +40,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile files('libs/thirdtell-180302.jar')
+    compile files('libs/thirdtell-180305.jar')
     compile files('libs/voicethirdparty-180223.jar')
     compile files('libs/authentication-171210.jar')
     compile files('libs/constantplugin-180129.jar')
-    compile(name: 'voicehelpexpandview-180227', ext: 'aar')
+    compile(name: 'voicehelpexpandview-180308', ext: 'aar')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:recyclerview-v7:26.1.0'
 }

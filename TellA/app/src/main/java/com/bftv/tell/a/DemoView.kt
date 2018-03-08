@@ -194,6 +194,10 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().tell(App.sApp, tell)
         })
 
+        //关闭ASR
+        btn_asr_close.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().clearAsr(App.sApp, packageName,this@DemoView.javaClass.name)
+        })
         //利用AIUI技术优化ASR结果,启动该技术会进行大量的计算,会影响返回速度。
         btn_aiui_better_asr.setOnClickListener(View.OnClickListener {
             val tell = Tell()
