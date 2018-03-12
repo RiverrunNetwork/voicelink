@@ -193,6 +193,29 @@
                 android:text="利用AIUI引擎优化ASR结果" />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_start_root"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="开启Root" />
+
+                <Button
+                    android:id="@+id/btn_start_close_root"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="关闭Root" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
 

@@ -210,6 +210,16 @@ class DemoView : Activity(), IVoiceObserver {
             tell.isEnableBetterAsr = true
             TellManager.getInstance().tell(App.sApp, tell)
         })
+        //启动Root权限
+        btn_start_root.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().
+                    enableRoot(App.sApp,this@DemoView.javaClass.name,"10987654321")
+        })
+
+        //关闭Root权限
+        btn_start_close_root.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().clearRootAuthority(App.sApp)
+        })
 
         tips1.setOnClickListener(View.OnClickListener {
             val map1 = LinkedHashMap<String,String>()
