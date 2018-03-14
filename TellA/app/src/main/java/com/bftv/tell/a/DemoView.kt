@@ -1,4 +1,5 @@
 package com.bftv.tell.a
+
 import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
@@ -29,7 +30,8 @@ import java.util.concurrent.ConcurrentHashMap
 class DemoView : Activity(), IVoiceObserver {
     override fun update(interceptionData: InterceptionData?): VoiceFeedback? {
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(this@DemoView, "接到了"+interceptionData.toString(), Toast.LENGTH_LONG).show() }
+            Toast.makeText(this@DemoView, "接到了" + interceptionData.toString(), Toast.LENGTH_LONG).show()
+        }
         return null
     }
 
@@ -51,7 +53,7 @@ class DemoView : Activity(), IVoiceObserver {
         btn_app_blurry.setOnClickListener(View.OnClickListener {
             val tell = Tell()
             val hashMap = HashMap<String, String>()
-            hashMap.put("!谢谢你", "searchTag")
+            hashMap.put("取消订单", "searchTag")
             tell.setHashMapAppCacheMap(hashMap)
             tell.pck = packageName
             tell.tellType = TELL_APP_CACHE
@@ -196,7 +198,7 @@ class DemoView : Activity(), IVoiceObserver {
 
         //关闭ASR
         btn_asr_close.setOnClickListener(View.OnClickListener {
-            TellManager.getInstance().clearAsr(App.sApp, packageName,this@DemoView.javaClass.name)
+            TellManager.getInstance().clearAsr(App.sApp, packageName, this@DemoView.javaClass.name)
         })
         //利用AIUI技术优化ASR结果,启动该技术会进行大量的计算,会影响返回速度。
         btn_aiui_better_asr.setOnClickListener(View.OnClickListener {
@@ -213,7 +215,7 @@ class DemoView : Activity(), IVoiceObserver {
         //启动Root权限
         btn_start_root.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().
-                    enableRoot(App.sApp,this@DemoView.javaClass.name,"10987654321")
+                    enableRoot(App.sApp, this@DemoView.javaClass.name, "10987654321")
         })
 
         //关闭Root权限
@@ -222,15 +224,15 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         tips1.setOnClickListener(View.OnClickListener {
-            val map1 = LinkedHashMap<String,String>()
-            map1.put("你好","test1")
-            tips("testa",map1)
+            val map1 = LinkedHashMap<String, String>()
+            map1.put("你好", "test1")
+            tips("testa", map1)
         })
 
         tips2.setOnClickListener(View.OnClickListener {
-            val map2 = LinkedHashMap<String,String>()
-            map2.put("哈哈","test2")
-            tips("testb",map2)
+            val map2 = LinkedHashMap<String, String>()
+            map2.put("哈哈", "test2")
+            tips("testb", map2)
         })
     }
 
@@ -244,8 +246,8 @@ class DemoView : Activity(), IVoiceObserver {
         DataChange.getInstance().deleteObserver(this)
     }
 
-    fun tips(appendName : String,map : LinkedHashMap<String, String>) {
-        funview.okUpdate(map, "you platfrom",appendName,0,true, object : AIFuncViewListener {
+    fun tips(appendName: String, map: LinkedHashMap<String, String>) {
+        funview.okUpdate(map, "you platfrom", appendName, 0, true, object : AIFuncViewListener {
             override fun onItemClicked(tip: Tip) {
                 Log.e("Less", "onItemClicked" + tip.key)
                 TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
