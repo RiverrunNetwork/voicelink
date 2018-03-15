@@ -1,6 +1,7 @@
 package com.bftv.tell.a
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -221,6 +222,16 @@ class DemoView : Activity(), IVoiceObserver {
         //关闭Root权限
         btn_start_close_root.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().clearRootAuthority(App.sApp)
+        })
+
+
+        //和大耳朵断开连接
+        btn_interrupted.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this@DemoView.javaClass.name)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            App.sApp!!.startActivity(intent)
+            android.os.Process.killProcess(android.os.Process.myPid())
+            //App.sApp!!.stopService(Intent(App.sApp, TestService::class.java))
         })
 
         tips1.setOnClickListener(View.OnClickListener {

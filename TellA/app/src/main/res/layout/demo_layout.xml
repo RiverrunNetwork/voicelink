@@ -215,6 +215,14 @@
                     android:text="关闭Root" />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/btn_interrupted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_selector_red"
+                android:text="和大耳朵断开连接" />
+
 
         </LinearLayout>
 
