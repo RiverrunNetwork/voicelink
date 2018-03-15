@@ -24,6 +24,9 @@ import com.bftv.fui.voicehelpexpandview.AIFuncViewListener
 import com.bftv.fui.voicehelpexpandview.util.Tip
 import kotlinx.android.synthetic.main.demo_layout.*
 import java.util.concurrent.ConcurrentHashMap
+import com.bftv.fui.constantplugin.TellCode.TELL_ASR
+
+
 
 /**
  * Author by Less on 17/11/15.
@@ -36,7 +39,7 @@ class DemoView : Activity(), IVoiceObserver {
         return null
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun  onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.demo_layout)
         //应用指令词
@@ -157,6 +160,8 @@ class DemoView : Activity(), IVoiceObserver {
 
         //接管语音的ASR
         btn_asr.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().
+                    enableRoot(App.sApp, this@DemoView.javaClass.name, "10987654321")
             val tell = Tell()
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
@@ -232,6 +237,11 @@ class DemoView : Activity(), IVoiceObserver {
             App.sApp!!.startActivity(intent)
             android.os.Process.killProcess(android.os.Process.myPid())
             //App.sApp!!.stopService(Intent(App.sApp, TestService::class.java))
+        })
+
+        //关闭大耳朵语音
+        btn_close_voice.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().closeVoice(App.sApp)
         })
 
         tips1.setOnClickListener(View.OnClickListener {

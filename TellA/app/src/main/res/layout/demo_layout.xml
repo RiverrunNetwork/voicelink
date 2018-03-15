@@ -224,6 +224,15 @@
                 android:text="和大耳朵断开连接" />
 
 
+            <Button
+                android:id="@+id/btn_close_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_selector_red"
+                android:text="关闭大耳朵语音" />
+
+
         </LinearLayout>
 
 
