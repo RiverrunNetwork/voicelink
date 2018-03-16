@@ -232,7 +232,13 @@
                 android:background="@drawable/bg_selector_red"
                 android:text="关闭大耳朵语音" />
 
-
+            <Button
+                android:id="@+id/btn_tts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_selector_red"
+                android:text="大耳朵语音播报" />
         </LinearLayout>
 
 

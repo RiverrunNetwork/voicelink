@@ -25,7 +25,7 @@ import com.bftv.fui.voicehelpexpandview.util.Tip
 import kotlinx.android.synthetic.main.demo_layout.*
 import java.util.concurrent.ConcurrentHashMap
 import com.bftv.fui.constantplugin.TellCode.TELL_ASR
-
+import com.bftv.fui.tell.TTS
 
 
 /**
@@ -242,6 +242,14 @@ class DemoView : Activity(), IVoiceObserver {
         //关闭大耳朵语音
         btn_close_voice.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().closeVoice(App.sApp)
+        })
+
+        //大耳朵语音播报
+        btn_tts.setOnClickListener(View.OnClickListener {
+            val tts = TTS()
+            tts.pck = packageName
+            tts.tts = "哈哈 我能控制语音播报啦 好开心!"
+            TellManager.getInstance().tts(App.sApp, tts)
         })
 
         tips1.setOnClickListener(View.OnClickListener {
