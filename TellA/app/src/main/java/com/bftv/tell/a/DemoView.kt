@@ -1,15 +1,12 @@
 package com.bftv.tell.a
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.bftv.fui.constantplugin.Constant
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.SequenceCode
 import com.bftv.fui.constantplugin.TellCode.*
@@ -72,7 +69,7 @@ class DemoView : Activity(), IVoiceObserver {
             tell.viewCacheMap = hashMap
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
-            tell.tellType = TELL_VIEW_CACHE
+            tell.tellType = TELL_VIEW_CACHE or TELL_TIPS
             TellManager.getInstance().tell(App.sApp, tell)
         })
 
@@ -206,6 +203,18 @@ class DemoView : Activity(), IVoiceObserver {
         btn_asr_close.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().clearAsr(App.sApp, packageName, this@DemoView.javaClass.name)
         })
+
+        //隐藏语音动画和主动拉起大耳朵组合测试
+        btn_hide_and_far.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().farPull(App.sApp, packageName)
+            val tell = Tell()
+            tell.pck = packageName
+            tell.className = this@DemoView.javaClass.name
+            tell.tellType = TELL_ASR
+            tell.isHideAnimation = true
+            TellManager.getInstance().tell(App.sApp, tell)
+        })
+
         //利用AIUI技术优化ASR结果,启动该技术会进行大量的计算,会影响返回速度。
         btn_aiui_better_asr.setOnClickListener(View.OnClickListener {
             val tell = Tell()
@@ -218,6 +227,17 @@ class DemoView : Activity(), IVoiceObserver {
             tell.isEnableBetterAsr = true
             TellManager.getInstance().tell(App.sApp, tell)
         })
+
+        /**
+         * 给AIUI进行打分 默认是5分 分数越低模糊度越低
+         * 比如 如果你的分数是0 那么几乎不会改变任何ASR结果
+         * 如果你的分数是10 那么只要是相似的结果都会发生变化
+         * 当前只更改ClassName 对应的结果
+         */
+        btn_aiui_score.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().addScore(App.sApp,packageName,this@DemoView.javaClass.name,5)
+        })
+
         //启动Root权限
         btn_start_root.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().
@@ -236,7 +256,6 @@ class DemoView : Activity(), IVoiceObserver {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             App.sApp!!.startActivity(intent)
             android.os.Process.killProcess(android.os.Process.myPid())
-            //App.sApp!!.stopService(Intent(App.sApp, TestService::class.java))
         })
 
         //关闭大耳朵语音

@@ -182,16 +182,39 @@
                     android:background="@drawable/bg_selector_red"
                     android:text="关闭ASR" />
 
+                <Button
+                    android:id="@+id/btn_hide_and_far"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="隐藏语音动画和主动拉起组合测试" />
+
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_aiui_better_asr"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/bg_selector_red"
-                android:text="利用AIUI引擎优化ASR结果" />
+                android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btn_aiui_better_asr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="利用AIUI引擎优化ASR结果" />
+
+                <Button
+                    android:id="@+id/btn_aiui_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="给对应的数据进行打分" />
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
