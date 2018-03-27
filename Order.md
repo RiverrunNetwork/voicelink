@@ -47,4 +47,18 @@ tell.tellType = TELL_SYSTEM
 tell.sequencecode = SequenceCode.TYPE_PAGE or SequenceCode.TYPE_NUM
 TellManager.getInstance().tell(App.sApp, tell)
 ```
-                
+混合使用<br>
+我们的指令词 支持各种混合使用
+```java
+val tell = Tell()
+val appMap = ConcurrentHashMap<String, String>()
+appMap.put("搜索", "searchTag")
+tell.appCacheMap = appMap
+val viewMap = ConcurrentHashMap<String, String>()
+viewMap.put("收藏", "collectTag")
+tell.viewCacheMap = viewMap
+tell.pck = packageName
+tell.sequencecode = SequenceCode.TYPE_PAGE or SequenceCode.TYPE_NUM
+tell.tellType = TELL_APP_CACHE or TELL_SYSTEM or TELL_VIEW_CACHE or TELL_TIPS
+TellManager.getInstance().tell(App.sApp, tell)
+```
