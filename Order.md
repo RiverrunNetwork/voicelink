@@ -62,3 +62,6 @@ tell.sequencecode = SequenceCode.TYPE_PAGE or SequenceCode.TYPE_NUM
 tell.tellType = TELL_APP_CACHE or TELL_SYSTEM or TELL_VIEW_CACHE or TELL_TIPS
 TellManager.getInstance().tell(App.sApp, tell)
 ```
+
+- 第三步 指令词的接收
+
