@@ -7,7 +7,7 @@
 ## [集成](https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/app/libs)<br>
 - voicehelpexpandview...aar 该功能只适用于和暴风深度定制的应用,其他应用可以不集成<br>
 ## 下载大耳朵 <br>
-出于严禁的角度 不再对外提供 大耳朵内部版本 版本问题统一联系 张奇文 邮箱 zhangqiwen@bftv.com <br>
+版本问题请联系 zhangqiwen@bftv.com <br>
 ## [解惑](https://github.com/RiverrunNetwork/voicelink/blob/master/problem.md)
 这里会记录一些大家在接入大耳朵时遇到的疑难杂症.大家可以提前看下免得重新踩坑<br>
 ## 鉴权
