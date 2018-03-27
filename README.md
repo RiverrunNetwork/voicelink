@@ -4,7 +4,6 @@
 
 ## 简介
 暴风大耳朵是基于暴风电视的一款免遥控的语音软件,任何第三方软件如果在暴风电视上使用语音功能,需要接入该平台<br>
-Note:大耳朵将大量的功能已经开放出来了,您能做很多定制化的工作。期待您的加入!<br>
 ## [集成](https://github.com/RiverrunNetwork/voicelink/tree/master/TellA/app/libs)<br>
 目前大耳朵的sdk 采用的的jar包的形式 主要是为了兼容eclipse的用户 将如下jar一次集成到项目中<br>
 - voicehelpexpandview...aar 是系统bar 第三方应用可以不集成 目前 该功能只适用于和暴风深度定制的应用<br>
