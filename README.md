@@ -8,8 +8,6 @@
 - voicehelpexpandview...aar 该功能只适用于和暴风深度定制的应用,其他应用可以不集成<br>
 ## 下载大耳朵 <br>
 版本问题请联系 zhangqiwen@bftv.com <br>
-## [解惑](https://github.com/RiverrunNetwork/voicelink/blob/master/problem.md)
-这里会记录一些大家在接入大耳朵时遇到的疑难杂症.大家可以提前看下免得重新踩坑<br>
 ## 鉴权
 任何第三方应用和大耳朵进行语音交互都需要和大耳朵进行语音鉴权<br>
 
