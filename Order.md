@@ -34,8 +34,6 @@ tell.tipsMap = map
 tell.pck = packageName
 tell.className = this@DemoView.javaClass.name
 tell.tellType = TELL_TIPS
-tell.sequencecode = code
-tell.isAppend = true
 TellManager.getInstance().tell(App.sApp, tell)
 ```
 系统指令词
