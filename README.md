@@ -20,6 +20,8 @@
             android:authorities="com.bftv.voice.provider.you_package"
             android:exported="true" />
 ```
+## 指令词
+指令词是为了解决 在特定的场景下 当用户说了一些简单的指令 比如 在播放器界面下 说 “播放” “暂停” 这个时候 当你注册了指令词 大耳朵就会将用户的意图分发给你 你来执行具体的操作 <br>
 ## [应用指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/word_app.md)
 任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “打开朋友圈” 那么当用户命中“打开朋友圈”这个词语那么我们就将当前用户的指令词 分发给微信.当你通过该接口注册了 应用指令词 那么你的整个应用都是生效的<br>
 ## [界面指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/word_view.md)
