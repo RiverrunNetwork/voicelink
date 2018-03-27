@@ -21,7 +21,7 @@
             android:exported="true" />
 ```
 ## [指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/Order.md)
-指令词目前分为三种类型 分别是[应用指令词] [界面指令词] [提示指令词] <br>
+指令词目前分为三种类型 分别是[应用指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/word_app.md) [界面指令词] [提示指令词] <br>
 - 应用指令词
 是指当你注册了一遍 在整个项目中都会生效的指令词.
 - 界面指令词
