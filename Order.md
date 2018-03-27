@@ -3,8 +3,8 @@
 
 - 第一步 需要鉴权 具体步骤参考 [鉴权] 如果不鉴权 将不能和大耳朵进行通信
 
-- 第二步 指令词的注册
-(1)应用指令词
+- 第二步 指令词的注册<br>
+应用指令词
 ```java
 val tell = Tell()
 val hashMap = ConcurrentHashMap<String, String>()
@@ -14,7 +14,7 @@ tell.pck = packageName
 tell.tellType = TELL_APP_CACHE
 TellManager.getInstance().tell(App.sApp, tell)
 ```
-(2)界面指令词
+界面指令词
 ```java
 val tell = Tell()
 val hashMap = ConcurrentHashMap<String, String>()
@@ -25,7 +25,7 @@ tell.className = this@DemoView.javaClass.name
 tell.tellType = TELL_VIEW_CACHE or TELL_TIPS
 TellManager.getInstance().tell(App.sApp, tell)
 ```
-(2)提示指令词
+提示指令词
 ```java
 val tell = Tell()
 tell.tipsMap = map
