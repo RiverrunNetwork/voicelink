@@ -36,8 +36,15 @@ tell.className = this@DemoView.javaClass.name
 tell.tellType = TELL_TIPS
 tell.sequencecode = code
 tell.isAppend = true
-tell.tellType = TELL_SYSTEM or TELL_TIPS
 TellManager.getInstance().tell(App.sApp, tell)
 ```
-
+系统指令词
+```java
+val tell = Tell()
+tell.pck = packageName
+tell.className = this@DemoView.javaClass.name
+tell.tellType = TELL_SYSTEM
+tell.sequencecode = SequenceCode.TYPE_PAGE or SequenceCode.TYPE_NUM
+TellManager.getInstance().tell(App.sApp, tell)
+```
                 
