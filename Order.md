@@ -36,7 +36,9 @@ tell.className = this@DemoView.javaClass.name
 tell.tellType = TELL_TIPS
 TellManager.getInstance().tell(App.sApp, tell)
 ```
-系统指令词
+系统指令词 <br>
+SequenceCode.TYPE_PAGE 代表 支持页数指令 比如 下一页 上一页 等<br>
+SequenceCode.TYPE_NUM 代表支持 第x个指令 比如 第10个 第100个 <br>
 ```java
 val tell = Tell()
 tell.pck = packageName
