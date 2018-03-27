@@ -21,13 +21,15 @@
             android:exported="true" />
 ```
 ## [指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/Order.md)
-指令词目前分为三种类型 分别是[应用指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/word_app.md) [界面指令词] [提示指令词] <br>
+指令词目前分为四种类型 分别是[应用指令词] [界面指令词] [提示指令词] [系统指令词]<br>
 - 应用指令词
 是指当你注册了一遍 在整个项目中都会生效的指令词.
 - 界面指令词
 是指当你注册一遍 在当前界面下会生效的指令词 该功能可注册大量数据<br>
 - 提示指令词
 只有和暴风深度合作的应用才会用到该功能,该功能是指 当你注册一次之后 会显示在界面底部bar上面<br>
+- 系统指令词
+是指一些较为复杂的功能,比如第x个 打开第x个 等较为复杂的指令词,这块大耳朵进行了统一封装 供第三方应用统一调用<br>
 ## [应用指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/word_app.md)
 任何一个应用都可以向大耳朵注册特定的指令词语 比如微信 向大耳朵注册指令词 “打开朋友圈” 那么当用户命中“打开朋友圈”这个词语那么我们就将当前用户的指令词 分发给微信.当你通过该接口注册了 应用指令词 那么你的整个应用都是生效的<br>
 ## [界面指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/word_view.md)
