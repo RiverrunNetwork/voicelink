@@ -40,29 +40,6 @@
 ```java
 TellManager.getInstance().sendAsr(App.sApp,packageName,"下一页")
 ```
-## [获取用户的asr](https://github.com/RiverrunNetwork/voicelink/blob/master/asr.md)
-目前为了满足特殊需求的合作伙伴，大耳朵开放了ASR的功能
-## 返回
-大耳朵目前的返回是模式的遥控器返回建，基本满足大部分需求，但是有一部分应用需求比较特殊，比如 “爱奇艺” 的播放界面，需要连续按两次返回键才能才会
-为了满足这种场景，大耳朵开放了“返回”功能，会将back指令发送给用户的app,自己去处理界面的关闭
-```java
-val tell = Tell()
-tell.pck = packageName
-tell.className = this@DemoView.javaClass.name
-tell.tellType = TELL_SYSTEM
-tell.sequencecode = SequenceCode.TYPE_BACK
-TellManager.getInstance().tell(App.sApp, tell)
-```
-## 发送通知
-```java
-var notice = Notice()
-notice.pck = packageName
-notice.message = "消息"
-notice.title = "标题"
-val hashMap = HashMap<String, String>()
-hashMap.put("提示词", "tips")
-notice.noticeTipsMap = hashMap
-TellManager.getInstance().sendNotice(App.sApp, notice)
 ```
 ## 问题反馈
 - 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题<br>
