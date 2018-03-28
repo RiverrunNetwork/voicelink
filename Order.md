@@ -143,3 +143,9 @@ class TestService : Service() {
     }
 }
 ```
+我们会将用户得意图传给你自己定义的Service 然后你可以通过 例如DataChange
+```java
+DataChange.getInstance().notifyDataChange(interceptionData)
+```
+或者EventBus 等 方式将service的内容 传给当前展示的界面上
+
