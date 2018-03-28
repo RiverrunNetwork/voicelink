@@ -262,7 +262,18 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/bg_selector_red"
                 android:text="大耳朵语音播报" />
+
+
+            <Button
+                android:id="@+id/btn_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_selector_red"
+                android:text="多种指令词" />
         </LinearLayout>
+
+
 
 
         <com.bftv.fui.voicehelpexpandview.AIFuncView

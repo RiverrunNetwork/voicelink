@@ -43,7 +43,7 @@ dependencies {
     compile files('libs/thirdtell-180325.jar')
     compile files('libs/voicethirdparty-180223.jar')
     compile files('libs/authentication-171210.jar')
-    compile files('libs/constantplugin-180129.jar')
+    compile files('libs/constantplugin-180327.jar')
     compile(name: 'voicebar-release-1.0.0', ext: 'aar')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:recyclerview-v7:26.1.0'

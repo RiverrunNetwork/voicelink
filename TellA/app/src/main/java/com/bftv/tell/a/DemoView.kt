@@ -122,6 +122,21 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().tell(App.sApp, tell)
         })
 
+        //多种指令词
+        btn_order.setOnClickListener(View.OnClickListener {
+            val tell = Tell()
+            val appMap = ConcurrentHashMap<String, String>()
+            appMap.put("搜索", "searchTag")
+            tell.appCacheMap = appMap
+            val viewMap = ConcurrentHashMap<String, String>()
+            viewMap.put("收藏", "collectTag")
+            tell.viewCacheMap = viewMap
+            tell.pck = packageName
+            tell.sequencecode = SequenceCode.TYPE_PAGE or SequenceCode.TYPE_NUM
+            tell.tellType = TELL_APP_CACHE or TELL_SYSTEM or TELL_VIEW_CACHE or TELL_TIPS
+            TellManager.getInstance().tell(App.sApp, tell)
+        })
+
         //拉起语音
         btn_pull_far.setOnClickListener(View.OnClickListener {
             TellManager.getInstance().farPull(App.sApp, packageName)
