@@ -38,7 +38,7 @@
 ## 消息控制
 任何第三方应用都能向大耳朵发送消息 例如 你可以发送 “刘德华的电影” 那么 大耳朵会对该消息进行 分词-理解－查找数据－展示,当然您只需要传递一个消息就可以了，剩下的工作交给大耳朵就好
 ```java
-TellManager.getInstance().sendAsr(App.sApp,packageName,"下一页")
+TellManager.getInstance().sendAsr(App.sApp,packageName,"刘德华的电影")
 ```
 
 ## 语音播报
