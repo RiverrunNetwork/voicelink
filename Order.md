@@ -65,3 +65,15 @@ TellManager.getInstance().tell(App.sApp, tell)
 
 - 第三步 指令词的接收
 
+首先需要自己写一个应用级别得service 下面以TestService举例子 其中intent.action.user. 为固定格式 com.bftv.tell.a 为你应用得包名字
+```java
+<service
+android:name=".TestService"
+android:exported="true"
+android:enabled="true"
+>
+<intent-filter>
+      <action android:name="intent.action.user.com.bftv.tell.a" />
+</intent-filter>
+</service>
+```
