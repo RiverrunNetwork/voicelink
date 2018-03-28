@@ -56,7 +56,7 @@ TellManager.getInstance().tts(App.sApp, tts)
 
 
 ## 合作伙伴
-我们希望更多的服务方能加入暴风tv的大家庭里面来 下面是支持语音的服务方<br>
+我们希望更多的应用能加入暴风tv的大家庭里面来 下面是支持语音的应用<br>
 <img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" />&ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/xiaobanlong.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ic_launcher.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/video.png" width="70" height="70" />
 
 
