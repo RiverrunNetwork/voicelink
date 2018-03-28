@@ -54,10 +54,10 @@ TellManager.getInstance().tts(App.sApp, tts)
 - 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题<br>
 <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/%E6%9A%B4%E9%A3%8E%E8%AF%AD%E9%9F%B3%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png" width="300" height="300" /> 
 
-
 ## 合作伙伴
 我们希望更多的应用能加入暴风tv的大家庭里面来 下面是支持语音的应用<br>
-<img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" />&ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/qq_music.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ddz.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ximalaya.jpg" width="70" height="70" />&ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/xiaobanlong.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ic_launcher.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/video.png" width="70" height="70" />
+<img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" />&ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/qq_music.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ddz.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ximalaya.jpg" width="70" height="70" />&ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/xiaobanlong.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="
+https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/dianshijia.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ic_launcher.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/video.png" width="70" height="70" />
 
 
  
