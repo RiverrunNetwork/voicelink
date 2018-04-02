@@ -23,6 +23,8 @@ import kotlinx.android.synthetic.main.demo_layout.*
 import java.util.concurrent.ConcurrentHashMap
 import com.bftv.fui.constantplugin.TellCode.TELL_ASR
 import com.bftv.fui.tell.TTS
+import java.util.concurrent.LinkedBlockingDeque
+import java.util.concurrent.LinkedBlockingQueue
 
 
 /**
