@@ -1,5 +1,5 @@
 # 全局跳转
-目前大耳朵 只支持五种类型跳转 <br>
+目前大耳朵 只支持六种类型跳转 <br>
 第一种 显示启动  <br>
 ```java
 {
@@ -69,6 +69,13 @@ data:{"extra":"4","type":"key_code"}
     "flag": "",
     "activity_name": "",
     "action_name": "com.bftv.fui.xxx.service"
+}
+```
+第六种 启动系统安装的<br>
+```java
+{
+    "type": "system",
+    "package_name": "com.baofengtv.settings"
 }
 ```
 
