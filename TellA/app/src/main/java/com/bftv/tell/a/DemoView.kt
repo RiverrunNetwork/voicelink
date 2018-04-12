@@ -288,6 +288,20 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().tts(App.sApp, tts)
         })
 
+        //批量映射指令词
+        btn_nlp_cache.setOnClickListener(View.OnClickListener {
+            val cacheData = ArrayList<String>(10)
+            cacheData.add("打开")
+            cacheData.add("切换")
+            cacheData.add("换到")
+            cacheData.add("进入")
+            cacheData.add("我要跳到")
+            cacheData.add("请打开")
+            cacheData.add("能不能打开")
+            cacheData.add("给我切换到")
+            TellManager.getInstance().nlpCache(App.sApp,this@DemoView.javaClass.name,cacheData)
+        })
+
         tips1.setOnClickListener(View.OnClickListener {
             val map1 = LinkedHashMap<String, String>()
             map1.put("你好", "test1")

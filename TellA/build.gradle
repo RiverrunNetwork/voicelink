@@ -20,7 +20,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url('http://111.202.106.186:8083/repository/maven-public/') }
     }
+
 }
 
 task clean(type: Delete) {

@@ -41,7 +41,7 @@ class TestService : Service() {
 
         override fun onAsr(asr: String?, age: Int, sex: Int) {
             Log.e(TAG, "用户说完话了:"+asr)
-            Handler(Looper.getMainLooper()).post(Runnable {
+            Handler(Looper.getMainLooper()).post({
                 Toast.makeText(App.sApp,"用户说完话了$asr",Toast.LENGTH_SHORT).show()
             })
         }
