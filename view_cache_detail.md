@@ -27,6 +27,8 @@ TellManager.getInstance().tell(App.sApp, tell)
 ```
 - 批量修改指令词
 比如注册了两个词分别是 “收藏” “详情” 那么我希望 支持"打开收藏" "打开详情" 又不想再注册两遍<br>
+
+
 第一步 需要把value 添加“@”符号 只要添加了就代表支持批量修改<br>
 ```java
 val tell = Tell()
