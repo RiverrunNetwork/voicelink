@@ -22,6 +22,7 @@ import com.bftv.fui.voicehelpexpandview.util.Tip
 import kotlinx.android.synthetic.main.demo_layout.*
 import java.util.concurrent.ConcurrentHashMap
 import com.bftv.fui.constantplugin.TellCode.TELL_ASR
+import com.bftv.fui.constantplugin.bean.InterceptorNet
 import com.bftv.fui.tell.TTS
 import java.util.concurrent.LinkedBlockingDeque
 import java.util.concurrent.LinkedBlockingQueue
@@ -68,6 +69,7 @@ class DemoView : Activity(), IVoiceObserver {
             val tell = Tell()
             val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("播放", "playTag")
+            hashMap.put("收藏", "@collectTag")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
@@ -302,6 +304,12 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().nlpCache(App.sApp,this@DemoView.javaClass.name,cacheData)
         })
 
+        //自定义系统指令词
+        btn_nlp_system.setOnClickListener(View.OnClickListener {
+            val data = ArrayList<InterceptorNet>()
+            data.add(InterceptorNet("删除第.*.*",12345423))
+            TellManager.getInstance().nlpSystem(App.sApp,this@DemoView.javaClass.name,data)
+        })
         tips1.setOnClickListener(View.OnClickListener {
             val map1 = LinkedHashMap<String, String>()
             map1.put("你好", "test1")
