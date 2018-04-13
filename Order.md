@@ -16,7 +16,7 @@ tell.pck = packageName
 tell.tellType = TELL_APP_CACHE
 TellManager.getInstance().tell(App.sApp, tell)
 ```
-界面指令词
+[界面指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/view_cache_detail.md)
 ```java
 val tell = Tell()
 val hashMap = ConcurrentHashMap<String, String>()
