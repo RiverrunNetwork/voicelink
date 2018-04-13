@@ -48,7 +48,7 @@ tell.sequencecode = SequenceCode.TYPE_PAGE or SequenceCode.TYPE_NUM
 TellManager.getInstance().tell(App.sApp, tell)
 ```
 当前您可以自定义系统指令词<br>
-InterceptorNet("删除第.*.*",12345423) 前半部分是正则表达式 后半部分是您自己定义的类型<br>
+InterceptorNet("删除第.*.*",12345423) 前半部分是正则表达式 后半部分是你自己定义的类型<br>
 ```java
 val data = ArrayList<InterceptorNet>()
 data.add(InterceptorNet("删除第.*.*",12345423))
