@@ -13,12 +13,12 @@
 任何第三方应用和大耳朵进行语音交互都需要和大耳朵进行语音鉴权<br>
 
 - 如何鉴权 ？<br>
-将如下代码放到应用的AndroidManifest文件中 you_package 是你应用的包的名字<br>
+将如下代码放到应用的AndroidManifest文件中 your_package 是你应用的包的名字<br>
 
 ```java
 <provider
             android:name="com.bftv.fui.authentication.AuthenticationProvider"
-            android:authorities="com.bftv.voice.provider.you_package"
+            android:authorities="com.bftv.voice.provider.your_package"
             android:exported="true" />
 ```
 ## [指令词](https://github.com/RiverrunNetwork/voicelink/blob/master/Order.md)
