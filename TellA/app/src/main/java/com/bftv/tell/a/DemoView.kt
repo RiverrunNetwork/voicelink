@@ -43,7 +43,7 @@ class DemoView : Activity(), IVoiceObserver {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.demo_layout)
         //应用指令词
-        btn_app.setOnClickListener(View.OnClickListener {
+        btn_app.setOnClickListener({
             val tell = Tell()
             val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("搜索", "searchTag")
@@ -54,7 +54,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //应用指令模糊效果
-        btn_app_blurry.setOnClickListener(View.OnClickListener {
+        btn_app_blurry.setOnClickListener({
             val tell = Tell()
             val hashMap = HashMap<String, String>()
             hashMap.put("取消订单", "searchTag")
@@ -65,7 +65,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //界面指令词
-        btn_view.setOnClickListener(View.OnClickListener {
+        btn_view.setOnClickListener({
             val tell = Tell()
             val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("播放", "playTag")
@@ -78,7 +78,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //追加界面指令词
-        btn_view_append.setOnClickListener(View.OnClickListener {
+        btn_view_append.setOnClickListener({
             val tell = Tell()
             val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("收藏", "collectTag")
@@ -91,7 +91,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //界面回收通知
-        btn_view_recycler.setOnClickListener(View.OnClickListener {
+        btn_view_recycler.setOnClickListener({
             val tell = Tell()
             val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("呵呵", "recycler")
@@ -104,7 +104,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //界面NLP 目前支持 删除** 打开** 关闭**
-        btn_view_nlp.setOnClickListener(View.OnClickListener {
+        btn_view_nlp.setOnClickListener({
             val tell = Tell()
             val hashMap = ConcurrentHashMap<String, String>()
             hashMap.put("音乐", "music")
@@ -117,7 +117,7 @@ class DemoView : Activity(), IVoiceObserver {
             TellManager.getInstance().tell(App.sApp, tell)
         })
         //系统指令词
-        btn_system_app.setOnClickListener(View.OnClickListener {
+        btn_system_app.setOnClickListener({
             val tell = Tell()
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
@@ -127,7 +127,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //多种指令词
-        btn_order.setOnClickListener(View.OnClickListener {
+        btn_order.setOnClickListener({
             val tell = Tell()
             val appMap = ConcurrentHashMap<String, String>()
             appMap.put("搜索", "searchTag")
@@ -142,18 +142,18 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //拉起语音
-        btn_pull_far.setOnClickListener(View.OnClickListener {
+        btn_pull_far.setOnClickListener({
             TellManager.getInstance().farPull(App.sApp, packageName)
         })
 
         //发送ASR
-        btn_send_asr.setOnClickListener(View.OnClickListener {
+        btn_send_asr.setOnClickListener({
             TellManager.getInstance().sendAsr(App.sApp, packageName, "下一页")
         })
 
         //发送通知
-        btn_send_notice.setOnClickListener(View.OnClickListener {
-            var notice = Notice()
+        btn_send_notice.setOnClickListener( {
+            val notice = Notice()
             notice.img = "xxx"
             notice.pck = packageName
             notice.message = "消息"
@@ -165,7 +165,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //自己处理返回
-        btn_back.setOnClickListener(View.OnClickListener {
+        btn_back.setOnClickListener({
             val tell = Tell()
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
@@ -175,9 +175,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //接管语音的ASR
-        btn_asr.setOnClickListener(View.OnClickListener {
-            TellManager.getInstance().
-                    enableRoot(App.sApp, this@DemoView.javaClass.name, "10987654321")
+        btn_asr.setOnClickListener({
             val tell = Tell()
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
@@ -186,7 +184,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //接管语音的ASR,并且不显示语音动画
-        btn_asr_hide_animation.setOnClickListener(View.OnClickListener {
+        btn_asr_hide_animation.setOnClickListener({
             val tell = Tell()
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
@@ -196,7 +194,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //接管语音的ASR,并且不显示语音动画,并且使用游戏引擎
-        btn_asr_hide_animation_ddz_game.setOnClickListener(View.OnClickListener {
+        btn_asr_hide_animation_ddz_game.setOnClickListener({
             val tell = Tell()
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
@@ -207,7 +205,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //接管语音的ASR,并且不显示语音动画,并且使用游戏引擎,并且开启连续识别
-        btn_asr_hide_animation_ddz_game_continuous_recognition.setOnClickListener(View.OnClickListener {
+        btn_asr_hide_animation_ddz_game_continuous_recognition.setOnClickListener({
             val tell = Tell()
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name

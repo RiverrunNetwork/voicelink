@@ -10,9 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.TellCode
-import com.bftv.fui.thirdparty.IUserStatusNotice
-import com.bftv.fui.thirdparty.InterceptionData
-import com.bftv.fui.thirdparty.RecyclingData
+import com.bftv.fui.thirdparty.*
 import com.bftv.fui.thirdparty.notify.DataChange
 
 /**
@@ -35,15 +33,19 @@ class TestService : Service() {
     }
 
     var stub: IUserStatusNotice.Stub = object : IUserStatusNotice.Stub() {
-        override fun onRecyclingNotice(recyclingData: RecyclingData?) {
-            Log.e(TAG, "回收数据通知${recyclingData.toString()}")
-        }
-
-        override fun onAsr(asr: String?, age: Int, sex: Int) {
+        override fun onAsr(asr: String?, age: Int, sex: Int, iRemoteFeedback: IRemoteFeedback) {
             Log.e(TAG, "用户说完话了:"+asr)
+            val feed = Feedback()
+            feed.isHasResult = true
+            feed.ttsContent = "我收到了,很开心!"
+            iRemoteFeedback.feedback(feed)
             Handler(Looper.getMainLooper()).post({
                 Toast.makeText(App.sApp,"用户说完话了$asr",Toast.LENGTH_SHORT).show()
             })
+        }
+
+        override fun onRecyclingNotice(recyclingData: RecyclingData?) {
+            Log.e(TAG, "回收数据通知${recyclingData.toString()}")
         }
 
         @Throws(RemoteException::class)
@@ -75,7 +77,7 @@ class TestService : Service() {
         @Throws(RemoteException::class)
         override fun onShow(isFar: Boolean) {
             Log.e(TAG, "用户开始说话")
-            Handler(Looper.getMainLooper()).post(Runnable {
+            Handler(Looper.getMainLooper()).post({
                 Toast.makeText(App.sApp,"onShow",Toast.LENGTH_SHORT).show()
             })
         }
