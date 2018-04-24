@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.SequenceCode
+import com.bftv.fui.constantplugin.Switch
 import com.bftv.fui.constantplugin.TellCode.*
 import com.bftv.fui.tell.Notice
 import com.bftv.fui.tell.Tell
@@ -289,7 +290,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //批量映射指令词
-        btn_nlp_cache.setOnClickListener(View.OnClickListener {
+        btn_nlp_cache.setOnClickListener({
             val cacheData = ArrayList<String>(10)
             cacheData.add("打开")
             cacheData.add("切换")
@@ -303,18 +304,25 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //自定义系统指令词
-        btn_nlp_system.setOnClickListener(View.OnClickListener {
+        btn_nlp_system.setOnClickListener({
             val data = ArrayList<InterceptorNet>()
             data.add(InterceptorNet("删除第.*.*",12345423))
             TellManager.getInstance().nlpSystem(App.sApp,this@DemoView.javaClass.name,data)
         })
-        tips1.setOnClickListener(View.OnClickListener {
+
+        //不使用SDK
+        //调用如下方法之后所有的功能都是空方法,也就是说 语音功能无效 好处是不会损耗程序性能问题
+        //主要是为了解决部分开发者 集成语音SDK,但不使用语音功能的问题
+        btn_close.setOnClickListener({
+            Switch.setUseSdk(false)
+        })
+        tips1.setOnClickListener({
             val map1 = LinkedHashMap<String, String>()
             map1.put("你好", "test1")
             tips("testa", map1)
         })
 
-        tips2.setOnClickListener(View.OnClickListener {
+        tips2.setOnClickListener({
             val map2 = LinkedHashMap<String, String>()
             map2.put("哈哈", "test2")
             tips("testb", map2)
