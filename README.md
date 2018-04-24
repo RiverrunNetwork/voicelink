@@ -45,15 +45,15 @@ TellManager.getInstance().sendAsr(App.sApp,packageName,"刘德华的电影")
 ## 语音播报
 任何第三方的应用都可以使用 大耳朵的语音播报功能
 ```java
-Switch.setUseSdk(false)
-```
-## 关闭SDK
-语音SDK提供了一个开关,如果开关设置为false,那么集成的sdk将无效,sdk内部不会执行任何代码
-```java
 val tts = TTS()
 tts.pck = packageName
 tts.tts = "哈哈 我能控制语音播报啦 好开心!"
 TellManager.getInstance().tts(App.sApp, tts)
+```
+## 关闭SDK
+语音SDK提供了一个开关,如果开关设置为false,那么集成的sdk将无效,sdk内部不会执行任何代码
+```java
+Switch.setUseSdk(false)
 ```
 ## 问题反馈
 - 如果您有任何问题 可以把您的问题写到Issues里面 我们会认真回答每一个人的任何问题<br>
@@ -61,7 +61,7 @@ TellManager.getInstance().tts(App.sApp, tts)
 
 ## 合作伙伴
 我们希望更多的应用能加入暴风tv的大家庭里面来(包含但不仅限于以下应用)<br>
-<img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" />&ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/qq_music.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ddz.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ximalaya.jpg" width="70" height="70" />&ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/xiaobanlong.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/dianshijia.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ic_launcher.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/video.png" width="70" height="70" />
+<img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" />&ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/qq_music.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ddz.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ximalaya.jpg" width="70" height="70" />&ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/xiaobanlong.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/migu.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/dianshijia.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ic_launcher.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/video.png" width="70" height="70" />
 
 
  
