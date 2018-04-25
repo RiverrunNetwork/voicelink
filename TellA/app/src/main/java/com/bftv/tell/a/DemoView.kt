@@ -237,7 +237,8 @@ class DemoView : Activity(), IVoiceObserver {
         btn_aiui_better_asr.setOnClickListener(View.OnClickListener {
             val tell = Tell()
             val hashMap = ConcurrentHashMap<String, String>()
-            hashMap.put("刘德华是谁", "yes")
+            hashMap.put("刘德华是谁", "^yes")
+            hashMap.put("测试", "test")
             tell.viewCacheMap = hashMap
             tell.pck = packageName
             tell.className = this@DemoView.javaClass.name
