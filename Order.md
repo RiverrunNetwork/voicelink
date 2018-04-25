@@ -69,7 +69,21 @@ tell.sequencecode = SequenceCode.TYPE_PAGE or SequenceCode.TYPE_NUM
 tell.tellType = TELL_APP_CACHE or TELL_SYSTEM or TELL_VIEW_CACHE or TELL_TIPS
 TellManager.getInstance().tell(App.sApp, tell)
 ```
-
+优化ASR结果<br>
+设置isEnableBetterAsr = true 会根据当前注册的指令词去优化asr的结果,让结果更接近界面显示的词语<br>
+如果在value的前缀添加了^ 那么改词是不会进行优化的<br>
+```java
+val tell = Tell()
+val hashMap = ConcurrentHashMap<String, String>()
+hashMap.put("刘德华是谁", "^yes")
+hashMap.put("测试", "test")
+tell.viewCacheMap = hashMap
+tell.pck = packageName
+tell.className = this@DemoView.javaClass.name
+tell.tellType = TELL_VIEW_CACHE
+tell.isEnableBetterAsr = true
+TellManager.getInstance().tell(App.sApp, tell)
+```
 - 第三步 指令词的接收
 
 首先需要自己写一个应用级别得service 下面以TestService举例子 其中intent.action.user. 为固定格式 com.bftv.tell.a 为你应用得包名字
