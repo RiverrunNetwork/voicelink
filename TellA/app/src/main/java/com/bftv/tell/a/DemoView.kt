@@ -278,18 +278,35 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //关闭大耳朵语音
-        btn_close_voice.setOnClickListener(View.OnClickListener {
+        btn_close_voice.setOnClickListener({
             TellManager.getInstance().closeVoice(App.sApp)
         })
 
         //大耳朵语音播报
-        btn_tts.setOnClickListener(View.OnClickListener {
+        btn_tts.setOnClickListener({
             val tts = TTS()
             tts.pck = packageName
             tts.tts = "哈哈 我能控制语音播报啦 好开心!"
             TellManager.getInstance().tts(App.sApp, tts)
         })
 
+        //大耳朵语音播报没有界面
+        btn_tts_no_layout.setOnClickListener {
+            val tts = TTS()
+            tts.pck = packageName
+            tts.tts = "哈哈 我能控制语音播报啦 好开心!"
+            tts.isDisplayLayout = false
+            TellManager.getInstance().tts(App.sApp, tts)
+        }
+
+        //大耳朵语音播报显示底部ASR
+        btn_tts_asr.setOnClickListener {
+            val tts = TTS()
+            tts.pck = packageName
+            tts.tts = "哈哈 我能控制语音播报啦 好开心!"
+            tts.userTxt = "你真棒"
+            TellManager.getInstance().tts(App.sApp, tts)
+        }
         //批量映射指令词
         btn_nlp_cache.setOnClickListener({
             val cacheData = ArrayList<String>(10)
