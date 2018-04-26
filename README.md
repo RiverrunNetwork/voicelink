@@ -49,6 +49,24 @@ val tts = TTS()
 tts.pck = packageName
 tts.tts = "哈哈 我能控制语音播报啦 好开心!"
 TellManager.getInstance().tts(App.sApp, tts)
+
+//大耳朵语音播报没有界面
+btn_tts_no_layout.setOnClickListener {
+   val tts = TTS()
+   tts.pck = packageName
+   tts.tts = "哈哈 我能控制语音播报啦 好开心!"
+   tts.isDisplayLayout = false
+   TellManager.getInstance().tts(App.sApp, tts)
+}
+
+//大耳朵语音播报显示底部ASR
+btn_tts_asr.setOnClickListener {
+   val tts = TTS()
+   tts.pck = packageName
+   tts.tts = "哈哈 我能控制语音播报啦 好开心!"
+   tts.userTxt = "你真棒"
+   TellManager.getInstance().tts(App.sApp, tts)
+}
 ```
 ## 关闭SDK
 语音SDK提供了一个开关,如果开关设置为false,那么集成的sdk将无效,sdk内部不会执行任何代码
