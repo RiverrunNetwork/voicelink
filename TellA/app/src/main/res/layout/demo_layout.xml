@@ -96,6 +96,28 @@
                     android:text="界面NLP" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_view_group1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="界面指令词分组1" />
+
+                <Button
+                    android:id="@+id/btn_view_group2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_selector_red"
+                    android:text="界面指令词分组2" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btn_system_app"
                 android:layout_width="wrap_content"

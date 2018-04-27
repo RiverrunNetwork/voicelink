@@ -117,6 +117,37 @@ class DemoView : Activity(), IVoiceObserver {
             tell.functionSupportType = FunctionCode.DELETE or FunctionCode.CLOSE or FunctionCode.OPEN
             TellManager.getInstance().tell(App.sApp, tell)
         })
+
+        //界面指令词分组1
+        btn_view_group1.setOnClickListener {
+            val tell = Tell()
+            val hashMap = ConcurrentHashMap<String, String>()
+            hashMap.put("播放", "playTag")
+            tell.viewCacheMap = hashMap
+            tell.pck = packageName
+            tell.isSupportGroup = true
+            tell.groupId = 1001
+            tell.isAppend = true
+            tell.className = this@DemoView.javaClass.name
+            tell.tellType = TELL_VIEW_CACHE or TELL_TIPS
+            TellManager.getInstance().tell(App.sApp, tell)
+        }
+
+        //界面指令词分组2
+        btn_view_group2.setOnClickListener {
+            val tell = Tell()
+            val hashMap = ConcurrentHashMap<String, String>()
+            hashMap.put("收藏", "collectTag")
+            tell.viewCacheMap = hashMap
+            tell.pck = packageName
+            tell.isSupportGroup = true
+            tell.groupId = 1002
+            tell.isAppend = true
+            tell.className = this@DemoView.javaClass.name
+            tell.tellType = TELL_VIEW_CACHE or TELL_TIPS
+            TellManager.getInstance().tell(App.sApp, tell)
+        }
+
         //系统指令词
         btn_system_app.setOnClickListener({
             val tell = Tell()
