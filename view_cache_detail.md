@@ -57,32 +57,32 @@ TellManager.getInstance().nlpCache(App.sApp,this@DemoView.javaClass.name,cacheDa
 当命中该组的成员时会将你自定义的groupId 回调回去
 ```java
 //界面指令词分组1
-        btn_view_group1.setOnClickListener {
-            val tell = Tell()
-            val hashMap = ConcurrentHashMap<String, String>()
-            hashMap.put("播放", "playTag")
-            tell.viewCacheMap = hashMap
-            tell.pck = packageName
-            tell.isSupportGroup = true
-            tell.groupId = 1001
-            tell.className = this@DemoView.javaClass.name
-            tell.tellType = TELL_VIEW_CACHE or TELL_TIPS
-            TellManager.getInstance().tell(App.sApp, tell)
-        }
+btn_view_group1.setOnClickListener {
+   val tell = Tell()
+   val hashMap = ConcurrentHashMap<String, String>()
+   hashMap.put("播放", "playTag")
+   tell.viewCacheMap = hashMap
+   tell.pck = packageName
+   tell.isSupportGroup = true
+   tell.groupId = 1001
+   tell.className = this@DemoView.javaClass.name
+   tell.tellType = TELL_VIEW_CACHE or TELL_TIPS
+    TellManager.getInstance().tell(App.sApp, tell)
+}
 
-        //界面指令词分组2
-        btn_view_group2.setOnClickListener {
-            val tell = Tell()
-            val hashMap = ConcurrentHashMap<String, String>()
-            hashMap.put("收藏", "collectTag")
-            tell.viewCacheMap = hashMap
-            tell.pck = packageName
-            tell.isSupportGroup = true
-            tell.groupId = 1002
-            tell.className = this@DemoView.javaClass.name
-            tell.tellType = TELL_VIEW_CACHE or TELL_TIPS
-            TellManager.getInstance().tell(App.sApp, tell)
-        }
+ //界面指令词分组2
+ btn_view_group2.setOnClickListener {
+      val tell = Tell()
+      val hashMap = ConcurrentHashMap<String, String>()
+      hashMap.put("收藏", "collectTag")
+      tell.viewCacheMap = hashMap
+      tell.pck = packageName
+      tell.isSupportGroup = true
+      tell.groupId = 1002
+      tell.className = this@DemoView.javaClass.name
+      tell.tellType = TELL_VIEW_CACHE or TELL_TIPS
+      TellManager.getInstance().tell(App.sApp, tell)
+}
 ```
 
 
