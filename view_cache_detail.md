@@ -52,8 +52,9 @@ cacheData.add("能不能打开")
 cacheData.add("给我切换到")
 TellManager.getInstance().nlpCache(App.sApp,this@DemoView.javaClass.name,cacheData)
 ```
-- 界面指令词支持分组
-在同一个界面的界面指令词进行区分 需要再注册的时候 添加tell.isSupportGroup = true 并且传递tell.groupId = 1001 其中groupId可以自定义<br>
+- 界面指令词支持分组<br>
+在同一个界面的界面指令词进行区分 
+需要再注册的时候 添加tell.isSupportGroup = true 并且传递tell.groupId = 1001 其中groupId可以自定义<br>
 当命中该组的成员时会将你自定义的groupId 回调回去
 ```java
 //界面指令词分组1
