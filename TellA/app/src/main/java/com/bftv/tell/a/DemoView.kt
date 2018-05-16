@@ -52,6 +52,7 @@ class DemoView : Activity(), IVoiceObserver {
             tell.pck = packageName
             tell.tellType = TELL_APP_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
+
         })
 
         //应用指令模糊效果

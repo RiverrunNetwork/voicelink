@@ -33,6 +33,9 @@ class TestService : Service() {
     }
 
     var stub: IUserStatusNotice.Stub = object : IUserStatusNotice.Stub() {
+        override fun onControl(p0: String?) {
+        }
+
         override fun onAsr(asr: String?, age: Int, sex: Int, iRemoteFeedback: IRemoteFeedback) {
             Log.e(TAG, "用户说完话了:"+asr)
             val feed = Feedback()
