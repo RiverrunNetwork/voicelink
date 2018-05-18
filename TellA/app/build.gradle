@@ -40,7 +40,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile files('libs/thirdtell-180504.jar')
+    compile files('libs/thirdtell-180518.jar')
     compile files('libs/voicethirdparty-180516.jar')
     compile files('libs/authentication-171210.jar')
     compile files('libs/constantplugin-180427.jar')

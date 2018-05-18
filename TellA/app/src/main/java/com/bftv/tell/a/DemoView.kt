@@ -1,4 +1,5 @@
 package com.bftv.tell.a
+
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -40,7 +41,7 @@ class DemoView : Activity(), IVoiceObserver {
         return null
     }
 
-    override fun  onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.demo_layout)
         //应用指令词
@@ -185,7 +186,7 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         //发送通知
-        btn_send_notice.setOnClickListener( {
+        btn_send_notice.setOnClickListener({
             val notice = Notice()
             notice.img = "xxx"
             notice.pck = packageName
@@ -286,7 +287,7 @@ class DemoView : Activity(), IVoiceObserver {
          * 当前只更改ClassName 对应的结果
          */
         btn_aiui_score.setOnClickListener(View.OnClickListener {
-            TellManager.getInstance().addScore(App.sApp,packageName,this@DemoView.javaClass.name,5)
+            TellManager.getInstance().addScore(App.sApp, packageName, this@DemoView.javaClass.name, 5)
         })
 
         //启动Root权限
@@ -350,14 +351,24 @@ class DemoView : Activity(), IVoiceObserver {
             cacheData.add("请打开")
             cacheData.add("能不能打开")
             cacheData.add("给我切换到")
-            TellManager.getInstance().nlpCache(App.sApp,this@DemoView.javaClass.name,cacheData)
+            TellManager.getInstance().nlpCache(App.sApp, this@DemoView.javaClass.name, cacheData)
+        })
+
+        btn_voice_start.setOnClickListener(View.OnClickListener {
+            TellManager.getInstance().sendControl(App.sApp, "voice_show")
+            Handler().postDelayed(Runnable {
+                Handler().postDelayed(Runnable {
+                    TellManager.getInstance().sendControl(App.sApp, "voice_end刘德华的电影")
+                }, 1000)
+                TellManager.getInstance().sendControl(App.sApp, "volume10")
+            }, 1000)
         })
 
         //自定义系统指令词
         btn_nlp_system.setOnClickListener({
             val data = ArrayList<InterceptorNet>()
-            data.add(InterceptorNet("删除第.*.*",12345423))
-            TellManager.getInstance().nlpSystem(App.sApp,this@DemoView.javaClass.name,data)
+            data.add(InterceptorNet("删除第.*.*", 12345423))
+            TellManager.getInstance().nlpSystem(App.sApp, this@DemoView.javaClass.name, data)
         })
 
         //不使用SDK
