@@ -84,5 +84,25 @@ Switch.setUseSdk(false)
 <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/qq_music.jpg" width="70" height="70" />
 &ensp;&ensp;
 <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ddz.png" width="70" height="70" />
+&ensp;&ensp;
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ximalaya.jpg" width="70" height="70" />
+&ensp;&ensp;
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/xiaobanlong.png" width="70" height="70" />
+&ensp;&ensp;
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/migu.jpg" width="70" height="70" />
+&ensp;&ensp;
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/dianshijia.jpg" width="70" height="70" />
+&ensp;&ensp;
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ic_launcher.png" width="70" height="70" />
+&ensp;&ensp;
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/video.png" width="70" height="70" />
+&ensp;&ensp;
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/call.png" width="70" height="70" />
+&ensp;&ensp;
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ic_children.png" width="70" height="70" />
+
+
+
+
 
  
