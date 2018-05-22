@@ -79,7 +79,8 @@ Switch.setUseSdk(false)
 
 ## 合作伙伴
 我们希望更多的应用能加入暴风tv的大家庭里面来(包含但不仅限于以下应用)<br>
-<img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" />&ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/qq_music.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ddz.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp; <img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ximalaya.jpg" width="70" height="70" />&ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/xiaobanlong.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/migu.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/dianshijia.jpg" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ic_launcher.png" width="70" height="70" /> &ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/video.png" width="70" height="70" />&ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/call.png" width="70" height="70" />&ensp;&ensp;&ensp;&ensp;<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/ic_children.png" width="70" height="70" />
+<img src="http://live-fengmi.b0.upaiyun.com/imgconfig/ai/taobao.png" width="70" height="70" />&ensp;&ensp;
+<img src="https://github.com/RiverrunNetwork/voicelink/blob/master/TellA/img/qq_music.jpg" width="70" height="70" />
 
 
  
