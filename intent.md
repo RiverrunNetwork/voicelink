@@ -76,6 +76,9 @@ data:{"extra":"4","type":"key_code"}
 {
     "type": "system",
     "package_name": "com.baofengtv.settings"
+    "download": "apk下载地址"
+    "toast": "提示"
 }
 ```
+
 
