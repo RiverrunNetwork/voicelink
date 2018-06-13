@@ -1,5 +1,5 @@
 # 全局跳转
-目前大耳朵 只支持六种类型跳转 <br>
+目前大耳朵 只支持七种类型跳转 <br>
 第一种 显示启动  <br>
 ```java
 {
@@ -78,6 +78,17 @@ data:{"extra":"4","type":"key_code"}
     "package_name": "com.baofengtv.settings"
     "download": "apk下载地址"
     "toast": "提示"
+    "name": "应用名称"
+}
+```
+第七种 下载应用<br>
+```java
+{
+    "type": "download",
+    "package_name": "com.baofengtv.settings"
+    "download": "apk下载地址"
+    "toast": "提示"
+    "name": "应用名称"
 }
 ```
 
