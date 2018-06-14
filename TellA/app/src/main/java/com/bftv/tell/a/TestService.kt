@@ -33,6 +33,7 @@ class TestService : Service() {
     }
 
     var stub: IUserStatusNotice.Stub = object : IUserStatusNotice.Stub() {
+
         override fun onControl(p0: String?) {
         }
 

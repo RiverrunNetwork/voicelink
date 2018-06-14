@@ -26,10 +26,6 @@ import java.util.concurrent.ConcurrentHashMap
 import com.bftv.fui.constantplugin.TellCode.TELL_ASR
 import com.bftv.fui.constantplugin.bean.InterceptorNet
 import com.bftv.fui.tell.TTS
-import java.util.concurrent.LinkedBlockingDeque
-import java.util.concurrent.LinkedBlockingQueue
-
-
 /**
  * Author by Less on 17/11/15.
  */
@@ -53,7 +49,6 @@ class DemoView : Activity(), IVoiceObserver {
             tell.pck = packageName
             tell.tellType = TELL_APP_CACHE
             TellManager.getInstance().tell(App.sApp, tell)
-
         })
 
         //应用指令模糊效果
@@ -377,6 +372,7 @@ class DemoView : Activity(), IVoiceObserver {
         btn_close.setOnClickListener({
             Switch.setUseSdk(false)
         })
+
         tips1.setOnClickListener({
             val map1 = LinkedHashMap<String, String>()
             map1.put("你好", "test1")
@@ -388,6 +384,16 @@ class DemoView : Activity(), IVoiceObserver {
             map2.put("哈哈", "test2")
             tips("testb", map2)
         })
+
+        btn_iot.setOnClickListener({
+            TellManager.getInstance().sendIot(App.sApp,"[{\n" +
+                    "\t\"text\": \"台灯\",\n" +
+                    "\t\"pck\": \"com.bftv.tell.a\",\n" +
+                    "\t\"match_mode\": \"dict\",\n" +
+                    "\t\"priority\": 100\n" +
+                    "}]")
+        })
+
     }
 
     override fun onResume() {

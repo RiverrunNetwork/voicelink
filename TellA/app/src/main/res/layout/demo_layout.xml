@@ -41,13 +41,6 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_voice_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/bg_selector_red"
-                android:text="模拟用户操作" />
 
 
             <Button
@@ -158,6 +151,23 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/bg_selector_red"
                 android:text="发送通知" />
+
+            <Button
+                android:id="@+id/btn_voice_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_selector_red"
+                android:text="模拟用户操作" />
+
+
+            <Button
+                android:id="@+id/btn_middle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_selector_red"
+                android:text="控制大耳朵中间层" />
 
             <Button
                 android:id="@+id/btn_back"
@@ -348,6 +358,14 @@
                 android:background="@drawable/bg_selector_red"
                 android:text="不使用语音SDK" />
 
+
+            <Button
+                android:id="@+id/btn_iot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_selector_red"
+                android:text="发送IOT消息" />
 
         </LinearLayout>
 

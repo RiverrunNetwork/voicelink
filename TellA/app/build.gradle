@@ -40,12 +40,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile files('libs/thirdtell-180518.jar')
-    compile files('libs/voicethirdparty-180516.jar')
+    compile files('libs/thirdtell-180613.jar')
+    compile files('libs/voicethirdparty-180522.jar')
     compile files('libs/authentication-171210.jar')
-    compile files('libs/constantplugin-180427.jar')
+    compile files('libs/constantplugin-180522.jar')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:recyclerview-v7:26.1.0'
-
+    compile 'com.bftv.fui:config:1.0.0-SNAPSHOT'
     compile 'com.bftv.fui:voicebar:1.0.1.9-SNAPSHOT'
 }
