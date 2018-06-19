@@ -1,5 +1,5 @@
 # 全局跳转
-目前大耳朵 只支持七种类型跳转 <br>
+目前大耳朵 只支持八种类型跳转 <br>
 第一种 显示启动  <br>
 ```java
 {
@@ -89,6 +89,19 @@ data:{"extra":"4","type":"key_code"}
     "download": "apk下载地址"
     "toast": "提示"
     "name": "应用名称"
+}
+```
+第八种 URI 启动 <br>
+```java
+{
+"action_name": "",
+"activity_name": "",
+"flag": "",
+"name": "购物车",
+"package_name": "",
+"parameter": "",
+"type": "uri",
+"uri": "tvtaobao://home?app=taobaosdk&module=cart&notshowloading=true&from=Voice_Storm_shoppingcart"
 }
 ```
 
