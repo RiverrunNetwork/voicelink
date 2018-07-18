@@ -19,6 +19,9 @@ buildscript {
 
 allprojects {
     repositories {
+        flatDir {
+            dirs 'libs', '../app/libs'
+        }
         jcenter()
         maven { url('http://111.202.106.186:8083/repository/maven-public/') }
     }

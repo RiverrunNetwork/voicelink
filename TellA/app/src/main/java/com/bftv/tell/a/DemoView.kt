@@ -5,27 +5,24 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.SequenceCode
 import com.bftv.fui.constantplugin.Switch
 import com.bftv.fui.constantplugin.TellCode.*
+import com.bftv.fui.constantplugin.bean.InterceptorNet
+import com.bftv.fui.constantplugin.bean.VoiceTips
 import com.bftv.fui.tell.Notice
+import com.bftv.fui.tell.TTS
 import com.bftv.fui.tell.Tell
 import com.bftv.fui.tell.TellManager
 import com.bftv.fui.thirdparty.InterceptionData
 import com.bftv.fui.thirdparty.VoiceFeedback
 import com.bftv.fui.thirdparty.notify.DataChange
 import com.bftv.fui.thirdparty.notify.IVoiceObserver
-import com.bftv.fui.voicehelpexpandview.AIFuncViewListener
-import com.bftv.fui.voicehelpexpandview.util.Tip
 import kotlinx.android.synthetic.main.demo_layout.*
 import java.util.concurrent.ConcurrentHashMap
-import com.bftv.fui.constantplugin.TellCode.TELL_ASR
-import com.bftv.fui.constantplugin.bean.InterceptorNet
-import com.bftv.fui.tell.TTS
 /**
  * Author by Less on 17/11/15.
  */
@@ -374,15 +371,32 @@ class DemoView : Activity(), IVoiceObserver {
         })
 
         tips1.setOnClickListener({
-            val map1 = LinkedHashMap<String, String>()
-            map1.put("你好", "test1")
-            tips("testa", map1)
+
+            val tip = VoiceTips()
+            tip.pck = "com.bftv.fui.launcher"
+            tip.className = "XXX1Activity"
+            tip.classNameAppend = "XXX1Fragment"
+            tip.tipsCacheMap = ConcurrentHashMap<String, String>()
+
+            tip.tipsCacheMap["今天天气怎么样"] = ""
+            tip.tipsCacheMap["我的快递到哪了"] = ""
+
+            aiVoiceTipView.renderTips(App.sApp, tip)
         })
 
         tips2.setOnClickListener({
-            val map2 = LinkedHashMap<String, String>()
-            map2.put("哈哈", "test2")
-            tips("testb", map2)
+
+            val tip = VoiceTips()
+            tip.pck = "com.bftv.fui.launcher"
+            tip.className = "XXX2Activity"
+            tip.classNameAppend = "XXX2Fragment"
+            tip.tipsCacheMap = ConcurrentHashMap<String, String>()
+
+            tip.tipsCacheMap["附近的好吃的"] = ""
+            tip.tipsCacheMap["音量大一点"] = ""
+
+            aiVoiceTipView.renderTips(App.sApp, tip)
+
         })
 
         btn_iot.setOnClickListener({
@@ -406,31 +420,8 @@ class DemoView : Activity(), IVoiceObserver {
         DataChange.getInstance().deleteObserver(this)
     }
 
-    fun tips(appendName: String, map: LinkedHashMap<String, String>) {
-        funview.okUpdate(map, "you platfrom", appendName, 0, true, object : AIFuncViewListener {
-            override fun onItemClicked(tip: Tip) {
-                Log.e("Less", "onItemClicked" + tip.key)
-                TellManager.getInstance().sendAsr(App.sApp, packageName, tip.key)
-            }
-
-            override fun onRenderTip(map: ConcurrentHashMap<String, String>, code: Int) {
-                Log.e("Less", "onRenderTip" + map.size + "|code:" + code)
-                val tell = Tell()
-                tell.tipsMap = map
-                tell.pck = packageName
-                tell.className = this@DemoView.javaClass.name
-                tell.tellType = TELL_TIPS
-                tell.sequencecode = code
-                tell.isAppend = true
-                tell.tellType = TELL_SYSTEM or TELL_TIPS
-                TellManager.getInstance().tell(App.sApp, tell)
-            }
-        })
-    }
-
     override fun onDestroy() {
         super.onDestroy()
-        funview.release()
     }
 }
 

@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import com.bftv.fui.constantplugin.FunctionCode
 import com.bftv.fui.constantplugin.TellCode
+import com.bftv.fui.constantplugin.bean.VoiceTips
 import com.bftv.fui.thirdparty.*
 import com.bftv.fui.thirdparty.notify.DataChange
 
@@ -33,6 +34,9 @@ class TestService : Service() {
     }
 
     var stub: IUserStatusNotice.Stub = object : IUserStatusNotice.Stub() {
+        override fun tips(p0: VoiceTips?) {
+
+        }
 
         override fun onControl(p0: String?) {
         }
