@@ -11,6 +11,7 @@
 		"isEnableContinuousRecognition": false,
 		"isHasResult": true,
 		"itemCount": 1,
+		"showOne": false
 		"list": [{
 			"title": "侯卫东官场笔记",
 			"frontCover": "http://pic.qingting.fm/2016/0804/20160804160644427.jpg!800",
