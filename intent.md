@@ -17,6 +17,7 @@
     "package_name": "com.baofengtv.settings",
     "uri": "qijian://test.uri.activity?action=1"
     "intent_toast": "正在为您启动XXXX"
+    “base64” : "parameter_value"
 }
 ```
 
@@ -31,6 +32,9 @@ S        代表参数的类型  <br>
 如果多个参数 用 | 区分 <br> 
 
 例如 page^location^S|page^location^S <br>
+
+为了数据的安全性 支持对parameter的value字端进行base64 如果需要大耳朵帮忙解密需要配置
+“base64” : "parameter_value"
 
 flag 代表Intent需要添加的flag <br>
 
