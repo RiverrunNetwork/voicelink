@@ -16,8 +16,11 @@
     "activity_name": "com.baofengtv.settings.MainActivity",
     "package_name": "com.baofengtv.settings",
     "uri": "qijian://test.uri.activity?action=1"
+    "intent_toast": "正在为您启动XXXX"
 }
 ```
+
+intent_toast 可以为空.启动界面后会弹出消息 提醒用户
 
 其中parameter 代表参数
 
