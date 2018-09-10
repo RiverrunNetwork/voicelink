@@ -8,6 +8,16 @@
 AIVoiceTipView tipsView = findViewById(XXX);
 // 第二步，设置本地词
 VoiceTips tips = new VoiceTips();
+tips.pck = "ok.less.org.okl"
+tips.className = "com.bftv.fui.children.view.video.VideoListActivity"
+tips.classNameAppend = "append"
+tips.version = "4.0"
+
+tips.tipsCacheMap = ConcurrentHashMap(4);
+tips.tipsCacheMap.put("推荐点好看的视频"], "");
+tips.tipsCacheMap.put("今天天气怎么样"], "");
+tips.tipsCacheMap.put("给我来点音乐"], "");
+
 // 此时会显示数据，并将数据发送给大耳朵处理，处理完成后通过IUserStatusNotice的tips方法返回处理结果
 tipsView.renderTips(Application, tips);
 // 第三步，将处理结果更新到VoiceTipView
