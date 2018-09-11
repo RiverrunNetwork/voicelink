@@ -12,6 +12,7 @@ tips.pck = "ok.less.org.okl"
 tips.className = "com.bftv.fui.children.view.video.VideoListActivity"
 tips.classNameAppend = "append"
 tips.version = "4.0"
+tips.refreshTime = 2000
 
 tips.tipsCacheMap = ConcurrentHashMap(4);
 tips.tipsCacheMap.put("推荐点好看的视频"], "");
