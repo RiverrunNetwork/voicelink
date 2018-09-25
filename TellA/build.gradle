@@ -23,7 +23,7 @@ allprojects {
             dirs 'libs', '../app/libs'
         }
         jcenter()
-        maven { url('http://111.202.106.186:8083/repository/maven-public/') }
+        maven { url('http://123.126.114.194:8083/repository/maven-public/') }
     }
 
 }
