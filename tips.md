@@ -3,7 +3,7 @@
 
 使用流程：
 
-<img src="TellA/img/img.png"/>
+<img src="TellA/img/img.jpg"/>
 
 ``` java
 // 第一步，获取VoiceTipView
