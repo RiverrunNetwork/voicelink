@@ -3,6 +3,8 @@
 
 使用流程：
 
+<img src="TellA/img/img.png"/>
+
 ``` java
 // 第一步，获取VoiceTipView
 AIVoiceTipView tipsView = findViewById(XXX);
@@ -19,9 +21,11 @@ tips.tipsCacheMap.put("推荐点好看的视频"], "");
 tips.tipsCacheMap.put("今天天气怎么样"], "");
 tips.tipsCacheMap.put("给我来点音乐"], "");
 
+// 注册tips渲染回调(将实际显示的词回调回来)
+tipsView.setTipsListener(listener);
 // 此时会显示数据，并将数据发送给大耳朵处理，处理完成后通过IUserStatusNotice的tips方法返回处理结果
 tipsView.renderTips(Application, tips);
-// 第三步，将处理结果更新到VoiceTipView
+// 第三步，将tips方法回调的处理结果更新到VoiceTipView
 tipsView.updateTips(tips);
 
 ```
