@@ -14,7 +14,7 @@ tips.pck = "ok.less.org.okl"
 tips.className = "com.bftv.fui.children.view.video.VideoListActivity"
 tips.classNameAppend = "append"
 tips.version = "4.0"
-tips.refreshTime = 2000
+tips.refreshTime = 20000 // 默认10秒
 
 tips.tipsCacheMap = ConcurrentHashMap(4);
 tips.tipsCacheMap.put("推荐点好看的视频"], "");
@@ -25,7 +25,7 @@ tips.tipsCacheMap.put("给我来点音乐"], "");
 tipsView.setTipsListener(listener);
 // 此时会显示数据，并将数据发送给大耳朵处理，处理完成后通过IUserStatusNotice的tips方法返回处理结果
 tipsView.renderTips(Application, tips);
-// 第三步，将tips方法回调的处理结果更新到VoiceTipView
+// 第三步，将tips方法回调的处理结果更新到VoiceTipView，注意是IUserStatusNotice的tips方法
 tipsView.updateTips(tips);
 
 ```
