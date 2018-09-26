@@ -25,8 +25,8 @@ tips.tipsCacheMap.put("给我来点音乐"], "");
 tipsView.setTipsListener(listener);
 // 此时会显示数据，并将数据发送给大耳朵处理，处理完成后通过IUserStatusNotice的tips方法返回处理结果
 tipsView.renderTips(Application, tips);
-// 第三步，将tips方法回调的处理结果更新到VoiceTipView，注意是IUserStatusNotice的tips方法
-tipsView.updateTips(tips);
+// 第三步，将tips方法回调的处理结果更新到VoiceTipView，注意是IUserStatusNotice的tips方法返回的处理结果
+TellManagerHelper.getInstance().notifyTipsChange(tips);
 
 ```
 
