@@ -28,6 +28,17 @@ tipsView.renderTips(Application, tips);
 // 第三步，将tips方法回调的处理结果更新到VoiceTipView，注意是IUserStatusNotice的tips方法返回的处理结果
 TellManagerHelper.getInstance().notifyTipsChange(tips);
 
+// ###### 以下方法需要手动调用 ###### //
+
+// 当VoiceTips界面不可见时需要暂停动画
+tipsView.pauseAnim();
+// 重新可见时恢复动画
+tipsView.resumeAnim();
+// 界面销毁时释放
+tipsView.release();
+
+// ###### ################ ###### //
+
 ```
 
 需要引入的资源：<br>
@@ -35,7 +46,7 @@ TellManagerHelper.getInstance().notifyTipsChange(tips);
 // 大耳朵头像显示需要
 lib.sharedres-release.aar
 //VoiceTipView库
-lib.voicetip-XXX.aar
+voice-lib.voicetip-XXX.aar
 authentication-XXX.jar
 constantplugin-XXX.jar
 thirdtell-XXX.jar
