@@ -45,5 +45,5 @@ dependencies {
     compile 'com.bftv.fui:config:1.0.0-SNAPSHOT'
 
     compile(name:'lib.sharedres-release', ext: 'aar')
-    compile(name:'voice-lib.voicetip-18102213', ext: 'aar')
+    compile(name:'voice-lib.voicetip-18102514', ext: 'aar')
 }
