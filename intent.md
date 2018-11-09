@@ -5,7 +5,7 @@
       如果需要版本升级 服务端需要配置version_code.里面的值可联系测试
 ```
 
-目前大耳朵 只支持八种类型跳转 <br>
+目前大耳朵 只支持九种类型跳转 <br>
 第一种 显示启动  <br>
 ```java
 {
@@ -117,5 +117,11 @@ data:{"extra":"4","type":"key_code"}
 "uri": "tvtaobao://home?app=taobaosdk&module=cart&notshowloading=true&from=Voice_Storm_shoppingcart"
 }
 ```
-
+第九种 Audio 音频播放 <br>
+```java
+{
+"uri": "xxx.mp3"
+"type": "audio",
+}
+```
 
